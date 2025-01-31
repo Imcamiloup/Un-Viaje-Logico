@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definición Formal de Decidibilidad e Indecidibilidad</title>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <header class="tm-header2" id="tm-header2">
+        <div class="tm-header-wrapper">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="tm-nav" id="tm-nav">            
+                <ul>
+                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+                        <i class="fas fa-home"></i>
+                    </a></li>
+                    <li class="tm-nav-item active"><a href="post.html" class="tm-nav-link">
+                        <i class="fas fa-pen"></i>
+                    </a></li>
+                    <li class="tm-nav-item"><a href="about.html" class="tm-nav-link">
+                        <i class="fas fa-users"></i>
+                    </a></li>
+                    <li class="tm-nav-item"><a href="contact.html" class="tm-nav-link">
+                        <i class="far fa-comments"></i>
+                    </a></li>
+                </ul>
+            </nav>            
+        </div>
+    </header>
+
+    <div>
+        <main class="tm-main">
+            <div class="row tm-row">
+                <div class="col-lg-11 tm-post-col">
+                    <div class="tm-post-full">                    
+                        <div class="mb-4">
+                            <h2 class="pt-2 tm-color-primary tm-post-title">Definición Formal de Decidibilidad e Indecidibilidad</h2>
+                            <p class="tm-mb-40">Publicado por Admin | Fecha: 30 de Enero, 2025</p>
+                            
+                            <p>
+                                En teoría de la computación, uno de los conceptos fundamentales es la <strong>decidibilidad</strong>, que está estrechamente relacionada con los algoritmos y su capacidad para resolver problemas en un número finito de pasos. En esta publicación, discutimos la <strong>definición formal de decidibilidad</strong> e <strong>indecidibilidad</strong>, dos conceptos clave para entender los límites de la computación.
+                            </p>
+                            
+                            <h3 class="tm-color-primary">Definición Formal de Decidibilidad</h3>
+                            <p>
+                                Sea \( \Sigma \) un alfabeto y \( L \subseteq \Sigma^* \) un lenguaje sobre dicho alfabeto. Decimos que \( L \) es un lenguaje <strong>decidible</strong> si existe una máquina de Turing \( M \) tal que para cualquier entrada \( w \in \Sigma^* \), la máquina \( M \) acepta \( w \) si y solo si \( w \in L \), y \( M \) se detiene en tiempo finito. Formalmente:
+                            </p>
+                            <p>
+                                \[
+                                L \text{ es decidible} \iff \exists M \text{ tal que para todo } w \in \Sigma^*, \, M(w) = 
+                                \begin{cases} 
+                                    \text{aceptar} & \text{si } w \in L \\
+                                    \text{rechazar} & \text{si } w \notin L
+                                \end{cases}
+                                \]
+                            </p>
+                            <p>
+                                Es decir, el lenguaje \( L \) es decidible si existe un algoritmo que puede determinar si una cadena \( w \) pertenece a \( L \), y este algoritmo siempre se detiene.
+                            </p>
+
+                            <h3 class="tm-color-primary">Teorema 1: Decidibilidad y la Máquina de Turing</h3>
+                            <p>
+                                <strong>Teorema 1.</strong> Un lenguaje \( L \) es decidible si y solo si existe una máquina de Turing \( M \) que acepta \( L \) y se detiene para todas las entradas.
+                            </p>
+                            <p>
+                                Este teorema establece una equivalencia importante: un lenguaje es decidible si y solo si podemos construir una máquina de Turing que decida de manera efectiva si una entrada pertenece a dicho lenguaje. Además, el proceso de decisión debe ser siempre finito, lo que implica que \( M \) siempre debe detenerse.
+                            </p>
+
+                            <h3 class="tm-color-primary">Definición Formal de Indecidibilidad</h3>
+                            <p>
+                                Un lenguaje \( L \subseteq \Sigma^* \) es <strong>indecidible</strong> si no existe ninguna máquina de Turing \( M \) que pueda decidir si una cadena \( w \in \Sigma^* \) pertenece a \( L \) para todas las posibles entradas. Es decir, no hay un algoritmo general que pueda decidir la pertenencia de una cadena a \( L \) en un número finito de pasos para todos los casos posibles.
+                            </p>
+                            <p>
+                                Matemáticamente, un problema es indecidible si no existe una máquina de Turing \( M \) tal que:
+                            </p>
+                            \[
+                            L \text{ es indecidible} \iff \nexists M \text{ tal que para todo } w \in \Sigma^*, \, M(w) = 
+                            \begin{cases} 
+                                \text{aceptar} & \text{si } w \in L \\
+                                \text{rechazar} & \text{si } w \notin L
+                            \end{cases}
+                            \]
+                            <p>
+                                La indecidibilidad implica que no podemos construir una máquina de Turing que resuelva el problema de pertenencia para todos los casos posibles, y en muchos casos, la máquina de Turing nunca se detendría.
+                            </p>
+
+                            <h3 class="tm-color-primary">Teorema 2: El Problema de la Parada es Indecidible</h3>
+                            <p>
+                                <strong>Teorema 2.</strong> El problema de la parada de Turing es indecidible.
+                            </p>
+                            <p>
+                                El teorema anterior es fundamental en la teoría de la computación y se refiere al siguiente problema: dado un programa \( P \) y una entrada \( I \), determinar si \( P \) se detendrá cuando se ejecute con \( I \). Turing demostró que no existe ningún algoritmo general que pueda resolver este problema para todas las combinaciones de \( P \) e \( I \). Formalmente, el problema de la parada es indecidible:
+                            </p>
+                            \[
+                            \text{Dado } P \text{ y } I, \text{ determinar si } P \text{ se detiene en } I \text{ es indecidible.}
+                            \]
+                            <p>
+                                La prueba de Turing se basa en una contradicción. Si supusiéramos que existe una máquina de Turing que puede decidir este problema, podríamos construir una máquina de Turing que se contradice a sí misma, lo que lleva a la conclusión de que no es posible decidir el problema de la parada de manera general.
+                            </p>
+
+                            <h3 class="tm-color-primary">Relación con la Teoría de la Computación</h3>
+                            <p>
+                                Los conceptos de <strong>decidibilidad</strong> e <strong>indecidibilidad</strong> son esenciales en la teoría de la computación, ya que definen los límites de lo que puede ser resuelto mediante algoritmos. Mientras que los problemas decidibles pueden ser resueltos por una máquina de Turing en tiempo finito, los problemas indecidibles representan los límites de la computación, pues no existe un algoritmo general que pueda resolverlos.
+                            </p>
+                            <p>
+                                Estos conceptos también están fuertemente relacionados con las clases de complejidad computacional \( P \) y \( NP \), donde \( P \) contiene los problemas que pueden ser resueltos en tiempo polinómico y \( NP \) contiene los problemas cuya solución puede ser verificada en tiempo polinómico. La teoría de la computación busca entender las interrelaciones entre estas clases y explorar los problemas que son computacionalesmente intratables.
+                            </p>
+
+                            <h3 class="tm-color-primary">Próximos Pasos</h3>
+                            <p>
+                                En las siguientes publicaciones, profundizaremos en la relación entre la decidibilidad, la complejidad computacional y los problemas NP-completos. Además, discutiremos en detalle los teoremas de Fagin e Immerman-Vardi, que ayudan a caracterizar las clases \( P \) y \( NP \) a través de lógicas de segundo orden y lógica de punto fijo.
+                            </p>
+
+                            <span class="d-block text-right tm-color-primary">Lógica . Computación . Matemáticas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="row tm-row">
+                <div class="col-md-6 col-12 tm-color-gray">
+                    Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
+                </div>
+                <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+                    Copyright 2020 Xtra Blog Company Co. Ltd.
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/templatemo-script.js"></script>
+</body>
+</html>
