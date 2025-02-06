@@ -53,22 +53,6 @@
                             <p>
                                 <strong>Decidibilidad</strong> se refiere a aquellos problemas para los cuales existe un algoritmo que puede determinar la solución para cualquier instancia del problema en un número finito de pasos. En contraste, un problema es <strong>indecidible</strong> si no existe tal algoritmo, es decir, no podemos garantizar que siempre haya una respuesta.
                             </p>
-                            <p>
-                                Este proyecto tiene como objetivo analizar a fondo los conceptos de decidibilidad e indecidibilidad, con un enfoque en comprender los límites de la computación. Exploraremos ejemplos fundamentales de problemas decidibles e indecidibles, como el <strong>problema de la parada de Turing</strong> y el <strong>problema P vs NP</strong>.
-                            </p>
-
-                            <h3 class="tm-color-primary">Objetivo del Proyecto</h3>
-                            <p>
-                                El principal objetivo de este proyecto es profundizar en el estudio de los problemas decidibles e indecidibles y su relación con la complejidad computacional. De manera específica, abordaremos:
-                            </p>
-                            <ul>
-                                <li><strong>Decidibilidad:</strong> Análisis de problemas decidibles, como la verificación de paridad.</li>
-                                <li><strong>Indecidibilidad:</strong> Estudio de problemas indecidibles, con énfasis en el problema de la parada de Turing.</li>
-                                <li><strong>P vs NP:</strong> Introducción a las clases de complejidad P y NP, con discusión sobre el famoso problema de la satisfacibilidad booleana (SAT).</li>
-                            </ul>
-                            <p>
-                                Este análisis busca ofrecer una comprensión tanto teórica como práctica de estos conceptos, explorando sus implicaciones para el desarrollo de algoritmos eficientes y su impacto en diversas áreas de la informática.
-                            </p>
 
                             <h3 class="tm-color-primary">¿Qué son los Problemas Decidibles e Indecidibles?</h3>
                             <p>
@@ -115,6 +99,46 @@
                                 </ul>
                             </p>
                             
+                            <h3 class="tm-color-primary">Definición Formal de Decidibilidad</h3>
+                            <p>
+                                Sea \( \Sigma \) un alfabeto y \( L \subseteq \Sigma^* \) un lenguaje sobre dicho alfabeto. Decimos que \( L \) es un lenguaje <strong>decidible</strong> si existe una máquina de Turing \( M \) tal que para cualquier entrada \( w \in \Sigma^* \), la máquina \( M \) acepta \( w \) si y solo si \( w \in L \), y \( M \) se detiene en tiempo finito. Formalmente:
+                            </p>
+                            <p>
+                                \[
+                                L \text{ es decidible} \iff \exists M \text{ tal que para todo } w \in \Sigma^*, \, M(w) = 
+                                \begin{cases} 
+                                    \text{aceptar} & \text{si } w \in L \\
+                                    \text{rechazar} & \text{si } w \notin L
+                                \end{cases}
+                                \]
+                            </p>
+                            <p>
+                                Es decir, el lenguaje \( L \) es decidible si existe un algoritmo que puede determinar si una cadena \( w \) pertenece a \( L \), y este algoritmo siempre se detiene.
+                            </p>
+
+                            
+                        <h3 class="tm-color-primary">Teorema 1:</h3>
+                            <p>
+                                <strong>Teorema 1.</strong> Un lenguaje \( L \) es decidible si y solo si existe una máquina de Turing \( M \) que acepta \( L \) y se detiene para todas las entradas.
+                            </p>
+                            <p>
+                                Este teorema establece una equivalencia importante: un lenguaje es decidible si y solo si podemos construir una máquina de Turing que decida de manera efectiva si una entrada pertenece a dicho lenguaje. Además, el proceso de decisión debe ser siempre finito, lo que implica que \( M \) siempre debe detenerse.
+                            </p>
+
+                        <h3 class="tm-color-primary">Teorema 2: El Problema de la Parada es Indecidible</h3>
+                            <p>
+                                <strong>Teorema 2.</strong> El problema de la parada de Turing es indecidible.
+                            </p>
+                            <p>
+                                El teorema anterior es fundamental en la teoría de la computación y se refiere al siguiente problema: dado un programa \( P \) y una entrada \( I \), determinar si \( P \) se detendrá cuando se ejecute con \( I \). Turing demostró que no existe ningún algoritmo general que pueda resolver este problema para todas las combinaciones de \( P \) e \( I \). Formalmente, el problema de la parada es indecidible:
+                            </p>
+                            \[
+                            \text{Dado } P \text{ y } I, \text{ determinar si } P \text{ se detiene en } I \text{ es indecidible.}
+                            \]
+                            <p>
+                                La prueba de Turing se basa en una contradicción. Si supusiéramos que existe una máquina de Turing que puede decidir este problema, podríamos construir una máquina de Turing que se contradice a sí misma, lo que lleva a la conclusión de que no es posible decidir el problema de la parada de manera general.
+                            </p>
+
 
                             <h3 class="tm-color-primary">Relevancia del Estudio de la Indecidibilidad en la Computación Moderna</h3>
                             <p>
@@ -129,23 +153,12 @@
                                 A medida que la tecnología avanza, se hace más evidente la necesidad de entender los problemas que están más allá de los límites de la computación tradicional. Esto nos lleva a la reflexión sobre las fronteras entre lo que es computable y lo que no lo es.
                             </p>
 
-                            <h3 class="tm-color-primary">Estructura del Proyecto</h3>
+                            <h3 class="tm-color-primary">Conclusiónes</h3>
                             <p>
-                                A lo largo de este proyecto, nos adentraremos en los siguientes temas clave:
-                            </p>
-                            <ul>
-                                <li>Definición formal de <strong>decidibilidad</strong> e <strong>indecidibilidad</strong>.</li>
-                                <li>El <strong>problema de la parada de Turing</strong> y su importancia histórica y teórica.</li>
-                                <li>La teoría de la <strong>complejidad computacional</strong>, con un enfoque particular en los problemas NP-completos y el problema P vs NP.</li>
-                                <li>Aplicaciones prácticas y limitaciones de estos conceptos en la verificación de programas, la optimización de algoritmos y la inteligencia artificial.</li>
-                            </ul>
-
-                            <h3 class="tm-color-primary">Conclusión</h3>
-                            <p>
-                                Este proyecto tiene como objetivo ofrecer una visión comprensiva de los conceptos de <strong>decidibilidad</strong> e <strong>indecidibilidad</strong>, no solo desde una perspectiva teórica, sino también en su aplicación práctica. Al comprender estos límites, podemos diseñar mejores algoritmos, optimizar procesos y entender mejor las capacidades y limitaciones de los sistemas computacionales.
+                                Los conceptos de <strong>decidibilidad</strong> e <strong>indecidibilidad</strong> son esenciales en la teoría de la computación, ya que definen los límites de lo que puede ser resuelto mediante algoritmos. Mientras que los problemas decidibles pueden ser resueltos por una máquina de Turing en tiempo finito, los problemas indecidibles representan los límites de la computación, pues no existe un algoritmo general que pueda resolverlos.
                             </p>
                             <p>
-                                <strong>Próximamente:</strong> En las siguientes publicaciones, exploraremos en detalle cada uno de los temas mencionados, comenzando con la definición y ejemplos de problemas decidibles e indecidibles.
+                                Estos conceptos también están fuertemente relacionados con las clases de complejidad computacional \( P \) y \( NP \), donde \( P \) contiene los problemas que pueden ser resueltos en tiempo polinómico y \( NP \) contiene los problemas cuya solución puede ser verificada en tiempo polinómico. La teoría de la computación busca entender las interrelaciones entre estas clases y explorar los problemas que son computacionalesmente intratables.
                             </p>
                             
                             <span class="d-block text-right tm-color-primary">Lógica . Computación . Matemáticas</span>
@@ -155,10 +168,10 @@
             </div>
             <footer class="row tm-row">
                 <div class="col-md-6 col-12 tm-color-gray">
-                    Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
+                    Unal
                 </div>
                 <div class="col-md-6 col-12 tm-color-gray tm-copyright">
-                    Copyright 2020 Xtra Blog Company Co. Ltd.
+                    Luis Gómez
                 </div>
             </footer>
         </main>

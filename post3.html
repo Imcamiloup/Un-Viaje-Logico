@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Definición Formal de Decidibilidad e Indecidibilidad</title>
+    <title>Introducción a la Lógica Matemática: Vocabulario y Definiciones</title>
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -44,83 +44,157 @@
                 <div class="col-lg-11 tm-post-col">
                     <div class="tm-post-full">                    
                         <div class="mb-4">
-                            <h2 class="pt-2 tm-color-primary tm-post-title">Definición Formal de Decidibilidad e Indecidibilidad</h2>
-                            <p class="tm-mb-40">Publicado por Admin | Fecha: 30 de Enero, 2025</p>
+                            <h2 class="pt-2 tm-color-primary tm-post-title">Introducción a la Lógica Matemática: Vocabulario y Definiciones</h2>
+                            <p class="tm-mb-40">Publicado por Admin | Fecha: 15 de Febrero, 2025</p>
                             
                             <p>
-                                En teoría de la computación, uno de los conceptos fundamentales es la <strong>decidibilidad</strong>, que está estrechamente relacionada con los algoritmos y su capacidad para resolver problemas en un número finito de pasos. En esta publicación, discutimos la <strong>definición formal de decidibilidad</strong> e <strong>indecidibilidad</strong>, dos conceptos clave para entender los límites de la computación.
+                                La lógica matemática forma la base de muchos campos de la informática y la teoría de la computación. Antes de comenzar a trabajar con problemas complejos, debemos comprender el vocabulario esencial de la lógica. El <strong>vocabulario</strong> es una tupla de símbolos que incluye relaciones, funciones y constantes, fundamentales para la construcción de estructuras lógicas. 
                             </p>
-                            
-                            <h3 class="tm-color-primary">Definición Formal de Decidibilidad</h3>
                             <p>
-                                Sea \( \Sigma \) un alfabeto y \( L \subseteq \Sigma^* \) un lenguaje sobre dicho alfabeto. Decimos que \( L \) es un lenguaje <strong>decidible</strong> si existe una máquina de Turing \( M \) tal que para cualquier entrada \( w \in \Sigma^* \), la máquina \( M \) acepta \( w \) si y solo si \( w \in L \), y \( M \) se detiene en tiempo finito. Formalmente:
+                                Formalmente, un vocabulario \( \tau \) se define como una tupla de símbolos de relación, constantes y funciones:
                             </p>
                             <p>
                                 \[
-                                L \text{ es decidible} \iff \exists M \text{ tal que para todo } w \in \Sigma^*, \, M(w) = 
-                                \begin{cases} 
-                                    \text{aceptar} & \text{si } w \in L \\
-                                    \text{rechazar} & \text{si } w \notin L
-                                \end{cases}
+                                \tau = \langle R_1^{a_1}, \dots, R_r^{a_r}, c_1, \dots, c_s, f_1^{r_1}, \dots, f_t^{r_t} \rangle
                                 \]
+                                donde \( R_i \) es un símbolo de relación de aridad \( a_i \), \( c_j \) son símbolos constantes, y \( f_i \) son símbolos de función con aridad \( r_i \).
                             </p>
                             <p>
-                                Es decir, el lenguaje \( L \) es decidible si existe un algoritmo que puede determinar si una cadena \( w \) pertenece a \( L \), y este algoritmo siempre se detiene.
-                            </p>
-
-                            <h3 class="tm-color-primary">Teorema 1: Decidibilidad y la Máquina de Turing</h3>
-                            <p>
-                                <strong>Teorema 1.</strong> Un lenguaje \( L \) es decidible si y solo si existe una máquina de Turing \( M \) que acepta \( L \) y se detiene para todas las entradas.
-                            </p>
-                            <p>
-                                Este teorema establece una equivalencia importante: un lenguaje es decidible si y solo si podemos construir una máquina de Turing que decida de manera efectiva si una entrada pertenece a dicho lenguaje. Además, el proceso de decisión debe ser siempre finito, lo que implica que \( M \) siempre debe detenerse.
+                                Ejemplos típicos incluyen \( \tau_g = \langle E^2, s, t \rangle \), el vocabulario utilizado para grafos con nodos fuente y terminal, y \( \tau_s = \langle \leq^2, S^1 \rangle \), usado para cadenas binarias.
                             </p>
 
-                            <h3 class="tm-color-primary">Definición Formal de Indecidibilidad</h3>
+                            <h3 class="tm-color-primary">Estructuras Lógicas</h3>
                             <p>
-                                Un lenguaje \( L \subseteq \Sigma^* \) es <strong>indecidible</strong> si no existe ninguna máquina de Turing \( M \) que pueda decidir si una cadena \( w \in \Sigma^* \) pertenece a \( L \) para todas las posibles entradas. Es decir, no hay un algoritmo general que pueda decidir la pertenencia de una cadena a \( L \) en un número finito de pasos para todos los casos posibles.
+                                Una <strong>estructura</strong> con un vocabulario \( \tau \) es una tupla que contiene un universo y las interpretaciones de los símbolos de relación, constantes y funciones. Formalmente:
                             </p>
                             <p>
-                                Matemáticamente, un problema es indecidible si no existe una máquina de Turing \( M \) tal que:
+                                \[
+                                \mathcal{A} = \langle |\mathcal{A}|, R_1^{\mathcal{A}}, \dots, R_r^{\mathcal{A}}, c_1^{\mathcal{A}}, \dots, c_s^{\mathcal{A}}, f_1^{\mathcal{A}}, \dots, f_t^{\mathcal{A}} \rangle
+                                \]
+                                donde \( |\mathcal{A}| \) es el universo de la estructura y cada símbolo en \( \tau \) se interpreta en \( \mathcal{A} \).
+                            </p>
+                            <p>
+                                En esta estructura, para cada símbolo de relación \( R_i \), la relación correspondiente en \( \mathcal{A} \) se define como \( R_i^{\mathcal{A}} \subseteq |\mathcal{A}|^{a_i} \). Las constantes \( c_j \) se asignan a elementos de \( |\mathcal{A}| \), y las funciones \( f_i \) se interpretan como funciones definidas sobre \( |\mathcal{A}| \).
+                            </p>
+
+                            <h3 class="tm-color-primary">Interpretación y Verdad en una Estructura</h3>
+                            <p>
+                                El concepto de <strong>interpretación</strong> es fundamental para entender cómo se evalúan las fórmulas en una estructura. Una interpretación es un mapeo que asigna elementos del universo de la estructura a las variables de la fórmula. Si \( \varphi \) es una fórmula que contiene algunas variables libres, podemos definir su valor en la estructura \( \mathcal{A} \) bajo una interpretación \( i \). 
+                            </p>
+                            <p>
+                                Definimos \( I : \text{STRUC}[\tau]\) como el conjunto de estructuras del vocabulario τ
+                            </p>s
+                            <p> 
+                                Definimos \( \mathcal{A} \models \varphi \) para indicar que la fórmula \( \varphi \) es verdadera en la estructura \( \mathcal{A} \). Además, la semántica de la lógica matemática se define de forma inductiva. Por ejemplo, si \( t_1 \) y \( t_2 \) son términos, entonces:
                             </p>
                             \[
-                            L \text{ es indecidible} \iff \nexists M \text{ tal que para todo } w \in \Sigma^*, \, M(w) = 
-                            \begin{cases} 
-                                \text{aceptar} & \text{si } w \in L \\
-                                \text{rechazar} & \text{si } w \notin L
-                            \end{cases}
+                            (\mathcal{A}, i) \models t_1 = t_2 \quad \Leftrightarrow \quad i(t_1) = i(t_2)
                             \]
                             <p>
-                                La indecidibilidad implica que no podemos construir una máquina de Turing que resuelva el problema de pertenencia para todos los casos posibles, y en muchos casos, la máquina de Turing nunca se detendría.
+                                Esto significa que \( t_1 = t_2 \) es verdadero en \( \mathcal{A} \) si las interpretaciones de ambos términos coinciden.
                             </p>
 
-                            <h3 class="tm-color-primary">Teorema 2: El Problema de la Parada es Indecidible</h3>
+                            <h3 class="tm-color-primary">Cuantificadores y Conectores</h3>
                             <p>
-                                <strong>Teorema 2.</strong> El problema de la parada de Turing es indecidible.
-                            </p>
-                            <p>
-                                El teorema anterior es fundamental en la teoría de la computación y se refiere al siguiente problema: dado un programa \( P \) y una entrada \( I \), determinar si \( P \) se detendrá cuando se ejecute con \( I \). Turing demostró que no existe ningún algoritmo general que pueda resolver este problema para todas las combinaciones de \( P \) e \( I \). Formalmente, el problema de la parada es indecidible:
+                                Los cuantificadores y conectores lógicos son esenciales para expresar relaciones más complejas entre variables. El cuantificador existencial se define como sigue:
                             </p>
                             \[
-                            \text{Dado } P \text{ y } I, \text{ determinar si } P \text{ se detiene en } I \text{ es indecidible.}
+                            (\exists x) \varphi \quad \Leftrightarrow \quad \text{(existe algún } a \in |\mathcal{A}|) (\mathcal{A}, i, a/x) \models \varphi
                             \]
                             <p>
-                                La prueba de Turing se basa en una contradicción. Si supusiéramos que existe una máquina de Turing que puede decidir este problema, podríamos construir una máquina de Turing que se contradice a sí misma, lo que lleva a la conclusión de que no es posible decidir el problema de la parada de manera general.
-                            </p>
-
-                            <h3 class="tm-color-primary">Relación con la Teoría de la Computación</h3>
-                            <p>
-                                Los conceptos de <strong>decidibilidad</strong> e <strong>indecidibilidad</strong> son esenciales en la teoría de la computación, ya que definen los límites de lo que puede ser resuelto mediante algoritmos. Mientras que los problemas decidibles pueden ser resueltos por una máquina de Turing en tiempo finito, los problemas indecidibles representan los límites de la computación, pues no existe un algoritmo general que pueda resolverlos.
+                                Aquí, \( (\mathcal{A}, i, a/x) \) denota una interpretación en la que \( x \) es reemplazado por \( a \), y \( \varphi \) se evalúa bajo esa nueva interpretación.
                             </p>
                             <p>
-                                Estos conceptos también están fuertemente relacionados con las clases de complejidad computacional \( P \) y \( NP \), donde \( P \) contiene los problemas que pueden ser resueltos en tiempo polinómico y \( NP \) contiene los problemas cuya solución puede ser verificada en tiempo polinómico. La teoría de la computación busca entender las interrelaciones entre estas clases y explorar los problemas que son computacionalesmente intratables.
+                                El cuantificador universal, \( (\forall x) \varphi \), se define como el dual del cuantificador existencial:
                             </p>
-
-                            <h3 class="tm-color-primary">Próximos Pasos</h3>
+                            \[
+                            (\forall x) \varphi \quad \equiv \quad \neg (\exists x) \neg \varphi
+                            \]
                             <p>
-                                En las siguientes publicaciones, profundizaremos en la relación entre la decidibilidad, la complejidad computacional y los problemas NP-completos. Además, discutiremos en detalle los teoremas de Fagin e Immerman-Vardi, que ayudan a caracterizar las clases \( P \) y \( NP \) a través de lógicas de segundo orden y lógica de punto fijo.
+                                Esto implica que una fórmula universal es verdadera si no hay un contraejemplo que haga que la fórmula sea falsa para alguna asignación de \( x \).
                             </p>
 
+                            <h3 class="tm-color-primary">Definición de Verdad en Lógica Matemática</h3>
+                            <p>
+                                En lógica matemática, podemos ser completamente precisos acerca de la semántica. En particular, podemos definir de manera definitiva lo que significa que una fórmula \( \varphi \) sea verdadera en una estructura \( \mathcal{A} \). A continuación, mostramos la definición formal de "verdad":
+                            </p>
+                            <p>
+                                La definición de verdad establece cómo evaluamos una fórmula dentro de una estructura matemática, incluyendo el manejo de términos y relaciones en la estructura. La semántica es definida inductivamente, considerando cómo se satisface cada fórmula dentro de su interpretación:
+                            </p>
+                            
+
+                            <p>
+                                Sea \( \mathcal{A} \in \text{STRUC}[\tau] \) una estructura y sea \( i \) una interpretación en \( \mathcal{A} \) cuyo dominio incluye todas las variables libres relevantes. Definimos inductivamente si una fórmula \( \varphi \in \mathcal{L}(\tau) \) es verdadera en \( (\mathcal{A}, i) \):
+                            </p>
+
+                            \[
+                            (\mathcal{A}, i) \models t_1 = t_2 \quad \Leftrightarrow \quad i(t_1) = i(t_2)
+                            \]
+
+                            \[
+                            (\mathcal{A}, i) \models R_j(t_1, \dots, t_{a_j}) \quad \Leftrightarrow \quad \langle i(t_1), \dots, i(t_{a_j}) \rangle \in R_j^{\mathcal{A}}
+                            \]
+
+                            \[
+                            (\mathcal{A}, i) \models \neg \varphi \quad \Leftrightarrow \quad \text{no es el caso que } (\mathcal{A}, i) \models \varphi
+                            \]
+
+                            \[
+                            (\mathcal{A}, i) \models \varphi \land \psi \quad \Leftrightarrow \quad (\mathcal{A}, i) \models \varphi \text{ y } (\mathcal{A}, i) \models \psi
+                            \]
+
+                            \[
+                            (\mathcal{A}, i) \models (\exists x) \varphi \quad \Leftrightarrow \quad \text{(existe algún } a \in |\mathcal{A}|) (\mathcal{A}, i, a/x) \models \varphi
+                            \]
+
+                            <p>
+                                Además, definimos el cuantificador "para todo" como el dual de \( \exists \) y el "o" booleano como el dual de \( \land \):
+                            </p>
+
+                            \[
+                            (\forall x) \varphi \quad \equiv \quad \neg (\exists x) \neg \varphi; \quad \quad \alpha \lor \beta \quad \equiv \quad \neg (\neg \alpha \land \neg \beta)
+                            \]
+
+                            <p>
+                                Estas definiciones formales permiten una comprensión rigurosa de cómo se debe interpretar y evaluar las fórmulas en estructuras lógicas. Así, la lógica matemática proporciona una base sólida para modelar y entender problemas computacionales.
+                            </p>
+
+                            <h3 class="tm-color-primary">Definición de Subestructura</h3>
+                                <p>
+                                    Sea \( A \) y \( B \) estructuras del mismo vocabulario \( \tau = \langle R_1^{a_1}, \dots, R_r^{a_r}, c_1, \dots, c_s \rangle \). Decimos que \( A \) es una subestructura de \( B \), escrita \( A \leq B \), si se cumplen las siguientes condiciones:
+                                </p>
+                                <ol>
+                                    <li><strong>\( |A| \subseteq |B| \)</strong></li>
+                                    <li><strong>Para \( i = 1, 2, \dots, r \), \( R_i^A = R_i^B \cap |A|^{a_i} \)</strong></li>
+                                    <li><strong>Para \( j = 1, 2, \dots, s \), \( c_j^A = c_j^B \)</strong></li>
+                                </ol>
+
+                                <h3 class="tm-color-primary">Definición de First-Order Queries</h3>
+                                                                
+                                <p>
+                                    Una consulta es cualquier mapeo \( I : \text{STRUC}[\sigma] \to \text{STRUC}[\tau] \) de estructuras de un vocabulario a estructuras de otro vocabulario, que está limitado polinomialmente. Es decir, existe un polinomio \( p \) tal que para todo \( A \in \text{STRUC}[\sigma] \),
+                                </p>
+                                
+                                \[
+                                \|I(A)\| \leq p(\|A\|).
+                                \]
+                                
+                                <p>
+                                    Una consulta booleana es un mapeo \( I_b : \text{STRUC}[\sigma] \to \{0, 1\} \). Una consulta booleana puede considerarse como un subconjunto de \( \text{STRUC}[\sigma] \), el conjunto de estructuras \( A \) para las cuales \( I_b(A) = 1 \).
+                                </p>
+                                
+                                <p>
+                                    Una subclase importante de consultas son las consultas independientes del orden. (En teoría de bases de datos, a menudo se usa el término "genérico" en lugar de "independiente del orden"). Sea \( I \) una consulta definida sobre \( \text{STRUC}[\sigma] \). Entonces, \( I \) es independiente del orden si y solo si para todas las estructuras isomorfas \( A, B \in \text{STRUC}[\sigma] \), \( I(A) \cong I(B) \). Para consultas booleanas, esta última condición se traduce como \( I(A) = I(B) \).
+                                </p>
+                                
+                                <p>
+                                    Desde nuestro punto de vista, la consulta más simple es una consulta de primer orden. Como ejemplo, cualquier oración de primer orden \( \varphi \in \mathcal{L}(\tau) \) define una consulta booleana \( I_\varphi \) sobre \( \text{STRUC}[\tau] \) tal que \( I_\varphi(A) = 1 \) si y solo si \( A \models \varphi \).
+                                </p>
+
+                            <h3 class="tm-color-primary">Conclusión</h3>
+                            <p>
+                                Las definiciones y notaciones presentadas son la base para entender cómo los problemas lógicos y computacionales se pueden representar formalmente y ser evaluados en estructuras matemáticas. Estos conceptos de lógica matemática no solo son fundamentales para la teoría de la computación, sino que también abren el camino para el desarrollo de nuevas teorías y métodos en la verificación de sistemas y bases de datos.
+                            </p>
                             <span class="d-block text-right tm-color-primary">Lógica . Computación . Matemáticas</span>
                         </div>
                     </div>
@@ -128,10 +202,10 @@
             </div>
             <footer class="row tm-row">
                 <div class="col-md-6 col-12 tm-color-gray">
-                    Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
+                    Unal
                 </div>
                 <div class="col-md-6 col-12 tm-color-gray tm-copyright">
-                    Copyright 2020 Xtra Blog Company Co. Ltd.
+                    Luis Gómez.
                 </div>
             </footer>
         </main>

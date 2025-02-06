@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const prevBtn = document.getElementById("prev-btn");
   const nextBtn = document.getElementById("next-btn");
   const pagingNav = document.getElementById("paging-nav");
-  const articlesPerPage = 3;
+  const articlesPerPage = 4;
   let currentPage = 1;
   let filteredArticles = Array.from(articles);
 
