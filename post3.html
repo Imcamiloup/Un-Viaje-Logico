@@ -68,7 +68,33 @@
                                 En esta estructura, para cada símbolo de relación \( R_i \), la relación correspondiente en \( \mathcal{A} \) se define como \( R_i^{\mathcal{A}} \subseteq |\mathcal{A}|^{a_i} \). Las constantes \( c_j \) se asignan a elementos de \( |\mathcal{A}| \), y las funciones \( f_i \) se interpretan como funciones definidas sobre \( |\mathcal{A}| \).
                             </p>
 
-                            <h3 class="tm-color-primary">Interpretación y Verdad en una Estructura</h3>
+                            <h3 class="tm-color-primary">Lenguaje de Primer Orden \( L(\tau) \)</h3>
+                            <p>
+                                Definimos el lenguaje de primer orden \( L(\tau) \) para un vocabulario \( \tau \) como el conjunto de fórmulas construidas a partir de los símbolos de relación y constantes de \( \tau \), el símbolo lógico \( = \), los conectivos booleanos \( \land, \neg \), las variables \( \text{VAR} = \{x, y, z, \dots \} \), y el cuantificador \( \exists \).
+                            </p>
+                            <p>
+                                Decimos que una ocurrencia de una variable \( v \) en una fórmula \( \varphi \) está <strong>limitada</strong> si está dentro del alcance de un cuantificador \( \exists v \) o \( \forall v \); de lo contrario, se dice que está <strong>libre</strong>. Una variable \( v \) está libre en \( \varphi \) si tiene una ocurrencia libre en ella, es decir, si no está en el alcance de un cuantificador. Por ejemplo, las variables libres en la siguiente fórmula son \( x \) y \( y \):
+                            </p>
+                            <p>
+                                Usamos el símbolo “\( \equiv \)” para definir o denotar la equivalencia de fórmulas.
+                            </p>
+                            \[
+                            \alpha \equiv [(\exists y)(y + 1 = x)] \land x < y
+                            \]
+                            <p>
+                                De manera similar, utilizamos “\( \Leftrightarrow \)” para indicar que dos fórmulas o condiciones definidas previamente son equivalentes.
+                            </p>
+                            <p>
+                                Las variables <strong>limitadas</strong> son llamadas “dummy” y pueden ser renombradas para evitar confusiones. Por ejemplo, la fórmula \( \alpha \) es equivalente a la siguiente fórmula \( \alpha' \), que también tiene variables libres \( x \) y \( y \):
+                            </p>
+                            \[
+                            \alpha' \equiv [(\exists z)(z + 1 = x)] \land x < y
+                            \]
+                            <p>
+                                En esta equivalencia, hemos renombrado la variable \( y \) a \( z \), lo que no cambia la validez de la fórmula.
+                            </p>
+
+                            <h3 class="tm-color-primary">Interpretación en una Estructura</h3>
                             <p>
                                 El concepto de <strong>interpretación</strong> es fundamental para entender cómo se evalúan las fórmulas en una estructura. Una interpretación es un mapeo que asigna elementos del universo de la estructura a las variables de la fórmula. Si \( \varphi \) es una fórmula que contiene algunas variables libres, podemos definir su valor en la estructura \( \mathcal{A} \) bajo una interpretación \( i \). 
                             </p>
@@ -160,7 +186,7 @@
                                     <li><strong>Para \( j = 1, 2, \dots, s \), \( c_j^A = c_j^B \)</strong></li>
                                 </ol>
 
-                                <h3 class="tm-color-primary">Definición de First-Order Queries</h3>
+                                <h3 class="tm-color-primary">Definición de Consultas de Primer Orden</h3>
                                                                 
                                 <p>
                                     Una consulta es cualquier mapeo \( I : \text{STRUC}[\sigma] \to \text{STRUC}[\tau] \) de estructuras de un vocabulario a estructuras de otro vocabulario, que está limitado polinomialmente. Es decir, existe un polinomio \( p \) tal que para todo \( A \in \text{STRUC}[\sigma] \),
