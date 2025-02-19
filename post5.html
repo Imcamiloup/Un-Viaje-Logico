@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Viaje hacia SO∃ = NP: Nuestro Primer Paso con SAT y NP</title>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <header id="tm-header2">
+        <div class="tm-header-wrapper">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="tm-nav" id="tm-nav">            
+                <ul>
+                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+                        <i class="fas fa-home"></i>
+                    </a></li>
+                </ul>
+            </nav>            
+        </div>
+    </header>
+
+    <div>
+        <main class="tm-main">
+            <div class="row tm-row">
+                <div class="col-lg-11 tm-post-col">
+                    <div class="tm-post-full">                    
+                        <div class="mb-4">
+                            <h2 class="pt-2 tm-color-primary tm-post-title">El Viaje hacia \( SO∃ = NP \): Nuestro Primer Paso con SAT y NP</h2>
+                            <p class="tm-mb-40">Publicado por Admin | Fecha: 18 de Febrero, 2025</p>
+                            
+                            <p>
+                                Nuestro viaje lógico nos lleva a explorar la conexión entre la lógica de segundo orden existencial (\( SO∃ \)) y la clase de complejidad \( NP \). Como primer paso, definimos rigurosamente \( NP \), el problema de satisfacibilidad booleana (\( SAT \)) y su fórmula \( \phi_{SAT} \). Posteriormente, demostramos que \( SAT \) es \( NP \)-duro y que \( \phi_{SAT} \) pertenece a \( NP \). Con estas herramientas en mano, nos preparamos para sospechar que \( SO∃ = NP \).
+                            </p>
+
+                            <h3 class="tm-color-primary">El Concepto de NP</h3>
+                            <p>
+                                La clase de complejidad \( NP \) (Nondeterministic Polynomial Time) está compuesta por los problemas de decisión cuya solución puede ser verificada en tiempo polinomial por una máquina de Turing determinista. Formalmente, un lenguaje \( L \) pertenece a \( NP \) si y solo si existe una máquina de Turing determinista \( M \) y un verificador \( V(x, y) \) tal que:
+                            </p>
+                            <p class="text-center">
+                                \( x \in L \iff \exists y, \ |y| \leq p(|x|) \text{ y } V(x, y) \text{ se ejecuta en tiempo polinomial}. \)
+                            </p>
+
+                            <h3 class="tm-color-primary">Definición de SAT</h3>
+                            <p>
+                                El problema de satisfacibilidad booleana (\( SAT \)) es el problema de decidir si una fórmula en forma normal conjuntiva (CNF) tiene una asignación de valores que la hace verdadera. Dado un conjunto de cláusulas \( \mathcal{C} = \{C_1, C_2, ..., C_m\} \) sobre variables \( \{x_1, x_2, ..., x_n\} \), \( SAT \) pregunta si existe una asignación \( \sigma : \{x_1, ..., x_n\} \to \{0,1\} \) tal que:
+                            </p>
+                            <p class="text-center">
+                                \( \bigwedge_{i=1}^{m} C_i = 1. \)
+                            </p>
+
+                            <h3 class="tm-color-primary">La Fórmula \( \phi_{SAT} \)</h3>
+                            <p>
+                                Podemos expresar la satisfacibilidad en lógica de segundo orden existencial (\( SO∃ \)) mediante la siguiente fórmula:
+                            </p>
+                            <p class="text-center">
+                                \( \phi_{\text{SAT}} \equiv (\exists S)(\forall x)(\exists y) \Big( (P(x,y) \wedge S(y)) \vee (N(x,y) \wedge \neg S(y)) \Big). \)
+                            </p>
+
+                            <h3 class="tm-color-primary">Demostración de que SAT es NP-duro</h3>
+                            <p>
+                                Para demostrar que \( SAT \) es \( NP \)-duro, debemos mostrar que cualquier problema en \( NP \) puede reducirse en tiempo polinomial a \( SAT \).
+                            </p>
+                            <p>
+                                Sea \( L \in NP \). Por definición, existe una máquina de Turing no determinista \( M \) que decide \( L \) en tiempo polinomial \( p(n) \). Podemos construir una fórmula booleana en CNF que modele la ejecución de \( M \) usando variables para:
+                            </p>
+                            <ul>
+                                <li>El estado de la máquina en cada paso.</li>
+                                <li>La posición de la cabeza de lectura.</li>
+                                <li>El contenido de la cinta.</li>
+                            </ul>
+
+                            <h3 class="tm-color-primary">Demostración de que \( \phi_{SAT} \in NP \)</h3>
+                            <p>
+                                Para demostrar que \( \phi_{SAT} \) está en \( NP \), debemos encontrar un certificado verificable en tiempo polinomial. Dado un conjunto de valores \( \{x_1, ..., x_n\} \), verificamos que la fórmula es satisfacible en tiempo \( O(mn) \), lo cual es polinomial en el tamaño de la entrada.
+                            </p>
+
+                            <h3 class="tm-color-primary">Conclusión: ¿Estamos en el camino hacia \( SO∃ = NP \)?</h3>
+                            <p>
+                                Nuestra exploración nos ha llevado a descubrir que \( SAT \) es \( NP \)-duro y que \( \phi_{SAT} \in NP \). Esto nos da una pista clave de que la lógica existencial de segundo orden podría capturar completamente la clase \( NP \). Ahora tenemos motivos para sospechar que:
+                            </p>
+                            <p class="text-center">
+                                \( SO∃ = NP. \)
+                            </p>
+                            
+                            <span class="d-block text-right tm-color-primary">Lógica . Computación . Matemáticas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="post3.html" class="btn btn-primary mr-2">⟵ ¿Qué es Complejidad Descriptiva?</a>
+            </div>
+
+            <footer class="row tm-row">
+                <div class="col-md-6 col-12 tm-color-gray">
+                    Unal
+                </div>
+                <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+                    Luis Gómez.
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/templatemo-script.js"></script>
+</body>
+</html>
