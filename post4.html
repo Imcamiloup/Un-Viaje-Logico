@@ -31,6 +31,27 @@
 
     <div>
         <main class="tm-main">
+            <style>
+        ul {
+            list-style: none; /* Quita las viñetas por defecto */
+            padding-left: 0; /* Ajusta el espacio a la izquierda */
+        }
+        
+        ul > li {
+            margin-bottom: 10px; /* Espaciado entre elementos */
+            padding-left: 30px; /* Espacio para el icono */
+            position: relative;
+        }
+        
+        ul > li::before {
+            content: "★"; /* Puedes cambiar el icono por cualquier otro */
+            color: #ff9800; /* Color del icono */
+            font-size: 18px;
+            position: absolute;
+            left: 0;
+            top: 3px;
+        }
+            </style>
             <div class="row tm-row">
                 <div class="col-lg-11 tm-post-col">
                     <div class="tm-post-full">                    
@@ -40,49 +61,64 @@
                             <h2 class="pt-2 tm-color-primary tm-post-title">Una Vision Distinta Para La Complejidad Computacional</h2>
                             <p class="tm-mb-40">Publicado por Admin | Fecha: 06 de Febrero, 2025</p>
                             
-                            <p>
+                            <p style="text-align: justify;">
                                Antes de recorrer un background teorico sobre la logica de primer orden y la complejidad computacional
                                 , nos concentraremos ahora en exponer nuestra motivación y el contexto histórico que nos trajo hasta este proyecto, todo comienza con Ron Fagin y su revolucionaria idea de la complejidad descriptiva.
-                                En el campo de la teoría de la computación, la <strong>complejidad descriptiva</strong> ha representado una revolución al vincular los problemas computacionales con lógicas matemáticas. Esta teoría, introducida por <strong>Ron Fagin</strong> en 1974, propone que la complejidad de los problemas puede entenderse a través de los lenguajes necesarios para describirlos.
+                                En el campo de la teoría de la computación, la <strong>complejidad descriptiva</strong> ha representado una revolución al vincular los problemas computacionales con lógicas matemáticas. Esta teoría, introducida por <strong>Fagin</strong> en 1974, propone que la complejidad de los problemas puede entenderse a través de los lenguajes necesarios para describirlos.
                             </p>
-                            <p>
+                            <p style="text-align: justify;">
                                 Antes de la aparición de la complejidad descriptiva, la teoría de la complejidad computacional se basaba en modelos algorítmicos concretos, como las máquinas de Turing y otros modelos de computación. El estudio de la complejidad computacional giraba en torno a cuantificar los recursos computacionales requeridos para resolver problemas, sin una manera clara de describir la estructura lógica de los problemas mismos, o inclusive de su dificultad para ser resuelto.
                             </p>
+
+                            <h3 class="tm-color-primary">La Necesidad de Medir la Eficiencia</h3>
                             
-                            <h3 class="tm-color-primary">El Impacto de la Lógica Existencial de Segundo Orden</h3>
-                            <p>
-                                Fagin mostró que la clase de complejidad \( NP \), que incluye problemas computables en tiempo polinomial no determinista, es equivalente al conjunto de problemas que pueden ser descritos en lógica existencial de segundo orden. Esto estableció una conexión profunda entre la teoría de la complejidad computacional y la lógica matemática.
-                            </p>
-                            <p>
-                                En términos simples, Fagin demostró que no solo la eficiencia computacional importa, sino también la capacidad de un lenguaje lógico para expresar el problema. En lugar de simplemente contar el tiempo o el espacio utilizado por un algoritmo, la complejidad computacional ahora se puede medir por la riqueza del lenguaje necesario para formular la consulta computacional.
+                                <em>“No basta con saber que un problema es computable, ¿qué tan rápido podemos resolverlo?"</em>               
+                            
+                            <p style="text-align: justify;">
+                                En 1950 Von Neumann Establece la arquitectura de las computadoras modernas marcando un hito en la importancia
+                                de la eficiencia de los algoritmos, se definen conceptos como:
+                                <ul>
+                                    <li><strong>Tiempo de Ejecucion:</strong> Se mide en términos de la cantidad de pasos necesarios que requiere un algoritmo en función del tamaño de su entrada.</li>
+                                    <li><strong>Espacio de memoria:</strong>  Se mide en términos de la cantidad de memoria utilizada por un algoritmo</li>
+                                    <li><strong>Clases de Complejidad:</strong> Se define 
+                                        <strong>P</strong> como la clase de problemas que pueden resolverse en tiempo polinomial, y 
+                                        <strong>EXPTIME</strong> para problemas que requieren tiempo exponencial.</li>
+                                </ul>
                             </p>
 
+                            
+                            <em>
+                                "Algunos problemas pueden ser resueltos fácilmente, pero verificar su solución es mucho más fácil que encontrarla."
+                            </em>
+                            <p style="text-align: justify;">
+                                En los años 70, se identificó una nueva clase de problemas difíciles: NP (Nondeterministic Polynomial Time). Estos problemas tienen la propiedad especial de que si se nos da una solución candidata, podemos verificarla en tiempo polinomial, 
+                                además Stephen Cook (1971), en su artículo "The Complexity of Theorem-Proving Procedures", Cook demuestra que el problema de Satisfacibilidad Booleana (SAT) es NP-completo, lo que significa que cualquier otro problema en NP puede reducirse a SAT en tiempo polinomial
+                                , en posteriores publicaciones nos enfocaremos en la importancia de este hecho y su relación con la complejidad descriptiva.
+                            </p>
+                            <p style="text-align: justify;">
+                                A pesar de estos avances, la complejidad computacional todavía dependía de modelos algorítmicos concretos (máquinas de Turing, RAMs, etc.) y no había una forma más abstracta de caracterizar estas clases. La complejidad descriptiva cambió esto al proponer que la complejidad de un problema no solo depende de los recursos computacionales necesarios para resolverlo, sino también de la estructura lógica del problema en sí.
+                            </p>
                             <h3 class="tm-color-primary">La Revolución en la Teoría de Bases de Datos</h3>
-                            <p>
+                            <p style="text-align: justify;">
                                 Este enfoque innovador no solo cambió nuestra comprensión de la complejidad computacional, sino que también transformó áreas como la teoría de bases de datos. Las consultas en bases de datos relacionales, que antes se trataban como simples operaciones de búsqueda, ahora se pueden expresar de manera más profunda utilizando lógica de primer y segundo orden, lo que permite una mejor comprensión de la eficiencia y expresividad de las consultas.
                             </p>
                             <p>
                                 La <strong>complejidad descriptiva</strong> proporciona una base natural para entender la teoría de bases de datos, utilizando lenguajes lógicos extendidos para describir consultas complejas. De esta manera, se ha logrado resolver numerosas cuestiones sobre la expresividad y la eficiencia de los lenguajes de consulta.
-                            </p>
-
-                            <h3 class="tm-color-primary">Conexiones Profundas con la Verificación Asistida por Computadora</h3>
-                            <p>
-                                Otro campo de aplicación crucial para la complejidad descriptiva ha sido la verificación asistida por computadora. En la teoría de la complejidad, problemas fundamentales como el famoso <strong>problema P vs NP</strong> están estrechamente relacionados con los desarrollos de la complejidad descriptiva. Aunque este problema sigue sin resolverse, la capacidad de caracterizar problemas complejos mediante lógicas ha abierto nuevas puertas para los investigadores.
-                            </p>
+                            </p>          
 
                             <h3 class="tm-color-primary">El Caso de los Modelos Finitos y la Complejidad Descriptiva</h3>
-                            <p>
+                            <p style="text-align: justify;">
                                 Uno de los avances más notables de la complejidad descriptiva fue la conexión entre la teoría de modelos finitos y la lógica matemática. Mediante este enfoque, se pudo demostrar que la complejidad computacional no solo depende de los recursos físicos utilizados, sino de la capacidad lógica de un lenguaje para expresar las consultas necesarias.
                             </p>
-                            <p>
+                            <p style="text-align: justify;">
                                 Este concepto ha sido especialmente útil en la teoría de bases de datos, donde las consultas en bases de datos relacionales se modelan mediante lenguajes lógicos de primer y segundo orden. De hecho, la complejidad descriptiva ha sido instrumental en resolver muchos problemas sobre la expresividad y eficiencia de los lenguajes de consulta.
                             </p>
 
-                            <h3 class="tm-color-primary">Conclusión y Futuro de los Modelos Finito</h3>
-                            <p>
+                            <h3 class="tm-color-primary">Conclusión y Futuro de los Modelos Finitos</h3>
+                            <p style="text-align: justify;">
                                 El estudio de la computación en un mundo de estructuras finitas puede parecer extraño al principio, pero a medida que avanzamos, se vuelve cada vez más claro que este enfoque es más preciso y relevante para el análisis de los problemas computacionales. Aunque los modelos finitos requieren una nueva forma de pensar, han demostrado ser fundamentales para una comprensión más profunda de la complejidad computacional.
                             </p>
-                            <p>
+                            <p style="text-align: justify;">
                                 La complejidad descriptiva continúa siendo una herramienta poderosa para abordar problemas abiertos en la teoría de la computación. Al aplicar la teoría de modelos finitos, podemos esperar avances significativos en la comprensión de las relaciones entre clases de complejidad y recursos computacionales, lo que permitirá resolver problemas fundamentales que aún están por resolver.
                             </p>
 
