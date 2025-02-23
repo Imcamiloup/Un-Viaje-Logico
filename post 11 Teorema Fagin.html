@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trasfondo en Complejidad</title>
+  <link rel="stylesheet" href="fontawesome/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"/>
+  <link href="css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="css/templatemo-xtra-blog.css" rel="stylesheet"/>
+  
+  <!-- Carga de MathJax para las fórmulas en TeX -->
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+
+<body>
+  <div id="sidebar-container"></div>
+<header id="tm-header2">
+  <div class="tm-header-wrapper">
+    <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav class="tm-nav" id="tm-nav">            
+      <ul>
+        <li class="tm-nav-item">
+          <a href="index.html" class="tm-nav-link">
+            <i class="fas fa-home"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>            
+  </div>
+</header>
+
+<div>
+  <main class="tm-main">
+    <div class="row tm-row">
+      <div class="col-lg-11 tm-post-col">
+        <div class="tm-post-full">                    
+          <div class="mb-4">
+            <h1 class="pt-2 tm-color-primary"> El Teorema de Fagin</h1>
+            <hr>
+            <p style="text-align: justify;" >            
+            <h2 class="pt-2 tm-color-primary tm-post-title"> Una Caractizacion de NP en Segundo Orden </h2>
+            <p class="tm-mb-40">Publicado por Luis G. | Fecha: 21 de Marzo, 2025</p>
+            
+            <p>
+                La <strong>lógica de segundo orden con cuantificadores existenciales (\(\text{SO} \exists\))</strong> amplía la lógica de primer orden permitiendo cuantificar sobre relaciones, 
+                lo que la hace extremadamente expresiva. En este contexto, el <strong>Teorema de Fagin</strong> establece que la clase <strong>NP</strong> es exactamente el conjunto de problemas 
+                que pueden formularse mediante expresiones en <strong>\(\text{SO} \exists\)</strong>. Este resultado no solo proporciona una caracterización <strong>máquina-independiente</strong> 
+                de <strong>NP</strong>, sino que además fue el punto de partida del campo de la <strong>complejidad descriptiva</strong>, al demostrar que los problemas computacionales pueden 
+                describirse en términos de lógica sin necesidad de hacer referencia a modelos de cómputo como las máquinas de Turing. Un corolario derivado de este resultado, propuesto por 
+                <strong>Stockmeyer</strong>, afirma que las consultas expresadas en lógica de segundo orden corresponden exactamente a los problemas que se pueden resolver en la 
+                <strong>jerarquía polinomial</strong>, lo que resalta la profundidad de esta conexión entre <strong>expresividad lógica</strong> y <strong>complejidad computacional</strong>.
+            </p>
+        
+            <p>
+                La potencia de <strong>\(\text{SO} \exists\)</strong> radica en su capacidad para describir de manera compacta y estructurada problemas que capturan la esencia de 
+                <strong>NP-completitud</strong>, como <strong>SAT, CLIQUE y 3-COLORACIÓN</strong>, lo que nos permite entender <strong>NP</strong> desde una perspectiva lógica pura. 
+                De hecho, <strong>Fagin</strong> demostró su teorema formulando una expresión lógica que describe las computaciones de una <strong>máquina de Turing no determinista</strong>, 
+                cuantificando sobre las estructuras que representan los estados de la cinta y las transiciones de la máquina. Esta formulación no solo confirma que 
+                <strong>\(\text{SO} \exists \subseteq NP\)</strong>, sino que, a través de reducciones desde problemas <strong>NP-completos</strong> a fórmulas en 
+                <strong>\(\text{SO} \exists\)</strong>, se establece la otra inclusión, <strong>demostrando la igualdad</strong>. En este post, exploraremos esta demostración en detalle, 
+                siguiendo la estructura planteada por <strong>Fagin</strong> y comprendiendo cómo esta caracterización lógica se vincula con otros modelos de computación en la 
+                <strong>jerarquía polinomial</strong>.
+            </p>
+
+            <h4>¿Por qué una caracterización para NP?</h4>
+
+            <p>
+                
+                Una caracterizacion de querys de segundo orden  nos proporciona una manera alternativa y más estructurada de entender NP: 
+                mediante la <strong>lógica de segundo orden con cuantificadores existenciales (\(\text{SO} \exists\))</strong>. 
+                Un ejemplo claro de esta caracterización lo encontramos en el <strong>problema del viajero (TSP)</strong>, cuya formulación lógica en <strong>\(\text{SO} \exists\)</strong> 
+                nos permite ver cómo la expresividad de esta lógica capta la esencia de NP.
+            </p>
+
+            <p>
+                En el problema <strong>TSP</strong>, recibimos como entrada un <strong>grafo no dirigido</strong> \( G \) con <strong>pesos en sus aristas</strong> y un <strong>límite \( L \)</strong>. 
+                La consulta <strong>TSP</strong> es <strong>verdadera</strong> si existe un <strong>circuito hamiltoniano</strong> en \( G \) cuya <strong>suma total de pesos</strong> es como máximo \( L \). 
+                Para modelar este problema en términos lógicos, se define un vocabulario \( \tau_{\text{TSP}} \), compuesto por:
+            </p>
+
+            <ul>
+                <li>\( W(x, y, \cdot) \): Una cadena binaria que representa el <strong>peso</strong> de cada arista \( (x, y) \).</li>
+                <li>\( L(\cdot) \): Una cadena binaria que representa el <strong>límite de peso permitido \( L \)</strong>.</li>
+            </ul>
+
+            <p>
+                Para expresar esto en <strong>\(\text{SO} \exists\)</strong>, seguimos dos pasos fundamentales:
+            </p>
+
+            <h5>1. Asegurar la existencia de un circuito hamiltoniano</h5>
+            <p>
+                Se introduce una <strong>relación binaria</strong> \( H(x, y) \), donde \( H(x, y) \) indica que hay una arista en el circuito entre los vértices \( x \) y \( y \).
+                Esta relación debe cumplir dos condiciones:
+            </p>
+
+            <ul>
+                <li>Todo vértice tiene exactamente <strong>dos conexiones</strong> en \( H(x, y) \): una de entrada y otra de salida.</li>
+                <li>Las aristas en \( H(x, y) \) deben ser <strong>aristas reales del grafo \( E(x, y) \)</strong>.</li>
+            </ul>
+
+            <p>Esto se expresa como:</p>
+            <p class="text-center">
+                \[
+                (\exists H^2) \Big[ \forall x \exists y (H(x, y) \wedge H(y, x)) \wedge \forall x \forall y (H(x, y) \rightarrow E(x, y)) \Big]
+                \]
+            </p>
+
+            <h5>2. Restringir la suma de los pesos</h5>
+            <p>
+                Para garantizar que la <strong>suma de los pesos no supere \( L \)</strong>, se introduce una <strong>relación ternaria</strong> \( R(x, y, s) \),
+                donde \( s \) representa la <strong>suma acumulada</strong> de pesos hasta el vértice \( y \). Se impone la siguiente restricción:
+            </p>
+
+            <p class="text-center">
+                \[
+                (\exists R^3) \Big[ \forall x \forall y (H(x, y) \rightarrow R(x, y, s)) \wedge \forall x \forall y (R(x, y, s) \rightarrow (s \leq L)) \Big]
+                \]
+            </p>
+
+            <h5>Conclusión</h5>
+            <p>
+                Esta formulación en <strong>\(\text{SO} \exists\)</strong> nos muestra que el problema <strong>TSP</strong>, que es NP-completo, puede expresarse enteramente en términos de lógica de segundo orden. 
+                Así, el <strong>Teorema de Fagin</strong> nos permite entender NP desde una perspectiva formal basada en expresividad lógica en lugar de modelos computacionales como máquinas de Turing. 
+                En los siguientes artículos, profundizaremos en cómo esta caracterización lógica se aplica a otros problemas <strong>NP-completos</strong>, fortaleciendo la conexión entre 
+                <strong>lógica matemática y complejidad computacional</strong>.
+            </p>
+            
+            
+            
+<span class="d-block text-right tm-color-primary">Lógica · Computación · Matemáticas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navegación o enlaces a otros posts -->
+    <div class="text-center mt-4">
+      <a href="index.html" class="btn btn-primary mr-2">⟵ Volver</a>
+    </div>
+
+    <footer class="row tm-row">
+      <div class="col-md-6 col-12 tm-color-gray">
+        Bibliografía Esencial:
+      </div>
+      <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+        <ul style="list-style-type: none; padding-left: 0;">
+          <li>Immerman, N. <em>Descriptive Complexity</em>. Springer, 1999.</li>
+          <li>Church, A. “An Unsolvable Problem of Elementary Number Theory.”, 1936.</li>
+          <li>Turing, A. M. “On Computable Numbers, with an Application to the Entscheidungsproblem.”, 1936.</li>
+          <li>Gödel, K. <em>On Undecidable Propositions of Formal Mathematical Systems</em>, 1931.</li>
+        </ul>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script>
+  $("#sidebar-container").load("sidebar.html", function() {
+const currentUrl = window.location.href;
+console.log("Current URL:", currentUrl);
+
+$("#tm-nav a").each(function() {
+const linkUrl = $(this).prop("href");
+console.log("Comparando con:", linkUrl);
+if (currentUrl.indexOf(linkUrl) !== -1) {
+$(this).closest("li").addClass("active");
+} else {
+$(this).closest("li").removeClass("active");
+}
+});
+});
+</script>
+<script src="js/templatemo-script.js"></script>
+</body>
+</html>
