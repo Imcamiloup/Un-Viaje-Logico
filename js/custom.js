@@ -1,84 +1,91 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const articles = document.querySelectorAll(".tm-post");
+document.addEventListener("DOMContentLoaded", () => {
+  const articles = Array.from(document.querySelectorAll(".tm-post"));
   const articlesContainer = document.getElementById("articles-container");
   const searchForm = document.getElementById("search-form");
   const searchInput = document.getElementById("search-input");
   const prevBtn = document.getElementById("prev-btn");
   const nextBtn = document.getElementById("next-btn");
   const pagingNav = document.getElementById("paging-nav");
-  const articlesPerPage = 4;
-  let currentPage = 1;
-  let filteredArticles = Array.from(articles);
 
-  function displayArticles(page) {
-    articlesContainer.innerHTML = "";
-    const start = (page - 1) * articlesPerPage;
-    const end = start + articlesPerPage;
-    const articlesToShow = filteredArticles.slice(start, end);
-
-    articlesToShow.forEach((article) => {
-      articlesContainer.appendChild(article);
-    });
-
-    updatePagination();
+  if (!articlesContainer || !pagingNav) {
+    console.error("No se encontraron los elementos necesarios en el DOM.");
+    return;
   }
 
-  function updatePagination() {
+  const articlesPerPage = 4;
+  let currentPage = 1;
+  let filteredArticles = [...articles];
+
+  const createPagination = () => {
     const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
-    pagingNav.innerHTML = "";
+    const fragment = document.createDocumentFragment();
 
     for (let i = 1; i <= totalPages; i++) {
       const li = document.createElement("li");
-      li.classList.add("tm-paging-item");
-      if (i === currentPage) {
-        li.classList.add("active");
-      }
+      li.className = "tm-paging-item" + (i === currentPage ? " active" : "");
+
       const a = document.createElement("a");
       a.href = "#";
-      a.classList.add("mb-2", "tm-btn", "tm-paging-link");
+      a.className = "mb-2 tm-btn tm-paging-link";
       a.textContent = i;
-      a.addEventListener("click", function (event) {
+      a.addEventListener("click", (event) => {
         event.preventDefault();
         currentPage = i;
-        displayArticles(currentPage);
+        displayArticles();
       });
+
       li.appendChild(a);
-      pagingNav.appendChild(li);
+      fragment.appendChild(li);
     }
 
-    prevBtn.classList.toggle("disabled", currentPage === 1);
-    nextBtn.classList.toggle("disabled", currentPage === totalPages);
-  }
+    pagingNav.innerHTML = "";
+    pagingNav.appendChild(fragment);
 
-  searchForm.addEventListener("submit", function (event) {
+    prevBtn.classList.toggle("disabled", currentPage === 1);
+    nextBtn.classList.toggle("disabled", currentPage === totalPages || totalPages === 0);
+  };
+
+  const displayArticles = () => {
+    articlesContainer.innerHTML = "";
+    const start = (currentPage - 1) * articlesPerPage;
+    const end = start + articlesPerPage;
+    const articlesToShow = filteredArticles.slice(start, end);
+    const fragment = document.createDocumentFragment();
+
+    articlesToShow.forEach(article => fragment.appendChild(article));
+    articlesContainer.appendChild(fragment);
+    createPagination();
+  };
+
+  searchForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    const query = searchInput.value.toLowerCase();
-    filteredArticles = Array.from(articles).filter((article) => {
-      const title = article
-        .querySelector(".tm-post-title")
-        .textContent.toLowerCase();
-      return title.includes(query);
+    const query = searchInput.value.toLowerCase().trim();
+
+    filteredArticles = articles.filter(article => {
+      const titleEl = article.querySelector(".tm-post-title");
+      return titleEl && titleEl.textContent.toLowerCase().includes(query);
     });
+
     currentPage = 1;
-    displayArticles(currentPage);
+    displayArticles();
   });
 
-  prevBtn.addEventListener("click", function (event) {
+  prevBtn.addEventListener("click", (event) => {
     event.preventDefault();
     if (currentPage > 1) {
       currentPage--;
-      displayArticles(currentPage);
+      displayArticles();
     }
   });
 
-  nextBtn.addEventListener("click", function (event) {
+  nextBtn.addEventListener("click", (event) => {
     event.preventDefault();
     const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
     if (currentPage < totalPages) {
       currentPage++;
-      displayArticles(currentPage);
+      displayArticles();
     }
   });
 
-  displayArticles(currentPage);
+  displayArticles();
 });
