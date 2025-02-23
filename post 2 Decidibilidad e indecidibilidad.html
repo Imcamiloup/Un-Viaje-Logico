@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decidibilidad e Indecidibilidad en la Computación</title>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <style>
+        ul {
+            list-style: none; /* Quita las viñetas por defecto */
+            padding-left: 0; /* Ajusta el espacio a la izquierda */
+        }
+        
+        ul > li {
+            margin-bottom: 10px; /* Espaciado entre elementos */
+            padding-left: 30px; /* Espacio para el icono */
+            position: relative;
+        }
+        
+        ul > li::before {
+            content: "★"; /* Puedes cambiar el icono por cualquier otro */
+            color: #ff9800; /* Color del icono */
+            font-size: 18px;
+            position: absolute;
+            left: 0;
+            top: 3px;
+        }
+    </style>
+    <header  id="tm-header2">
+        <div class="tm-header-wrapper">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="tm-nav" id="tm-nav">            
+                <ul>
+                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+                        <i class="fas fa-home"></i>
+                    </a></li>
+                </ul>
+            </nav>            
+        </div>
+    </header>
+
+    <div>
+        <main class="tm-main">
+            <div class="row tm-row">
+                <div class="col-lg-11 tm-post-col">
+                    <div class="tm-post-full">                    
+                        <div class="mb-4">
+                            <h1 class="pt-2 tm-color-primary">Decidibilidad e Indecidibilidad</h1>
+                            <hr>
+                            <h2 class="pt-2 tm-color-primary tm-post-title"> Una introduccion a la computación</h2>
+                            <p class="tm-mb-40">Publicado por Admin | Fecha: 10 de Diciembre, 2024</p>
+                            
+                            <p style="text-align: justify;">
+                                
+                                La teoría de la computación es una rama fundamental de la informática que busca comprender los límites de lo que puede resolverse mediante algoritmos. Entre los conceptos más importantes en este campo se encuentran la <strong>decidibilidad</strong> y la <strong>indecidibilidad</strong>, los cuales clasifican los problemas según la existencia de algoritmos que puedan resolverlos en un tiempo finito, aqui aún no contemplamos si ese tiempo finito 
+                                es razonable como para poder ser considerado un algoritmo eficiente, pero eso es tema de otro post.
+                            </p>
+                            <p style="text-align: justify;">
+                                <strong>Decidibilidad</strong> se refiere a aquellos problemas para los cuales existe un algoritmo que puede determinar la solución para cualquier instancia del problema en un número finito de pasos. En contraste, un problema es <strong>indecidible</strong> si no existe tal algoritmo, es decir, no podemos garantizar que siempre haya una respuesta.
+                            </p>
+
+                            <h3 class="tm-color-primary">¿Qué son los Problemas Decidibles e Indecidibles?</h3>
+                            <p style="text-align: justify;"> 
+                                En teoría de la computación, un problema es considerado <strong>decidible</strong> si existe un algoritmo que, dado cualquier conjunto de datos o entrada, es capaz de determinar si la solución es afirmativa o negativa en un número finito de pasos. Formalmente, un problema es decidible si existe una función computacional \( f: X \to \{0, 1\} \) tal que, para cualquier entrada \( x \in X \), \( f(x) = 1 \) si \( x \) es una solución, y \( f(x) = 0 \) si \( x \) no lo es.
+                            </p>
+                            <p>
+                                
+                                
+                                <ul style="text-align: justify;">
+                                    <li>
+                                        <strong>El <em>problema de paridad</em> : </strong> Dado un número entero \( n \), determinar si es par o impar. Este problema es decidible, ya que podemos construir un algoritmo que verifica la paridad de \( n \) en un número finito de pasos. El algoritmo podría ser el siguiente:
+                                        <pre><code>
+                                        if n mod 2 == 0:
+                                            return "par"
+                                        else:
+                                            return "impar"
+                                        </code></pre>
+                                        Este algoritmo verifica si el residuo de \( n \) al dividirlo por 2 es 0, lo que indica que el número es par. Si el residuo es distinto de 0, entonces el número es impar.
+                                    </li>
+                                    
+                                </ul>
+                            </p>
+                            <p style="text-align: justify;">
+                                En cambio, un problema es <strong>indecidible</strong> si no existe ningún algoritmo que pueda resolver todas las instancias del problema en un número finito de pasos. En otras palabras, para algunos casos del problema puede no ser posible encontrar una solución en tiempo finito.
+                            </p>
+                            <p>
+                                
+                                <ul style="text-align: justify;">
+                                    <li>
+                                        
+                                        <strong>  El    <em>problema de la parada de Turing </em>: </strong> Dado un programa \( P \) y una entrada \( I \), determinar si el programa \( P \) se detendrá cuando se le ejecute con la entrada \( I \). Este problema fue demostrado como indecidible por Alan Turing en 1936, lo que significa que no existe un algoritmo general que pueda resolverlo para todos los casos posibles.
+                                        
+                                         </li>
+                                </ul>
+                                <p style="text-align: justify;">Para ilustrar la dificultad de este problema, supongamos que intentamos escribir un algoritmo que verifique si \( P \) se detiene en \( I \). El pseudocódigo para tal algoritmo podría verse de la siguiente manera:</p>
+                                        <pre><code>
+                            def algoritmo_parada(P, I):
+                                # Simula la ejecución del programa P con la entrada I
+                                try:
+                                    ejecutar(P, I)
+                                    return "El programa se detiene"
+                                except InfinitoLoop:
+                                    return "El programa no se detiene"
+                                except:
+                                    return "Error desconocido"
+                                        </code></pre>
+                                <p style="text-align: justify;">Sin embargo, la paradoja aquí es que no podemos crear un algoritmo que funcione para todos los casos posibles de \( P \) e \( I \). Turing demostró que no hay forma de garantizar, mediante un algoritmo general, que siempre podamos predecir si un programa terminará su ejecución o no. Esto es lo que hace que el problema de la parada sea indecidible.</p>
+                                   
+                            </p>
+                            
+                            <h3 class="tm-color-primary">Definición Formal de Decidibilidad</h3>
+                            <p style="text-align: justify;">
+                                Sea \( \Sigma \) un alfabeto y \( L \subseteq \Sigma^* \) un lenguaje sobre dicho alfabeto. Decimos que \( L \) es un lenguaje <strong>decidible</strong> si existe una máquina de Turing \( M \) tal que para cualquier entrada \( w \in \Sigma^* \), la máquina \( M \) acepta \( w \) si y solo si \( w \in L \), y \( M \) se detiene en tiempo finito. Formalmente:
+                            </p>
+                            <p style="text-align: justify;">
+                                \[
+                                L \text{ es decidible} \iff \exists M \text{ tal que para todo } w \in \Sigma^*, \, M(w) = 
+                                \begin{cases} 
+                                    \text{aceptar} & \text{si } w \in L \\
+                                    \text{rechazar} & \text{si } w \notin L
+                                \end{cases}
+                                \]
+                            </p>
+                            <p>
+                                Es decir, el lenguaje \( L \) es decidible si existe un algoritmo que puede determinar si una cadena \( w \) pertenece a \( L \), y este algoritmo siempre se detiene.
+                            </p>
+
+                            
+                        <h3 class="tm-color-primary">Teorema 1:</h3>
+                            <p style="text-align: justify;"> 
+                                <strong>Teorema 1.</strong> Un lenguaje \( L \) es decidible si y solo si existe una máquina de Turing \( M \) que acepta \( L \) y se detiene para todas las entradas.
+                            </p>
+                            <p style="text-align: justify;">
+                                Este teorema establece una equivalencia importante: un lenguaje es decidible si y solo si podemos construir una máquina de Turing que decida de manera efectiva si una entrada pertenece a dicho lenguaje. Además, el proceso de decisión debe ser siempre finito, lo que implica que \( M \) siempre debe detenerse.
+                            </p>
+
+                        <h3 class="tm-color-primary">Teorema 2: El Problema de la Parada es Indecidible</h3>
+                            <p style="text-align: justify;">
+                                <strong>Teorema 2.</strong> El problema de la parada de Turing es indecidible.
+                            </p>
+                            <p style="text-align: justify;">
+                                El teorema anterior es fundamental en la teoría de la computación y se refiere al siguiente problema: dado un programa \( P \) y una entrada \( I \), determinar si \( P \) se detendrá cuando se ejecute con \( I \). Turing demostró que no existe ningún algoritmo general que pueda resolver este problema para todas las combinaciones de \( P \) e \( I \). Formalmente, el problema de la parada es indecidible:
+                            </p>
+                            \[
+                            \text{Dado } P \text{ y } I, \text{ determinar si } P \text{ se detiene en } I \text{ es indecidible.}
+                            \]
+                            <p style="text-align: justify;">
+                                La prueba de Turing se basa en una contradicción. Si supusiéramos que existe una máquina de Turing que puede decidir este problema, podríamos construir una máquina de Turing que se contradice a sí misma, lo que lleva a la conclusión de que no es posible decidir el problema de la parada de manera general.
+                            </p>
+
+
+                            <h3 class="tm-color-primary">Relevancia del Estudio de la Indecidibilidad en la Computación Moderna</h3>
+                            <p style="text-align: justify;">
+                                El estudio de los problemas decidibles e indecidibles no es solo un ejercicio académico, sino que tiene profundas implicaciones prácticas. La comprensión de la <strong>indecidibilidad</strong> ayuda a establecer límites claros en lo que podemos esperar de los algoritmos. Por ejemplo, en el contexto de:
+                            </p>
+                            <ul>
+                                <li><strong>Desarrollo de software:</strong> El conocimiento de los problemas indecidibles es crucial para entender las limitaciones en la verificación de programas, especialmente en software crítico como sistemas médicos o de aviación.</li>
+                                <li><strong>Inteligencia Artificial:</strong> En IA, entender los límites de la computabilidad es fundamental para diseñar algoritmos que no intenten resolver problemas intrínsecamente indecidibles.</li>
+                                <li><strong>Seguridad informática:</strong> La teoría de la computación proporciona una base para comprender los problemas de seguridad relacionados con la incapacidad de prever el comportamiento de sistemas complejos.</li>
+                            </ul>
+                            <p style="text-align: justify;">
+                                A medida que la tecnología avanza, se hace más evidente la necesidad de entender los problemas que están más allá de los límites de la computación tradicional. Esto nos lleva a la reflexión sobre las fronteras entre lo que es computable y lo que no lo es.
+                            </p>
+                           
+                            <span class="d-block text-right tm-color-primary">Lógica . Computación . Matemáticas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Botones de navegación -->
+            <div class="text-center mt-4">
+                <a href="post.html" class="btn btn-primary mr-2">⟵ Un Viaje Lógico hacia P y NP</a>
+                <a href="post4.html" class="btn btn-primary">¿Qué es Complejidad Descriptiva? ⟶</a>
+            </div>
+            <footer class="row tm-row">
+                <div class="col-md-6 col-12 tm-color-gray">
+                    Unal
+                </div>
+                <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+                    Luis Gómez
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $("#sidebar-container").load("sidebar.html", function() {
+  const currentUrl = window.location.href;
+  console.log("Current URL:", currentUrl);
+  
+  $("#tm-nav a").each(function() {
+    const linkUrl = $(this).prop("href");
+    console.log("Comparando con:", linkUrl);
+    if (currentUrl.indexOf(linkUrl) !== -1) {
+      $(this).closest("li").addClass("active");
+    } else {
+      $(this).closest("li").removeClass("active");
+    }
+  });
+});
+      </script>
+    <script src="js/templatemo-script.js"></script>
+</body>
+</html>

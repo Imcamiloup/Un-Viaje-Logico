@@ -16,6 +16,7 @@
 </head>
 
 <body>
+  <div id="sidebar-container"></div>
 <header id="tm-header2">
   <div class="tm-header-wrapper">
     <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
@@ -399,6 +400,22 @@
 </div>
 
 <script src="js/jquery.min.js"></script>
+<script>
+  $("#sidebar-container").load("sidebar.html", function() {
+const currentUrl = window.location.href;
+console.log("Current URL:", currentUrl);
+
+$("#tm-nav a").each(function() {
+const linkUrl = $(this).prop("href");
+console.log("Comparando con:", linkUrl);
+if (currentUrl.indexOf(linkUrl) !== -1) {
+$(this).closest("li").addClass("active");
+} else {
+$(this).closest("li").removeClass("active");
+}
+});
+});
+</script>
 <script src="js/templatemo-script.js"></script>
 </body>
 </html>

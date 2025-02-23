@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Viaje hacia SO∃ = NP: Nuestro Primer Paso con SAT y NP</title>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <style>
+        p {
+            text-align: justify;
+        }
+        ul {
+            list-style: none; /* Quita las viñetas por defecto */
+            padding-left: 0; /* Ajusta el espacio a la izquierda */
+        }
+        
+        ul > li {
+            margin-bottom: 10px; /* Espaciado entre elementos */
+            padding-left: 30px; /* Espacio para el icono */
+            position: relative;
+        }
+        
+        ul > li::before {
+            content: "★"; /* Puedes cambiar el icono por cualquier otro */
+            color: #ff9800; /* Color del icono */
+            font-size: 18px;
+            position: absolute;
+            left: 0;
+            top: 3px;
+        }
+    </style>
+    <header id="tm-header2">
+        <div class="tm-header-wrapper">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="tm-nav" id="tm-nav">            
+                <ul>
+                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+                        <i class="fas fa-home"></i>
+                    </a></li>
+                </ul>
+            </nav>            
+        </div>
+    </header>
+
+    <div>
+        <main class="tm-main">
+            <div class="row tm-row">
+                <div class="col-lg-11 tm-post-col">
+                    <div class="tm-post-full">                    
+                        <div class="mb-4">
+                            <h1 class="pt-2 tm-color-primary"> El gran paso hacia \( SO∃ = NP \)</h1>
+                            <hr>
+                            <h2 class="pt-2 tm-color-primary tm-post-title"> El Problema de Satisfacibilidad Booleana</h2>
+                            <p class="tm-mb-40">Publicado por Admin | Fecha: 18 de Febrero, 2025</p>
+                            <p style="text-align: justify;" >
+
+                            El problema de satisfacibilidad booleana (SAT) es uno de los problemas más fundamentales en la teoría de la complejidad computacional. 
+                            Se trata de determinar si una fórmula booleana en forma normal conjuntiva (CNF) admite una asignación de valores de verdad que la haga verdadera.
+                             Formalmente, Dado un conjunto de cláusulas \( \mathcal{C} = \{C_1, C_2, ..., C_m\} \) sobre variables \( \{x_1, x_2, ..., x_n\} \), \( SAT \) pregunta si existe una asignación \( \sigma : \{x_1, ..., x_n\} \to \{0,1\} \) tal que:
+                            </p>
+                            <p class="text-center">
+                                \( \bigwedge_{i=1}^{m} C_i = 1. \)
+                            </p>
+                            <p style="text-align: justify;">
+                            Este problema no solo fue el primero en demostrarse NP-completo (Cook, 1971), sino que también juega un papel crucial en la caracterización 
+                            de la clase NP a través de la lógica de segundo orden con cuantificadores existenciales (SO∃), como lo establece el teorema de Fagin
+                             que veremos a profundidad en publicaciones posteriores.
+
+
+                            </p>
+                            <p style="text-align: justify;">
+                            Desde el punto de vista lógico, SAT se puede expresar en SO∃ mediante la siguiente fórmula:
+                            </p>
+                            \[
+                            \Phi_{\text{SAT}} \equiv (\exists S)(\forall x)(\exists y)((P(x, y) \land S(y)) \lor (N(x, y) \land \neg S(y))).
+                            \]
+                            <p style="text-align: center;">
+                            </p>
+                            <p style="text-align: justify;">
+                                Esta expresión captura la existencia de un conjunto \( S \) de variables que deben asignarse como verdaderas para
+                                 satisfacer la fórmula booleana de entrada. La clave aquí es que la cuantificación existencial sobre conjuntos de variables permite describir SAT de manera natural dentro de SO∃.   
+                            </p>
+                            <h3>
+                                Ejemplo de un problema SAT
+                            </h3>
+                            <p>Consideremos la siguiente fórmula en CNF con tres variables \( x_1, x_2, x_3 \):</p>
+                            <div class="box">
+                                \[
+                                (x_1 \lor \neg x_2) \land (\neg x_1 \lor x_3) \land (x_2 \lor \neg x_3)
+                                \]
+                            </div>
+
+                            <h4>Cláusulas</h4>
+                            <p>La fórmula está compuesta por tres cláusulas:</p>
+                            <ol>
+                                <li>\( (x_1 \lor \neg x_2) \)</li>
+                                <li>\( (\neg x_1 \lor x_3) \)</li>
+                                <li>\( (x_2 \lor \neg x_3) \)</li>
+                            </ol>
+
+                            <h4>Solución para SAT</h4>
+                            <p>Para que SAT tenga solución, debemos encontrar una asignación de valores a \( x_1, x_2, x_3 \) que haga todas las cláusulas verdaderas simultáneamente.</p>
+                            <p>Una posible asignación que satisface la fórmula es:</p>
+                            <div class="box">
+                                \[
+                                x_1 = \text{true}, \quad x_2 = \text{true}, \quad x_3 = \text{true}
+                                \]
+                            </div>
+
+                            <h4>Comprobación</h4>
+                            <p>Veamos si esta asignación satisface la fórmula:</p>
+
+                            <ul>
+                                <li>Primera cláusula: \( x_1 \lor \neg x_2 \)
+                                    <ul>
+                                        <li>\( x_1 = \text{true} \) → <span class="true">Verdadero </span></li>
+                                    </ul>
+                                </li>
+                                <li>Segunda cláusula: \( \neg x_1 \lor x_3 \)
+                                    <ul>
+                                        <li>\( x_1 = \text{true} \Rightarrow \neg x_1 = \text{false} \), pero \( x_3 = \text{true} \) → <span class="true">Verdadero </span></li>
+                                    </ul>
+                                </li>
+                                <li>Tercera cláusula: \( x_2 \lor \neg x_3 \)
+                                    <ul>
+                                        <li>\( x_2 = \text{true} \) → <span class="true">Verdadero </span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p>Dado que todas las cláusulas son verdaderas, la fórmula es satisfactible y SAT devuelve:</p>
+                            <div class="box" style="font-size: 20px; text-align: center;">
+                                <strong>Sí </strong>
+                            </div>
+
+                            <p>Si no existiera una asignación que hiciera la fórmula verdadera, SAT devolvería:</p>
+                            <div class="box" style="font-size: 20px; text-align: center;">
+                                <strong>No </strong>
+                            </div>
+                           
+
+                            <h3 class="tm-color-primary">SAT es NP-duro</h3>
+                            <p>
+                                Para demostrar que \( SAT \) es \( NP \)-duro, debemos mostrar que cualquier problema en \( NP \) puede reducirse en tiempo polinomial a \( SAT \), es decir, estamos afirmando que SAT es un problema NP-completo. 
+                                Esto significa que es uno de los problemas más difíciles dentro de NP y que resolverlo en tiempo polinomial implicaría resolver cualquier otro problema en NP en el mismo tiempo.
+                            </p>
+                            <p>
+                                Decimos que un problema \( X \) se reduce en tiempo polinomial a otro problema \( Y \) si cualquier instancia del problema \( X \) puede transformarse en una instancia de \( Y \) en tiempo polinomial, de tal forma que resolver \( Y \) nos permite obtener la respuesta para \( X \). Matemáticamente, esto se escribe como:
+                                </p>
+                                
+                                <p>
+                                \[
+                                X \leq_P Y
+                                \]
+                                </p>
+                                
+                                <p>
+                                Si podemos transformar cualquier problema de NP en una instancia de SAT en tiempo polinomial, significa que resolver SAT nos permite resolver todos los problemas de NP.
+                                </p>
+                                
+                                
+                                <p>
+                                El <strong>Teorema de Cook-Levin (1971)</strong> demostró que todo problema en NP se puede reducir en tiempo polinomial a SAT, esto significa que Para cualquier problema \( P \) en NP, existe un algoritmo que transforma cualquier instancia de \( P \) en una fórmula en CNF, tal que la fórmula es satisfactible si y solo si la instancia original tenía una solución. 
+                                </p>
+                                <p>
+                                    En otras palabras, si algún día se encuentra un algoritmo en tiempo polinomial para SAT, significaría que:
+                                </p>
+                            
+                                <p>
+                                \[
+                                P = NP
+                                \]
+                                </p>                        
+                                       
+                                <h4>Ejemplo de reducción: CLIQUE a SAT</h3>
+                                
+                                <p>
+                                Supongamos que queremos reducir el problema <strong>CLIQUE</strong> a SAT. Dado un grafo \( G \) y un número \( k \), queremos verificar si hay un subgrafo de \( k \) nodos donde cada par de nodos está conectado por una arista.
+                                </p>
+                                
+                                <p>
+                                Podemos construir una <strong>fórmula booleana</strong> que codifique esta condición, usando variables booleanas que representen si un nodo está en la clique o no. Si esta fórmula tiene una asignación satisfactible, significa que el grafo tiene una clique de tamaño \( k \).
+                                </p>
+                                                       
+                                
+
+                            <h4 >Ejemplo de Reducción a SAT: 3-COLORACIÓN</h3>
+                            <p>
+                                Para ilustrar cómo reducir un problema en \( NP \) a \( SAT \) en tiempo polinomial, tomemos el problema de <strong>3-Coloración</strong>. 
+                                Dado un grafo \( G = (V, E) \), el problema pregunta si podemos asignar a cada vértice uno de tres colores (rojo, azul o verde) de 
+                                manera que ningún par de vértices adyacentes tengan el mismo color.
+                            </p>
+
+                            <h5>1. Variables Booleanas</h5>
+                            <p>
+                                Para cada vértice \( v \in V \), definimos tres variables booleanas:
+                            </p>
+                            <p class="text-center">
+                                \( R_v \) (el vértice \( v \) es rojo), \( B_v \) (el vértice \( v \) es azul), \( G_v \) (el vértice \( v \) es verde).
+                            </p>
+                            <p>
+                                La solución al problema de 3-Coloración se traducirá en una asignación de valores \( \{0,1\} \) a estas variables.
+                            </p>
+
+                            <h5>2. Restricción de Color Único</h5>
+                            <p>
+                                Cada vértice debe recibir exactamente un color. Esto se expresa con las siguientes cláusulas:
+                            </p>
+                            <p class="text-center">
+                                \( (R_v \vee B_v \vee G_v) \)  &nbsp; &nbsp; (cada vértice tiene al menos un color),
+                            </p>
+                            <p class="text-center">
+                                \( (\neg R_v \vee \neg B_v), (\neg R_v \vee \neg G_v), (\neg B_v \vee \neg G_v) \)  &nbsp; &nbsp; (cada vértice tiene a lo sumo un color).
+                            </p>
+
+                            <h5>3. Restricción de Adyacencia</h5>
+                            <p>
+                                Si dos vértices \( u \) y \( v \) están conectados por una arista, no pueden tener el mismo color. Para cada \( (u,v) \in E \), añadimos:
+                            </p>
+                            <p class="text-center">
+                                \( (\neg R_u \vee \neg R_v) \),  \( (\neg B_u \vee \neg B_v) \),  \( (\neg G_u \vee \neg G_v) \).
+                            </p>
+                            <p>
+                                Esto garantiza que ningún par de vértices conectados comparten el mismo color.
+                            </p>
+
+                            <h5>4. Tamaño de la Transformación</h5>
+                            <p>
+                                El número de variables introducidas es \( O(|V|) \) y el número de cláusulas generadas es \( O(|V| + |E|) \). Dado que \( |E| \leq |V|^2 \),
+                                la reducción a SAT ocurre en tiempo polinomial.
+                            </p>
+
+<h3 class="tm-color-primary">Conclusión</h3>
+<p>
+    El problema de <strong>Satisfacibilidad Booleana (SAT)</strong> no solo es el punto de partida para entender la complejidad de NP, 
+    sino que también funge como el núcleo de la reducción de problemas dentro de esta clase. 
+    Su demostración como <strong>NP-completo</strong> por Cook y Levin sentó las bases para analizar la estructura lógica de NP, 
+    permitiéndonos expresar cualquier problema en esta clase en términos de <em>fórmulas booleanas en CNF</em>.
+</p>
+
+<p>
+    Más allá de su importancia en la teoría de la complejidad, SAT nos introduce a una caracterización más profunda de NP 
+    mediante <strong>lógica de segundo orden con cuantificadores existenciales (SO∃)</strong>, como lo demuestra el <em>Teorema de Fagin</em>. 
+    Este resultado no solo nos ofrece una nueva perspectiva desde la lógica matemática, 
+    sino que también nos abre la puerta a preguntas fundamentales sobre la expresividad y la relación entre complejidad computacional y formalismo lógico.
+</p>
+
+<p>
+    En las siguientes publicaciones, exploraremos en detalle cómo <strong>SO∃ caracteriza exactamente la clase NP</strong>, 
+    mostrando cómo problemas computacionales pueden formularse en términos de estructuras lógicas más expresivas 
+    y qué implicaciones tiene esto en la jerarquía polinomial. 
+    Así, el viaje hacia <strong>SO∃ = NP</strong> apenas comienza.
+</p>
+
+
+
+                            <span class="d-block text-right tm-color-primary">Lógica . Computación . Matemáticas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="row tm-row">
+                <div class="col-md-6 col-12 tm-color-gray">
+                    Unal
+                </div>
+                <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+                    Luis Gómez.
+                </div>
+                <!-- Botones de navegación -->
+            <div class="text-center mt-4">
+                <a href="post3.html" class="btn btn-primary mr-2">⟵ Bases Teoricas y Notación</a>
+                <a href="post6.html" class="btn btn-primary">  ⟶ Consultas Booleanas</a>
+
+            </div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $("#sidebar-container").load("sidebar.html", function() {
+  const currentUrl = window.location.href;
+  console.log("Current URL:", currentUrl);
+  
+  $("#tm-nav a").each(function() {
+    const linkUrl = $(this).prop("href");
+    console.log("Comparando con:", linkUrl);
+    if (currentUrl.indexOf(linkUrl) !== -1) {
+      $(this).closest("li").addClass("active");
+    } else {
+      $(this).closest("li").removeClass("active");
+    }
+  });
+});
+      </script>
+    <script src="js/templatemo-script.js"></script>
+</body>
+</html>

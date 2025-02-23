@@ -1,277 +1,324 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xtra Blog</title>
-    <link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blog académico sobre lógica, complejidad computacional y teoría de la computación.">
+  <meta name="author" content="Daniel Bocanegra. y Luis Gómez.">
+  <title>Un Viaje Lógico</title>
+  <link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- Iconos Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
 </head>
 <body>
-    <header class="tm-header" id="tm-header">
-        <div class="tm-header-wrapper">
-            <button class="navbar-toggler" type="button" aria-label="Toggle navigation" id="toggle-nav">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <nav class="tm-nav" id="tm-nav">            
-                <ul>
-                    <li class="tm-nav-item active"><a href="index.html" class="tm-nav-link">
-                        <i class="fas fa-home"></i>
-                        Blog Home
-                    </a></li>                    
-                    <li class="tm-nav-item"><a href="about.html" class="tm-nav-link">
-                        <i class="fas fa-users"></i>
-                        About
-                    </a></li>
-                </ul>
-            </nav>
-            <div class="tm-mb-65">
-                <a rel="nofollow" href="https://fb.com/templatemo" class="tm-social-link">
-                    <i class="fab fa-facebook tm-social-icon"></i>
-                </a>
-                <a href="https://twitter.com" class="tm-social-link">
-                    <i class="fab fa-twitter tm-social-icon"></i>
-                </a>
-                <a href="https://instagram.com" class="tm-social-link">
-                    <i class="fab fa-instagram tm-social-icon"></i>
-                </a>
-                <a href="https://linkedin.com" class="tm-social-link">
-                    <i class="fab fa-linkedin tm-social-icon"></i>
-                </a>
+    <div id="sidebar-container"></div>
+
+  <div class="container-fluid">
+    <main class="tm-main" role="main">
+      <!-- Formulario de búsqueda -->
+      <div class="row tm-row">
+        <div class="col-12">
+          <form method="GET" class="form-inline tm-mb-80 tm-search-form" id="search-form" role="search">                
+            <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search" id="search-input">
+            <button class="tm-search-button" type="submit" aria-label="Submit Search">
+              <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
+            </button>                                
+          </form>
+        </div>                
+      </div>            
+
+      <!-- Contenedor de artículos -->
+      <div class="row tm-row" id="articles-container">
+
+        <!-- POST 1 -->
+        <article class="col-12 col-md-6 tm-post">
+          <hr class="tm-hr-primary">
+          <a href="post 1 Danzando con la complejidad.html" class="effect-lily tm-post-link tm-pt-60">
+            <div class="tm-post-link-inner">
+              <img src="img/img-011.jpg" alt="Danzando con la Complejidad" class="img-fluid" style="width: 100%; max-height: 235px; max-width: 235px;">
             </div>
+            <h2 class="tm-pt-30 tm-color-primary tm-post-title">Danzando con la Complejidad: Un Viaje Lógico hacia P y NP</h2>
+          </a>
+          <p class="tm-pt-30">
+            En este artículo exploramos cómo la lógica y la computación se entrelazan para desentrañar los misterios de la teoría de la complejidad computacional.
+          </p>
+          <div class="d-flex justify-content-between tm-pt-45">
+            <span class="tm-color-primary">Lógica . Complejidad Computacional</span>
+            <span class="tm-color-primary">10 de diciembre, 2024</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+            <span>0 comentarios</span>
+            <span>Daniel B.</span>
+          </div>
+        </article>
+
+        <!-- POST 2 -->
+        <article class="col-12 col-md-6 tm-post">
+          <hr class="tm-hr-primary">
+          <a href="post 2 Decidibilidad e indecidibilidad.html" class="effect-lily tm-post-link tm-pt-60">
+            <div class="tm-post-link-inner">
+              <img src="img/img-012.jpg" alt="Decidibilidad e Indecidibilidad" class="img-fluid" style="width: 100%; max-height: 435px; max-width: 412px;">
+            </div>
+            <span class="position-absolute tm-new-badge">Nuevo</span>
+            <h2 class="tm-pt-30 tm-color-primary tm-post-title">Decidibilidad e Indecidibilidad en la Computación</h2>
+          </a>
+          <p class="tm-pt-30">
+            Conceptos fundamentales de la teoría de la computación: <strong>decidibilidad</strong> e <strong>indecidibilidad</strong>.
+          </p>
+          <div class="d-flex justify-content-between tm-pt-45">
+            <span class="tm-color-primary">Lógica . Complejidad Computacional</span>
+            <span class="tm-color-primary">15 de diciembre, 2024</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+            <span>0 comentarios</span>
+            <span>Luis G.</span>
+          </div>
+        </article>
+
+        <!-- POST 3 -->
+        <article class="col-12 col-md-6 tm-post">
+          <hr class="tm-hr-primary">
+          <a href="post 3 bases teoricas y notación.html" class="effect-lily tm-post-link tm-pt-60">
+            <div class="tm-post-link-inner">
+              <img src="img/img-013.jpg" alt="Bases Teóricas y Notación" class="img-fluid" style="width: 100%; max-height: 235px;">
+            </div>
+            <span class="position-absolute tm-new-badge">Nuevo</span>
+            <h2 class="tm-pt-30 tm-color-primary tm-post-title">Bases Teóricas y Notación</h2>
+          </a>
+          <p class="tm-pt-30">
+            Descubre cómo la lógica matemática forma la base de la computación, explorando conceptos clave como vocabulario lógico, estructuras e interpretación de fórmulas.
+          </p>
+          <div class="d-flex justify-content-between tm-pt-45">
+            <span class="tm-color-primary">Lógica Matemática</span>
+            <span class="tm-color-primary">Feb 6, 2025</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+            <span>0 comments</span>
+            <span>Luis G.</span>
+          </div>
+        </article>
+
+        <!-- POST 4 -->
+        <article class="col-12 col-md-6 tm-post">
+          <hr class="tm-hr-primary">
+          <a href="post 4 Complejidad descriptiva.html" class="effect-lily tm-post-link tm-pt-60">
+            <div class="tm-post-link-inner">
+              <img src="img/img-014.jpg" alt="Complejidad Descriptiva" class="img-fluid" style="width: 100%; max-height: 235px;">
+            </div>
+            <span class="position-absolute tm-new-badge">Nuevo</span>
+            <h2 class="tm-pt-30 tm-color-primary tm-post-title">Complejidad Descriptiva</h2>
+          </a>
+          <p class="tm-pt-30">
+            Una perspectiva donde la complejidad de un problema se mide por la riqueza lógica necesaria para describirlo.
+          </p>
+          <div class="d-flex justify-content-between tm-pt-45">
+            <span class="tm-color-primary">Lógica . Complejidad</span>
+            <span class="tm-color-primary">Feb 10, 2025</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+            <span>0 comments</span>
+            <span>Daniel B.</span>
+          </div>
+        </article>
+
+        <!-- POST 5 -->
+        <article class="col-12 col-md-6 tm-post">
+          <hr class="tm-hr-primary">
+          <a href="post 5 El gran paso.html" class="effect-lily tm-post-link tm-pt-60">
+            <div class="tm-post-link-inner">
+              <img src="img/img-015.jpg" alt="El gran paso" class="img-fluid" style="width: 100%; max-height: 235px;">
+            </div>
+            <span class="position-absolute tm-new-badge">Nuevo</span>
+            <h2 class="tm-pt-30 tm-color-primary tm-post-title">El Gran Paso</h2>
+          </a>
+          <p class="tm-pt-30">
+            Un avance significativo en la demostración de algoritmos polinomiales para problemas fundamentales de satisfacibilidad.
+          </p>
+          <div class="d-flex justify-content-between tm-pt-45">
+            <span class="tm-color-primary">Satisfacibilidad</span>
+            <span class="tm-color-primary">Feb 15, 2025</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+            <span>0 comments</span>
+            <span>Luis G.</span>
+          </div>
+        </article>
+
+        <!-- POST 6 -->
+        <article class="col-12 col-md-6 tm-post">
+          <hr class="tm-hr-primary">
+          <a href="post 6 Consultas de primer orden.html" class="effect-lily tm-post-link tm-pt-60">
+            <div class="tm-post-link-inner">
+              <img src="img/img-016.jpg" alt="Consultas de primer orden" class="img-fluid" style="width: 100%; max-height: 235px;">
+            </div>
+            <span class="position-absolute tm-new-badge">Nuevo</span>
+            <h2 class="tm-pt-30 tm-color-primary tm-post-title">Consultas de Primer Orden</h2>
+          </a>
+          <p class="tm-pt-30">
+            Exploramos la lógica de primer orden y su importancia en la definición y verificación de propiedades computacionales.
+          </p>
+          <div class="d-flex justify-content-between tm-pt-45">
+            <span class="tm-color-primary">Lógica de Primer Orden</span>
+            <span class="tm-color-primary">Feb 20, 2025</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+            <span>0 comments</span>
+            <span>Daniel B.</span>
+          </div>
+        </article>
+
+        <!-- POST 7 -->
+        <article class="col-12 col-md-6 tm-post">
+          <hr class="tm-hr-primary">
+          <a href="post 7 Complejidad.html" class="effect-lily tm-post-link tm-pt-60">
+            <div class="tm-post-link-inner">
+              <img src="img/img-017.jpg" alt="Complejidad" class="img-fluid" style="width: 100%; max-height: 235px;">
+            </div>
+            <span class="position-absolute tm-new-badge">Nuevo</span>
+            <h2 class="tm-pt-30 tm-color-primary tm-post-title">Complejidad</h2>
+          </a>
+          <p class="tm-pt-30">
+            Una visión general de los diferentes tipos de complejidad y su relevancia en el análisis de algoritmos.
+          </p>
+          <div class="d-flex justify-content-between tm-pt-45">
+            <span class="tm-color-primary">Análisis de Algoritmos</span>
+            <span class="tm-color-primary">Feb 25, 2025</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+            <span>0 comments</span>
+            <span>Luis G.</span>
+          </div>
+        </article>
+
+        <!-- POST 8 -->
+        <article class="col-12 col-md-6 tm-post">
+          <hr class="tm-hr-primary">
+          <a href="post 8 Reduccciones.html" class="effect-lily tm-post-link tm-pt-60">
+            <div class="tm-post-link-inner">
+              <img src="img/img-018.jpg" alt="Reducciones" class="img-fluid" style="width: 100%; max-height: 235px;">
+            </div>
+            <span class="position-absolute tm-new-badge">Nuevo</span>
+            <h2 class="tm-pt-30 tm-color-primary tm-post-title">Reducciones</h2>
+          </a>
+          <p class="tm-pt-30">
+            Conoce cómo las reducciones permiten clasificar problemas en clases de complejidad y relacionar su dificultad.
+          </p>
+          <div class="d-flex justify-content-between tm-pt-45">
+            <span class="tm-color-primary">Teoría de la Complejidad</span>
+            <span class="tm-color-primary">Mar 1, 2025</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+            <span>0 comments</span>
+            <span>Daniel B.</span>
+          </div>
+        </article>
+
+        <!-- POST 9 -->
+        <article class="col-12 col-md-6 tm-post">
+          <hr class="tm-hr-primary">
+          <a href="post 9 Punto fijo!.html" class="effect-lily tm-post-link tm-pt-60">
+            <div class="tm-post-link-inner">
+              <img src="img/img-019.jpg" alt="Punto Fijo" class="img-fluid" style="width: 100%; max-height: 235px;">
+            </div>
+            <span class="position-absolute tm-new-badge">Nuevo</span>
+            <h2 class="tm-pt-30 tm-color-primary tm-post-title">Punto Fijo</h2>
+          </a>
+          <p class="tm-pt-30">
+            Un recorrido por los teoremas de punto fijo y su papel en la computación, lógica y teoría de lenguajes formales.
+          </p>
+          <div class="d-flex justify-content-between tm-pt-45">
+            <span class="tm-color-primary">Lógica . Modelos</span>
+            <span class="tm-color-primary">Mar 5, 2025</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+            <span>0 comments</span>
+            <span>Luis G.</span>
+          </div>
+        </article>
+
+        <!-- POST 10 -->
+        <article class="col-12 col-md-6 tm-post">
+          <hr class="tm-hr-primary">
+          <a href="post 10 Teorema Immerman.html" class="effect-lily tm-post-link tm-pt-60">
+            <div class="tm-post-link-inner">
+              <img src="img/img-020.jpg" alt="Teorema de Immerman" class="img-fluid" style="width: 100%; max-height: 235px;">
+            </div>
+            <span class="position-absolute tm-new-badge">Nuevo</span>
+            <h2 class="tm-pt-30 tm-color-primary tm-post-title">Teorema de Immerman</h2>
+          </a>
+          <p class="tm-pt-30">
+            Una de las piedras angulares en la complejidad descriptiva, relacionando la lógica de segundo orden existencial con la clase NP.
+          </p>
+          <div class="d-flex justify-content-between tm-pt-45">
+            <span class="tm-color-primary">Complejidad Descriptiva</span>
+            <span class="tm-color-primary">Mar 10, 2025</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+            <span>0 comments</span>
+            <span>Daniel B.</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- Paginación -->
+      <div class="row tm-row tm-mt-100 tm-mb-75">
+        <div class="tm-prev-next-wrapper">
+          <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20" id="prev-btn">Prev</a>
+          <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next" id="next-btn">Next</a>
         </div>
-    </header>
-    <div class="container-fluid">
-        <main class="tm-main">
-            <!-- Search form -->
-            <div class="row tm-row">
-                <div class="col-12">
-                    <form method="GET" class="form-inline tm-mb-80 tm-search-form" id="search-form">                
-                        <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search" id="search-input">
-                        <button class="tm-search-button" type="submit">
-                            <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
-                        </button>                                
-                    </form>
-                </div>                
-            </div>            
-            <div class="row tm-row" id="articles-container">
-                <!-- Artículos aquí -->
-                <article class="col-12 col-md-6 tm-post">
-                    <hr class="tm-hr-primary">
-                    <a href="post.html" class="effect-lily tm-post-link tm-pt-60">
-                        <div class="tm-post-link-inner">
-                            <img src="img/img-011.jpg" alt="Danzando con la Complejidad" class="img-fluid" style="width: 100%; max-height: 235px; max-width: 235px;">
-                        </div>
-                        
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">Danzando con la Complejidad: Un Viaje Lógico hacia P y NP</h2>
-                    </a>
-                    <p class="tm-pt-30">
-                        En este artículo exploramos cómo la lógica y la computación se entrelazan para desentrañar los misterios de la teoría de la complejidad computacional.
-                    </p>
-                    <div class="d-flex justify-content-between tm-pt-45">
-                        <span class="tm-color-primary">Lógica . Complejidad Computacional</span>
-                        <span class="tm-color-primary">Diciembre 10, 2024</span>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <span>0 comentarios</span>
-                        <span>Daniel B.</span>
-                    </div>
-                </article>
+        <div class="tm-paging-wrapper">
+          <span class="d-inline-block mr-3">Page</span>
+          <nav class="tm-paging-nav d-inline-block" aria-label="Pagination">
+            <ul id="paging-nav">
+              <!-- Los botones de paginación se generan de forma dinámica con custom.js -->
+            </ul>
+          </nav>
+        </div>                
+      </div>            
 
-                
-                <article class="col-12 col-md-6 tm-post">
-                    <hr class="tm-hr-primary">
-                    <a href="post2.html" class="effect-lily tm-post-link tm-pt-60">
-                        <div class="tm-post-link-inner">
-                            <img src="img/img-012.jpg" alt="Introducción al Proyecto" class="img-fluid" style="width: 100%; max-height: 435px; max-width: 412px;">
-                        </div>
-                        <span class="position-absolute tm-new-badge">Nuevo</span>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">Decidibilidad e Indecidibilidad en la Computación</h2>
-                    </a>
-                    <p class="tm-pt-30">
-                        Conceptos fundamentales de la teoría de la computación,  <strong>decidibilidad</strong> e <strong>indecidibilidad</strong>.
-                    </p>
-                    <div class="d-flex justify-content-between tm-pt-45">
-                        <span class="tm-color-primary">Lógica . Complejidad Computacional</span>
-                        <span class="tm-color-primary">Diciembre 15, 2024</span>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <span>0 comentarios</span>
-                        <span>Luis G.</span>
-                    </div>
-                </article>
+      <!-- Footer -->
+      <footer class="row tm-row" role="contentinfo">
+        <hr class="col-12">
+        <div class="col-md-6 col-12 tm-color-gray">
+          <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-external-link">Un Viaje P-NP Lógico</a>
+        </div>
+        <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+          Universidad Nacional de Colombia
+        </div>
+      </footer>
+    </main>
+  </div>
 
-                <article class="col-12 col-md-6 tm-post">
-                    <hr class="tm-hr-primary">
-                    <a href="post4.html" class="effect-lily tm-post-link tm-pt-60">
-                        <div class="tm-post-link-inner">
-                            <img src="img/img-013.jpg" alt="Decidibilidad" class="img-fluid" style="width: 400px;">
-                        </div>
-                        <span class="position-absolute tm-new-badge">Nuevo</span>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">Complejidad Descriptiva?</h2>
-                    </a>                    
-                    <p class="tm-pt-30">
-La complejidad descriptiva revela una nueva perspectiva sobre la computación, donde la verdadera complejidad de un problema no se mide solo en tiempo y espacio, sino en la riqueza lógica necesaria para describirlo. 
+  <!-- Scripts -->
+  <script src="js/jquery.min.js"></script>
+  <script>
+    $("#sidebar-container").load("sidebar.html", function() {
+const currentUrl = window.location.href;
+console.log("Current URL:", currentUrl);
 
-                        
-                    <div class="d-flex justify-content-between tm-pt-45">
-                        <span class="tm-color-primary">Lógica . Complejidad Computacional</span>
-                        <span class="tm-color-primary">Feb 6, 2025</span>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <span>0 comments</span>
-                        <span>Luis G.</span>
-                    </div>
-                </article>
-                <article class="col-12 col-md-6 tm-post">
-                    <hr class="tm-hr-primary">
-                    <a href="post3.html" class="effect-lily tm-post-link tm-pt-60">
-                        <div class="tm-post-link-inner">
-                            <img src="img/img-014.jpg" alt="Decidibilidad" class="img-fluid" style="width: 400px;">
-                        </div>
-                        <span class="position-absolute tm-new-badge">New</span>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">Bases Teóricas y Notación</h2>
-                    </a>                    
-                    <p class="tm-pt-30">
-                        Descubre cómo la  lógica matemática forma la base de la computación, explorando conceptos clave como vocabulario lógico, estructuras e interpretación de fórmulas. Un enfoque esencial para comprender la teoría de la computación. ¡Sigue leyendo!
-                    </p>
-                    <div class="d-flex justify-content-between tm-pt-45">
-                        <span class="tm-color-primary">Logica Matemática</span>
-                        <span class="tm-color-primary">Feb 06, 2025</span>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <span>0 comments</span>
-                        <span>Luis G.</span>
-                    </div>
-                </article>
-                <article class="col-12 col-md-6 tm-post">
-                    <hr class="tm-hr-primary">
-                    <a href="post5.html" class="effect-lily tm-post-link tm-pt-60">
-                        <div class="tm-post-link-inner">
-                            <img src="img/sat.jpg" alt="Image" class="img-fluid">                            
-                        </div>
-                        <span class="position-absolute tm-new-badge">New</span>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">El gran paso hacia  SO∃ = NP </h2>
-                    </a>                    
-                    <p class="tm-pt-30">
-                        La teoría de la complejidad computacional ha sido testigo de un gran avance en la demostración de la existencia de un algoritmo polinomial para el problema de satisfacción de fórmulas booleanas. ¡Descúbrelo aquí!
-                    </p>
-                    <div class="d-flex justify-content-between tm-pt-45">
-                        <span class="tm-color-primary">Problema SAT</span>
-                        <span class="tm-color-primary"> Feb 20, 2025</span>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <span>0 comments</span>
-                        <span>Luis G.</span>
-                    </div>
-                </article>
-                <article class="col-12 col-md-6 tm-post">
-                    <hr class="tm-hr-primary">
-                    <a href="post.html" class="effect-lily tm-post-link tm-pt-60">
-                        <div class="tm-post-link-inner">
-                            <img src="img/img-01.jpg" alt="Image" class="img-fluid">                            
-                        </div>
-                        <span class="position-absolute tm-new-badge">New</span>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">Simple and useful HTML layout</h2>
-                    </a>                    
-                    <p class="tm-pt-30">
-                        There is a clickable image with beautiful hover effect and active title link for each post item. 
-                        Left side is a sticky menu bar. Right side is a blog content that will scroll up and down.
-                    </p>
-                    <div class="d-flex justify-content-between tm-pt-45">
-                        <span class="tm-color-primary">Travel . Events</span>
-                        <span class="tm-color-primary">June 24, 2020</span>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <span>36 comments</span>
-                        <span>by Admin Nat</span>
-                    </div>
-                </article>
-                <article class="col-12 col-md-6 tm-post">
-                    <hr class="tm-hr-primary">
-                    <a href="post.html" class="effect-lily tm-post-link tm-pt-60">
-                        <div class="tm-post-link-inner">
-                            <img src="img/img-01.jpg" alt="Image" class="img-fluid">                            
-                        </div>
-                        <span class="position-absolute tm-new-badge">New</span>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">Simple and useful HTML layout</h2>
-                    </a>                    
-                    <p class="tm-pt-30">
-                        There is a clickable image with beautiful hover effect and active title link for each post item. 
-                        Left side is a sticky menu bar. Right side is a blog content that will scroll up and down.
-                    </p>
-                    <div class="d-flex justify-content-between tm-pt-45">
-                        <span class="tm-color-primary">Travel . Events</span>
-                        <span class="tm-color-primary">June 24, 2020</span>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <span>36 comments</span>
-                        <span>by Admin Nat</span>
-                    </div>
-                </article>
-                <article class="col-12 col-md-6 tm-post">
-                    <hr class="tm-hr-primary">
-                    <a href="post.html" class="effect-lily tm-post-link tm-pt-60">
-                        <div class="tm-post-link-inner">
-                            <img src="img/img-013.jpg" alt="Image" class="img-fluid">                            
-                        </div>
-                        <span class="position-absolute tm-new-badge">New</span>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">Simple and useful HTML layout</h2>
-                    </a>                    
-                    <p class="tm-pt-30">
-                        There is a clickable image with beautiful hover effect and active title link for each post item. 
-                        Left side is a sticky menu bar. Right side is a blog content that will scroll up and down.
-                    </p>
-                    <div class="d-flex justify-content-between tm-pt-45">
-                        <span class="tm-color-primary">Travel . Events</span>
-                        <span class="tm-color-primary">June 24, 2020</span>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <span>36 comments</span>
-                        <span>by Admin Nat</span>
-                    </div>
-                </article>
-
-                <!-- Más artículos aquí -->
-            </div>
-            <div class="row tm-row tm-mt-100 tm-mb-75">
-                <div class="tm-prev-next-wrapper">
-                    <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20" id="prev-btn">Prev</a>
-                    <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next" id="next-btn">Next</a>
-                </div>
-                <div class="tm-paging-wrapper">
-                    <span class="d-inline-block mr-3">Page</span>
-                    <nav class="tm-paging-nav d-inline-block">
-                        <ul id="paging-nav">
-                            <!-- Paginación aquí -->
-                        </ul>
-                    </nav>
-                </div>                
-            </div>            
-            <footer class="row tm-row">
-                <hr class="col-12">
-                <div class="col-md-6 col-12 tm-color-gray">
-                     <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-external-link">Un Viaje P-NP Logico</a>
-                </div>
-                <div class="col-md-6 col-12 tm-color-gray tm-copyright">
-                    Universidad Nacional de Colombia
-                </div>
-            </footer>
-        </main>
-    </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/templatemo-script.js"></script>
-    <script src="js/custom.js"></script> <!-- Vincula tu archivo JavaScript personalizado -->
+$("#tm-nav a").each(function() {
+const linkUrl = $(this).prop("href");
+console.log("Comparando con:", linkUrl);
+if (currentUrl.indexOf(linkUrl) !== -1) {
+  $(this).closest("li").addClass("active");
+} else {
+  $(this).closest("li").removeClass("active");
+}
+});
+});
+  </script>
+  <script src="js/templatemo-script.js"></script>
+  <script src="js/custom.js"></script>
 </body>
 </html>

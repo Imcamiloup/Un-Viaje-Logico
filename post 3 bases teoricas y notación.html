@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción a la Lógica Matemática: Vocabulario y Definiciones</title>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <header id="tm-header2">
+        <div class="tm-header-wrapper">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="tm-nav" id="tm-nav">            
+                <ul>
+                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+                        <i class="fas fa-home"></i>
+                    </a></li>
+                </ul>
+            </nav>            
+        </div>
+    </header>
+
+    <div>
+        <main class="tm-main">
+            <style>
+                ul {
+                    list-style: none; /* Quita las viñetas por defecto */
+                    padding-left: 0; /* Ajusta el espacio a la izquierda */
+                }
+                
+                ul > li {
+                    margin-bottom: 10px; /* Espaciado entre elementos */
+                    padding-left: 30px; /* Espacio para el icono */
+                    position: relative;
+                }
+                
+                ul > li::before {
+                    content: "★"; /* Puedes cambiar el icono por cualquier otro */
+                    color: #ff9800; /* Color del icono */
+                    font-size: 18px;
+                    position: absolute;
+                    left: 0;
+                    top: 3px;
+                }
+                    </style>
+            <div class="row tm-row">
+                <div class="col-lg-11 tm-post-col">
+                    <div class="tm-post-full">                    
+                        <div class="mb-4">
+                            <h1 class="pt-2 tm-color-primary">Bases Teoricas y Notación</h1>
+                            <hr>
+                            <h2 class="pt-2 tm-color-primary tm-post-title">Introducción a la Lógica Matemática: Vocabulario y Definiciones</h2>
+                            <p class="tm-mb-40">Publicado por Admin | Fecha: 15 de Febrero, 2025</p>
+                            
+                            <p style="text-align: justify;">
+                                La lógica matemática forma la base de muchos campos de la informática y la teoría de la computación. Antes de comenzar a trabajar con problemas complejos, debemos comprender el vocabulario esencial de la lógica. El <strong>vocabulario</strong> es una tupla de símbolos que incluye relaciones, funciones y constantes, fundamentales para la construcción de estructuras lógicas. 
+                            </p>
+                            <p style="text-align: justify;">
+                                Formalmente, un vocabulario \( \tau \) se define como una tupla de símbolos de relación, constantes y funciones:
+                            </p>
+                            <p style="text-align: justify;">
+                                \[
+                                \tau = \langle R_1^{a_1}, \dots, R_r^{a_r}, c_1, \dots, c_s, f_1^{r_1}, \dots, f_t^{r_t} \rangle
+                                \]
+                                donde \( R_i \) es un símbolo de relación de aridad \( a_i \), \( c_j \) son símbolos constantes, y \( f_i \) son símbolos de función con aridad \( r_i \).
+                            </p>
+                            <p style="text-align: justify;">
+                                Ejemplos típicos incluyen \( \tau_g = \langle E^2, s, t \rangle \), el vocabulario utilizado para grafos con nodos fuente y terminal, y \( \tau_s = \langle \leq^2, S^1 \rangle \), usado para cadenas binarias.
+                            </p>
+
+                            <h3 class="tm-color-primary">Estructuras Lógicas</h3>
+                            <p style="text-align: justify;">
+                                Una <strong>estructura</strong> con un vocabulario \( \tau \) es una tupla que contiene un universo y las interpretaciones de los símbolos de relación, constantes y funciones. Formalmente:
+                            </p>
+                            <p style="text-align: justify;">
+                                \[
+                                \mathcal{A} = \langle |\mathcal{A}|, R_1^{\mathcal{A}}, \dots, R_r^{\mathcal{A}}, c_1^{\mathcal{A}}, \dots, c_s^{\mathcal{A}}, f_1^{\mathcal{A}}, \dots, f_t^{\mathcal{A}} \rangle
+                                \]
+                                donde \( |\mathcal{A}| \) es el universo de la estructura y cada símbolo en \( \tau \) se interpreta en \( \mathcal{A} \).
+                            </p>
+                            <p style="text-align: justify;">
+                                En esta estructura, para cada símbolo de relación \( R_i \), la relación correspondiente en \( \mathcal{A} \) se define como \( R_i^{\mathcal{A}} \subseteq |\mathcal{A}|^{a_i} \). Las constantes \( c_j \) se asignan a elementos de \( |\mathcal{A}| \), y las funciones \( f_i \) se interpretan como funciones definidas sobre \( |\mathcal{A}| \).
+                            </p>
+
+                            <h3 class="tm-color-primary">Lenguaje de Primer Orden \( L(\tau) \)</h3>
+                            <p style="text-align: justify;">
+                                Definimos el lenguaje de primer orden \( L(\tau) \) para un vocabulario \( \tau \) como el conjunto de fórmulas construidas a partir de los símbolos de relación y constantes de \( \tau \), el símbolo lógico \( = \), los conectivos booleanos \( \land, \neg \), las variables \( \text{VAR} = \{x, y, z, \dots \} \), y el cuantificador \( \exists \).
+                            </p>
+                            <p style="text-align: justify;">
+                                Decimos que una ocurrencia de una variable \( v \) en una fórmula \( \varphi \) está <strong>limitada</strong> si está dentro del alcance de un cuantificador \( \exists v \) o \( \forall v \); de lo contrario, se dice que está <strong>libre</strong>. Una variable \( v \) está libre en \( \varphi \) si tiene una ocurrencia libre en ella, es decir, si no está en el alcance de un cuantificador. Por ejemplo, las variables libres en la siguiente fórmula son \( x \) y \( y \):
+                            </p>
+                            <p>
+                                Usamos el símbolo “\( \equiv \)” para definir o denotar la equivalencia de fórmulas.
+                            </p>
+                            \[
+                            \alpha \equiv [(\exists y)(y + 1 = x)] \land x < y
+                            \]
+                            <p style="text-align: justify;">
+                                De manera similar, utilizamos “\( \Leftrightarrow \)” para indicar que dos fórmulas o condiciones definidas previamente son equivalentes.
+                            </p>
+                            <p style="text-align: justify;">
+                                Las variables <strong>limitadas</strong> son llamadas “dummy” y pueden ser renombradas para evitar confusiones. Por ejemplo, la fórmula \( \alpha \) es equivalente a la siguiente fórmula \( \alpha' \), que también tiene variables libres \( x \) y \( y \):
+                            </p>
+                            \[
+                            \alpha' \equiv [(\exists z)(z + 1 = x)] \land x < y
+                            \]
+                            <p style="text-align: justify;">
+                                En esta equivalencia, hemos renombrado la variable \( y \) a \( z \), lo que no cambia la validez de la fórmula.
+                            </p>
+
+                            <h3 class="tm-color-primary">Interpretación en una Estructura</h3>
+                            <p style="text-align: justify;">
+                                El concepto de <strong>interpretación</strong> es fundamental para entender cómo se evalúan las fórmulas en una estructura. Una interpretación es un mapeo que asigna elementos del universo de la estructura a las variables de la fórmula. Si \( \varphi \) es una fórmula que contiene algunas variables libres, podemos definir su valor en la estructura \( \mathcal{A} \) bajo una interpretación \( i \). 
+                            </p>
+                            <p>
+                                Definimos \( I : \text{STRUC}[\tau]\) como el conjunto de estructuras del vocabulario τ
+                            </p>s
+                            <p style="text-align: justify;"> 
+                                Definimos \( \mathcal{A} \models \varphi \) para indicar que la fórmula \( \varphi \) es verdadera en la estructura \( \mathcal{A} \). Además, la semántica de la lógica matemática se define de forma inductiva. Por ejemplo, si \( t_1 \) y \( t_2 \) son términos, entonces:
+                            </p>
+                            \[
+                            (\mathcal{A}, i) \models t_1 = t_2 \quad \Leftrightarrow \quad i(t_1) = i(t_2)
+                            \]
+                            <p style="text-align: justify;">
+                                Esto significa que \( t_1 = t_2 \) es verdadero en \( \mathcal{A} \) si las interpretaciones de ambos términos coinciden.
+                            </p>
+
+                            <h3 class="tm-color-primary">Cuantificadores y Conectores</h3>
+                            <p style="text-align: justify;">
+                                Los cuantificadores y conectores lógicos son esenciales para expresar relaciones más complejas entre variables. El cuantificador existencial se define como sigue:
+                            </p>
+                            \[
+                            (\exists x) \varphi \quad \Leftrightarrow \quad \text{(existe algún } a \in |\mathcal{A}|) (\mathcal{A}, i, a/x) \models \varphi
+                            \]
+                            <p style="text-align: justify;">
+                                Aquí, \( (\mathcal{A}, i, a/x) \) denota una interpretación en la que \( x \) es reemplazado por \( a \), y \( \varphi \) se evalúa bajo esa nueva interpretación.
+                            </p>
+                            <p style="text-align: justify;">
+                                El cuantificador universal, \( (\forall x) \varphi \), se define como el dual del cuantificador existencial:
+                            </p>
+                            \[
+                            (\forall x) \varphi \quad \equiv \quad \neg (\exists x) \neg \varphi
+                            \]
+                            <p style="text-align: justify;">
+                                Esto implica que una fórmula universal es verdadera si no hay un contraejemplo que haga que la fórmula sea falsa para alguna asignación de \( x \).
+                            </p>
+
+                            <h3 class="tm-color-primary">Definición de Verdad en Lógica Matemática</h3>
+                            <p style="text-align: justify;">
+                                En lógica matemática, podemos ser completamente precisos acerca de la semántica. En particular, podemos definir de manera definitiva lo que significa que una fórmula \( \varphi \) sea verdadera en una estructura \( \mathcal{A} \). A continuación, mostramos la definición formal de "verdad":
+                            </p>
+                            <p style="text-align: justify;">
+                                La definición de verdad establece cómo evaluamos una fórmula dentro de una estructura matemática, incluyendo el manejo de términos y relaciones en la estructura. La semántica es definida inductivamente, considerando cómo se satisface cada fórmula dentro de su interpretación:
+                            </p>
+                            
+
+                            <p style="text-align: justify;">
+                                Sea \( \mathcal{A} \in \text{STRUC}[\tau] \) una estructura y sea \( i \) una interpretación en \( \mathcal{A} \) cuyo dominio incluye todas las variables libres relevantes. Definimos inductivamente si una fórmula \( \varphi \in \mathcal{L}(\tau) \) es verdadera en \( (\mathcal{A}, i) \):
+                            </p>
+
+                            \[
+                            (\mathcal{A}, i) \models t_1 = t_2 \quad \Leftrightarrow \quad i(t_1) = i(t_2)
+                            \]
+
+                            \[
+                            (\mathcal{A}, i) \models R_j(t_1, \dots, t_{a_j}) \quad \Leftrightarrow \quad \langle i(t_1), \dots, i(t_{a_j}) \rangle \in R_j^{\mathcal{A}}
+                            \]
+
+                            \[
+                            (\mathcal{A}, i) \models \neg \varphi \quad \Leftrightarrow \quad \text{no es el caso que } (\mathcal{A}, i) \models \varphi
+                            \]
+
+                            \[
+                            (\mathcal{A}, i) \models \varphi \land \psi \quad \Leftrightarrow \quad (\mathcal{A}, i) \models \varphi \text{ y } (\mathcal{A}, i) \models \psi
+                            \]
+
+                            \[
+                            (\mathcal{A}, i) \models (\exists x) \varphi \quad \Leftrightarrow \quad \text{(existe algún } a \in |\mathcal{A}|) (\mathcal{A}, i, a/x) \models \varphi
+                            \]
+
+                            <p style="text-align: justify;">
+                                Además, definimos el cuantificador "para todo" como el dual de \( \exists \) y el "o" booleano como el dual de \( \land \):
+                            </p>
+
+                            \[
+                            (\forall x) \varphi \quad \equiv \quad \neg (\exists x) \neg \varphi; \quad \quad \alpha \lor \beta \quad \equiv \quad \neg (\neg \alpha \land \neg \beta)
+                            \]
+
+                            <p style="text-align: justify;">
+                                Estas definiciones formales permiten una comprensión rigurosa de cómo se debe interpretar y evaluar las fórmulas en estructuras lógicas. Así, la lógica matemática proporciona una base sólida para modelar y entender problemas computacionales.
+                            </p>
+
+                            <h3 class="tm-color-primary">Definición de Subestructura</h3>
+                                <p style="text-align: justify;">
+                                    Sea \( A \) y \( B \) estructuras del mismo vocabulario \( \tau = \langle R_1^{a_1}, \dots, R_r^{a_r}, c_1, \dots, c_s \rangle \). Decimos que \( A \) es una subestructura de \( B \), escrita \( A \leq B \), si se cumplen las siguientes condiciones:
+                                </p>
+                                <ol style="text-align: justify;">
+                                    <li><strong>\( |A| \subseteq |B| \)</strong></li>
+                                    <li><strong>Para \( i = 1, 2, \dots, r \), \( R_i^A = R_i^B \cap |A|^{a_i} \)</strong></li>
+                                    <li><strong>Para \( j = 1, 2, \dots, s \), \( c_j^A = c_j^B \)</strong></li>
+                                </ol>
+
+                                <h3 class="tm-color-primary">Definición de Consultas de Primer Orden</h3>
+                                                                
+                                <p style="text-align: justify;">
+                                    Una consulta es cualquier mapeo \( I : \text{STRUC}[\sigma] \to \text{STRUC}[\tau] \) de estructuras de un vocabulario a estructuras de otro vocabulario, que está limitado polinomialmente. Es decir, existe un polinomio \( p \) tal que para todo \( A \in \text{STRUC}[\sigma] \),
+                                </p>
+                                
+                                \[
+                                \|I(A)\| \leq p(\|A\|).
+                                \]
+                                
+                                <p style="text-align: justify;">
+                                    Una consulta booleana es un mapeo \( I_b : \text{STRUC}[\sigma] \to \{0, 1\} \). Una consulta booleana puede considerarse como un subconjunto de \( \text{STRUC}[\sigma] \), el conjunto de estructuras \( A \) para las cuales \( I_b(A) = 1 \).
+                                </p>
+                                
+                                <p style="text-align: justify;">
+                                    Una subclase importante de consultas son las consultas independientes del orden. (En teoría de bases de datos, a menudo se usa el término "genérico" en lugar de "independiente del orden"). Sea \( I \) una consulta definida sobre \( \text{STRUC}[\sigma] \). Entonces, \( I \) es independiente del orden si y solo si para todas las estructuras isomorfas \( A, B \in \text{STRUC}[\sigma] \), \( I(A) \cong I(B) \). Para consultas booleanas, esta última condición se traduce como \( I(A) = I(B) \).
+                                </p>
+                                
+                                <p style="text-align: justify;">
+                                    Desde nuestro punto de vista, la consulta más simple es una consulta de primer orden. Como ejemplo, cualquier oración de primer orden \( \varphi \in \mathcal{L}(\tau) \) define una consulta booleana \( I_\varphi \) sobre \( \text{STRUC}[\tau] \) tal que \( I_\varphi(A) = 1 \) si y solo si \( A \models \varphi \).
+                                </p>
+
+                            <h3 class="tm-color-primary">Conclusión</h3>
+                            <p style="text-align: justify;">
+                                Las definiciones y notaciones presentadas son la base para entender cómo los problemas lógicos y computacionales se pueden representar formalmente y ser evaluados en estructuras matemáticas. Estos conceptos de lógica matemática no solo son fundamentales para la teoría de la computación, sino que también abren el camino para el desarrollo de nuevas teorías y métodos en la verificación de sistemas y bases de datos.
+                            </p>
+                            <span class="d-block text-right tm-color-primary">Lógica . Computación . Matemáticas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Botones de navegación -->
+            <div class="text-center mt-4">
+                <a href="post4.html" class="btn btn-primary mr-2">⟵ ¿ Que es Complejidad Descriptiva ?</a>
+                <a href="post5.html" class="btn btn-primary">El gran paso hacia SO∃ = NP ⟶</a>
+            </div>
+            <footer class="row tm-row">
+                <div class="col-md-6 col-12 tm-color-gray">
+                    Unal
+                </div>
+                <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+                    Luis Gómez.
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $("#sidebar-container").load("sidebar.html", function() {
+  const currentUrl = window.location.href;
+  console.log("Current URL:", currentUrl);
+  
+  $("#tm-nav a").each(function() {
+    const linkUrl = $(this).prop("href");
+    console.log("Comparando con:", linkUrl);
+    if (currentUrl.indexOf(linkUrl) !== -1) {
+      $(this).closest("li").addClass("active");
+    } else {
+      $(this).closest("li").removeClass("active");
+    }
+  });
+});
+      </script>
+    <script src="js/templatemo-script.js"></script>
+</body>
+</html>
