@@ -1,5 +1,30 @@
  <!-- Header con menú lateral -->
  <header class="tm-header" id="tm-header">
+  <style>
+    p {
+        text-align: justify;
+    }
+    ul {
+        list-style: none; /* Quita las viñetas por defecto */
+        padding-left: 10px; /* Ajusta el espacio a la izquierda */
+    }
+
+    ul > li {
+        margin-bottom: 10px; /* Espaciado entre elementos */
+        padding-left: 30px; /* Espacio para el icono */
+        position: relative;
+        text-align: justify;
+    }
+
+    ul > li::before {
+        content: "★"; /* Puedes cambiar el icono por cualquier otro */
+        color: #ff9800; /* Color del icono */
+        font-size: 18px;
+        position: absolute;
+        left: 0;
+        top: 3px;
+    }
+</style>
     <div class="tm-header-wrapper">
       <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
@@ -22,7 +47,7 @@
           </li>
           <!-- Enlace a GitHub con icono -->
           <li class="tm-nav-item">
-            <a href="https://github.com/Usuario/Repo" class="tm-nav-link" target="_blank" rel="noopener">
+            <a href="https://github.com/Imcamiloup/Un-Viaje-Logico" class="tm-nav-link" target="_blank" rel="noopener">
               <i class="fab fa-github"></i>
               Ver en GitHub
             </a>
