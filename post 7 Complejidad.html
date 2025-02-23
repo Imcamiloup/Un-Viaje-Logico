@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trasfondo en Complejidad</title>
+  <link rel="stylesheet" href="fontawesome/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"/>
+  <link href="css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="css/templatemo-xtra-blog.css" rel="stylesheet"/>
+  
+  <!-- Carga de MathJax para las fórmulas en TeX -->
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+
+<body>
+<header id="tm-header2">
+  <div class="tm-header-wrapper">
+    <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav class="tm-nav" id="tm-nav">            
+      <ul>
+        <li class="tm-nav-item">
+          <a href="index.html" class="tm-nav-link">
+            <i class="fas fa-home"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>            
+  </div>
+</header>
+
+<div>
+  <main class="tm-main">
+    <div class="row tm-row">
+      <div class="col-lg-11 tm-post-col">
+        <div class="tm-post-full">                    
+          <div class="mb-4">
+            <h2 class="pt-2 tm-color-primary tm-post-title">Trasfondo en Complejidad</h2>
+            <p class="tm-mb-40">Publicado por Admin | Fecha: 05 de Marzo, 2025</p>
+            
+            <!-- CAPTURA 1: INTRODUCCIÓN AL TRASFONDO EN COMPLEJIDAD -->
+            <p>
+              <strong>La complejidad computacional</strong> mide la cantidad de <em>recursos</em> 
+              (como tiempo y espacio) necesarios para resolver un problema como función 
+              del tamaño de la entrada. En muchas aproximaciones a la <em>teoría de la computación</em>, 
+              se introduce el tema analizando como las <em>Máquinas de Turing</em>, 
+              el <em>Cálculo Lambda de Church</em>, las <em>funciones recursivas de Gödel</em>, 
+              los <em>algoritmos de Markov</em>, y otros modelos son <strong>equivalentes</strong> 
+              en términos de la noción de “procedimiento mecánico” (abstracciones de la idea de computabilidad, 
+              la cualidad de poder ser calculado por una máquina).  
+            </p>
+            <p>
+              En esta entrada nos basamos en la idea de que la complejidad de 
+              un problema (o la complejidad de una consulta como la definimos en entradas anteriores) no depende del modelo de 
+              cómputo específico, <em>mide algo más fundamental</em>. De hecho, estas ideas tienen que ver con
+              el principio conocido como la <strong>Tesis de Church-Turing</strong>, 
+              según el cual aquello que puede ser calculado de manera efectiva 
+              por cualquier mecanismo, puede simularse en última instancia mediante 
+              una <em>máquina de Turing</em>. Por ende, estudiar el “tiempo y espacio” 
+              bajo el modelo de Turing no es solo una elección arbitraria: es un estándar que 
+              abarca el cómputo efectivo en general.
+            </p>
+            
+            <h3 class="tm-color-primary">1. Motivación</h3>
+            <p>
+              A principios de la década de 1930, se propusieron diversos sistemas formales 
+              con la intención de capturar la noción intuitiva de “algoritmo”. El 
+              <strong>cálculo lambda de Church</strong>, las <em>funciones recursivas</em> 
+              de Gödel y las <em>máquinas de Turing</em> de Alan Turing resultaron ser 
+              enfoques distintos, pero todos coincidían en describir el mismo conjunto 
+              de <em>problemas computables</em>. Dicha coincidencia, demostrada 
+              tras múltiples esfuerzos independientes, condujo a la aceptación de 
+              la <em>Tesis de Church–Turing</em>:
+            </p>
+            <p class="tm-mb-40">
+              <em>“La idea de cálculo efectivamente realizable se corresponde, en esencia, 
+              con lo que una máquina de Turing puede computar.”</em>
+            </p>
+            <p>
+              De aquí se desprende que la <strong>eficiencia</strong> 
+              (esto es, la cantidad de recursos empleados) no depende del modelo, 
+              sino que es una característica intrínseca del proceso algorítmico. 
+              Por ejemplo, si medimos la complejidad temporal de resolver un problema 
+              en una <em>máquina de Turing</em> o en el <em>cálculo lambda</em>, 
+              los órdenes de crecimiento (polinomial, exponencial, etc.) resultan 
+              equivalentes en lo esencial. Así se configura la <em>teoría de la complejidad</em> 
+              como un estudio unificado: <strong>no es modelo-dependiente</strong>, 
+              sino un ámbito fundamental de la computación. Este paso entre lo particular de cada modelo 
+              y una teoría general se da también en nuestro estudio de la lógica.
+            </p>
+
+            <h3 class="tm-color-primary">2. Perspectiva lógica</h3>
+            <p>
+              Desde la <em>perspectiva de la lógica</em>, la complejidad computacional 
+              puede verse como una forma de indagar <em>cuántos recursos</em> (por ejemplo, 
+              pasos de un algoritmo) necesitamos para verificar o describir propiedades 
+              de estructuras finitas. En <strong>complejidad descriptiva</strong>, 
+              se establecen clases de complejidad (como P, NP, PSPACE, etc.) usando 
+              <em>lógicas extendidas</em>: por ejemplo, la <strong>lógica de punto fijo</strong> 
+              para P o la <strong>lógica de segundo orden existencial</strong> para NP. 
+              Sin embargo, la base conceptual permanece en la noción de que <em>un proceso 
+              de cómputo</em> puede entenderse de manera equivalente desde la óptica 
+              de una máquina de Turing o desde la <em>definibilidad lógica</em> de un 
+              conjunto de estructuras.
+            </p>
+            <p>
+              A lo largo de esta entrada, se presentarán las medidas de complejidad 
+              (tiempo, espacio y otros recursos), las principales clases que surgen 
+              de estas medidas, y algunos problemas completos que ejemplifican 
+              los límites y alcances de cada clase. Además, se hará énfasis en las 
+              <em>propiedades fundamentales</em> (cerradura, jerarquías, reducciones) 
+              y en cómo la <strong>tesis de Church–Turing</strong> sustenta que 
+              todos estos modelos convergen en la misma noción de <em>computabilidad efectiva</em>.
+            </p>
+
+<!-- 3. Definiciones iniciales sobre Máquinas de Turing y Codificación binaria -->
+<h3 class="tm-color-primary">3. Definiciones iniciales sobre Máquinas de Turing y Codificación binaria</h3>
+
+<p>
+  Para comprender los fundamentos de la <em>complejidad descriptiva</em>, es esencial partir de dos conceptos: el modelo de <strong>máquina de Turing</strong> y la <strong>codificación binaria</strong> de estructuras. A continuación se presenta una síntesis detallada de estos elementos, expresada en términos formales y desde una perspectiva lógica.
+</p>
+
+<h4 class="tm-color-primary">3.1 Máquinas de Turing</h4>
+<p>
+  Una <strong>máquina de Turing</strong> es un modelo abstracto de cómputo introducido por Alan Turing en 1936 para capturar la noción de <em>procedimiento algorítmico</em>. De manera informal, una máquina de Turing consta de:
+</p>
+<ul>
+  <li>
+    Una cinta de longitud potencialmente infinita dividida en celdas, cada una de las cuales puede contener un símbolo (por ejemplo, 0 o 1).
+  </li>
+  <li>
+    Un <em>cabezal</em> que se desplaza a lo largo de la cinta, leyendo y escribiendo símbolos, y que puede moverse hacia la izquierda o la derecha.
+  </li>
+  <li>
+    Un conjunto finito de <em>estados internos</em>, entre los cuales se encuentran estados de aceptación y de rechazo.
+  </li>
+  <li>
+    Una <em>función de transición</em> que, dada la combinación del símbolo leído y el estado actual, determina el símbolo a escribir, la dirección en la que mover el cabezal y el nuevo estado.
+  </li>
+</ul>
+<p>
+  Una máquina de Turing <strong>M</strong> se dice que <em>acepta</em> una palabra binaria \(w \in \{0,1\}^*\) si, al iniciar en una configuración determinada y con la cinta conteniendo \(w\), <em>M</em> se detiene en un estado de aceptación. Formalmente, se define el <em>lenguaje</em> reconocido por <em>M</em> como
+  \[
+    L(M) \;=\; \{\, w \in \{0,1\}^* \mid M(w)\downarrow \},
+  \]
+  donde \(M(w)\downarrow\) indica que <em>M</em> se detiene en un estado de aceptación con la entrada \(w\). Más allá de aceptar o rechazar, una máquina de Turing puede <em>computar funciones</em> \(T: \{0,1\}^* \to \{0,1\}^*\), donde \(T(w)\) es la cadena resultante escrita en la cinta de salida si <em>T</em> se detiene en \(w\); en caso contrario, \(T(w)\) queda indefinido.
+</p>
+
+<h4 class="tm-color-primary">3.2 Codificación Binaria de Estructuras</h4>
+<p>
+  La <em>complejidad descriptiva</em> pretende relacionar la <em>definibilidad lógica</em> de consultas sobre estructuras finitas con la computación realizada por máquinas de Turing. Para ello, se introduce una función de <strong>codificación binaria</strong>
+  \[
+    \text{bin}_\tau : \mathrm{STRUC}[\tau] \to \mathrm{STRUC}[\tau_s],
+  \]
+  donde:
+</p>
+<ul>
+  <li>
+    \(\tau\) es un vocabulario arbitrario (por ejemplo, el de grafos, bases de datos, etc.).
+  </li>
+  <li>
+    \(\mathrm{STRUC}[\tau]\) es el conjunto de todas las estructuras finitas interpretando el vocabulario \(\tau\).
+  </li>
+  <li>
+    \(\tau_s\) es el vocabulario destinado a describir <em>cadenas booleanas</em> (o <em>strings</em>), lo que permite representar la información de una estructura en forma de cadena binaria.
+  </li>
+</ul>
+<p>
+  La idea es que, dada una estructura \(\mathbf{A} \in \mathrm{STRUC}[\tau]\), 
+  <em>bin</em>\(_\tau(\mathbf{A})\) es una cadena en \(\{0,1\}^*\) que codifica toda la 
+  información relevante de \(\mathbf{A}\). Esta codificación se realiza de la siguiente manera:
+</p>
+<ol>
+  <li>
+    Se fija un orden sobre el dominio \(|A|\), normalmente numerándolo como 
+    \(\{0,1,\dots,n-1\}\) donde \(n = |A|\).
+  </li>
+  <li>
+    Cada relación \(R_i^A \subseteq |A|^{a_i}\) se representa con un bloque de bits de 
+    longitud \(n^{\,a_i}\). Cada posición en el bloque corresponde a una tupla en 
+    \(|A|^{a_i}\) (según un orden lexicográfico), y se asigna un bit “1” si dicha tupla pertenece 
+    a \(R_i^A\) y “0” en caso contrario.
+  </li>
+  <li>
+    Cada constante \(c_j^A\) se codifica utilizando aproximadamente \(\lceil \log n \rceil\) bits, 
+    que representan la posición de \(c_j^A\) en el dominio.
+  </li>
+  <li>
+    Los bloques correspondientes a todas las relaciones y constantes se concatenan en un orden 
+    preestablecido determinado por el vocabulario \(\tau\). Esto permite que la decodificación sea unívoca, sin necesidad de separadores.
+  </li>
+</ol>
+<p>
+  El tamaño total de la cadena, denotado \(\hat{n}_\tau\), es polinómico en \(n\) y, lo 
+  importante, tanto <em>bin</em>\(_\tau\) como su función inversa <em>bin</em>\(_\tau^{-1}\) 
+  pueden definirse mediante <strong>consultas de primer orden (FO)</strong>. Esto garantiza 
+  que la transformación de una estructura en una cadena y viceversa se realice sin 
+  recurrir a cuantificadores de orden superior o a recursión no permitida.
+</p>
+
+<h4 class="tm-color-primary">3.3 Relación entre la Codificación y las Consultas Lógicas</h4>
+<p>
+  Con la función <em>bin</em>\(_\tau\) se establece una correspondencia entre 
+  <em>consultas sobre estructuras</em> y <em>funciones sobre cadenas</em>. Es decir, 
+  si tenemos una consulta \(I : \mathrm{STRUC}[\sigma] \to \mathrm{STRUC}[\tau]\), 
+  se puede codificar la estructura de entrada \(A\) como <em>bin</em>\(_\sigma(A)\) y 
+  la salida \(I(A)\) como <em>bin</em>\(_\tau(I(A))\). Una máquina de Turing que 
+  opera sobre cadenas transforma <em>bin</em>\(_\sigma(A)\) en <em>bin</em>\(_\tau(I(A))\), 
+  lo cual alinea el <em>modelo algorítmico</em> con la <em>definición lógica</em> de la consulta.
+</p>
+<p>
+  Así, se dice que la máquina de Turing <strong>T</strong> “<em>computa</em>” la consulta 
+  \( I : \mathrm{STRUC}[\sigma] \to \mathrm{STRUC}[\tau] \) si, para toda estructura 
+  \(A \in \mathrm{STRUC}[\sigma]\),
+  \[
+    T\bigl(\mathrm{bin}_\sigma(A)\bigr) \;=\; \mathrm{bin}_\tau\bigl(I(A)\bigr).
+  \]
+  Esta igualdad expresa que transformar \(A\) en \(I(A)\) a nivel de estructuras es 
+  equivalente a transformar la cadena \( \mathrm{bin}_\sigma(A) \) en la cadena 
+  \( \mathrm{bin}_\tau(I(A)) \).
+</p>
+<p>
+  Además, los detalles de la codificación (y su inversa) no son críticos, 
+  siempre que la codificación sea <em>sencilla de procesar</em> y <em>fácil de decodificar</em>, es decir, 
+  definible en primer orden. Esto garantiza la correspondencia entre el <em>punto de vista lógico</em> 
+  y la <em>implementación algorítmica</em> a nivel de complejidad computacional.
+</p>
+
+
+<h4 class="tm-color-primary">3.4 Aplicación: Codificación Binaria y su Inverso como Consultas de Primer Orden</h4>
+<p>
+  Un resultado central en la conexión entre la <em>descripción lógica</em> y la <em>computación efectiva</em> es demostrar que la función de codificación binaria, denotada 
+  \(\mathrm{bin}_\tau\), y su operación inversa, \(\mathrm{bin}_\tau^{-1}\), son consultas definibles en <strong>primer orden</strong>.
+  Esto significa que la transformación de una estructura \(A \in \mathrm{STRUC}[\tau]\) a su representación en cadena, y la recuperación de \(A\)
+  a partir de dicha cadena, pueden realizarse utilizando únicamente fórmulas de la lógica de primer orden.
+</p>
+<p>
+  En esta aplicación se procede en dos direcciones:
+</p>
+<p>
+  Por un lado, se analiza cómo se generan los bits que codifican cada relación y constante de una estructura \(A\). Por ejemplo, para una relación 
+  \(R \subseteq |A|^k\), se utiliza una fórmula de primer orden para determinar, para cada tupla \((x_1, \dots, x_k)\) en el universo ordenado \(|A| = \{0, 1, \dots, n-1\}\),
+  si la tupla pertenece a \(R\); es decir, se asigna un “1” o “0” de acuerdo con la pertenencia de la tupla a la relación. Este mecanismo se basa
+  únicamente en cuantificadores sobre índices y propiedades aritméticas simples, sin recurrir a métodos recursivos o cuantificadores de orden superior.
+</p>
+<p>
+  Por otro lado, se debe establecer la forma en que, dada la cadena resultante, se puede reconstruir la estructura original. Esto implica leer cada bloque
+  de bits que representa las relaciones y las constantes, y mediante fórmulas FO asociar de manera unívoca los índices de la cadena a los elementos del universo 
+  de \(A\). Así se “descodifica” la cadena para recuperar la información original de la estructura.
+</p>
+<p>
+  El resultado de este análisis es que tanto \(\mathrm{bin}_\tau\) como \(\mathrm{bin}_\tau^{-1}\) son consultas de primer orden, lo cual es un resultado
+  crucial para vincular la <em>descripción lógica</em> y la <em>computación efectiva</em> en términos de cadenas de bits. En otras palabras,
+  interpretar una estructura como cadena o reconstruir la estructura a partir de su codificación binaria se puede hacer sin requerir potencias lógicas
+  mayores (como cuantificadores de segundo orden o mecanismos de punto fijo), lo que refuerza la robustez y la elegancia del marco de la lógica de Primer Orden para capturar transformaciones
+  complejas.
+</p>
+
+  <h3 class="tm-color-primary">4. Clases de Complejidad: DTIME, NTIME, DSPACE y NSPACE</h3>
+<p>
+  Las <strong>clases de complejidad</strong> son fundamentales para cuantificar los recursos (tiempo y espacio) que requieren las máquinas de Turing para resolver problemas o, en nuestro contexto, para computar consultas lógicas sobre estructuras finitas. Desde una perspectiva lógica, estas clases nos permiten establecer límites y jerarquías en la capacidad de describir y transformar información.
+</p>
+<p>
+  A continuación se presentan las definiciones esenciales para máquinas de Turing con múltiples cintas (por ejemplo, una para la entrada, otras para el trabajo y, opcionalmente, una de salida):
+</p>
+<ul>
+  <li>
+    <strong>DTIME[t(n)]</strong>: Es el conjunto de problemas (o consultas booleanas) que pueden ser decididos por una máquina de Turing determinista en <em>O(t(n))</em> pasos, donde <em>n</em> es la longitud de la entrada. Formalmente, existe una constante <em>c</em> tal que la máquina realiza a lo sumo <em>c · t(n)</em> pasos en toda ejecución.
+  </li>
+  <li>
+    <strong>NTIME[t(n)]</strong>: Es el conjunto de problemas que pueden ser resueltos por una máquina de Turing <em>no determinista</em> en <em>O(t(n))</em> pasos. En este modelo, la máquina explora múltiples "ramas" de ejecución simultáneamente y se considera que acepta si al menos una de ellas alcanza un estado de aceptación dentro de <em>t(n)</em> pasos.
+  </li>
+  <li>
+    <strong>DSPACE[s(n)]</strong>: Se trata del conjunto de problemas decididos por una máquina de Turing determinista que utiliza a lo sumo <em>O(s(n))</em> celdas de memoria en sus cintas de trabajo (excluyendo la cinta de entrada, que es de solo lectura). Aquí lo relevante es el máximo número de celdas que se utilizan durante la ejecución, independientemente del tiempo.
+  </li>
+  <li>
+    <strong>NSPACE[s(n)]</strong>: Análogo a DSPACE, es el conjunto de problemas que pueden ser resueltos por una máquina de Turing no determinista utilizando <em>O(s(n))</em> celdas de memoria. La capacidad no determinista permite explorar múltiples configuraciones en paralelo, aceptando si al menos una rama utiliza el espacio asignado.
+  </li>
+</ul>
+<p>
+  Estas definiciones se utilizan para construir clases de complejidad más amplias, por ejemplo:
+</p>
+<ul>
+  <li>
+    \(\mathrm{P} = \bigcup_{k \ge 1} \mathrm{DTIME}[n^k]\): Problemas decidibles en tiempo polinómico por máquinas deterministas.
+  </li>
+  <li>
+    \(\mathrm{NP} = \bigcup_{k \ge 1} \mathrm{NTIME}[n^k]\): Problemas cuya verificación (o aceptación) puede hacerse en tiempo polinómico por máquinas no deterministas, como ocurre en la verificación de certificados para problemas como 3-SAT o Cliques.
+  </li>
+  <li>
+    \(\mathrm{PSPACE} = \bigcup_{k \ge 1} \mathrm{DSPACE}[n^k]\): Problemas resolubles utilizando espacio polinómico, sin que necesariamente se cumpla un límite polinómico en el tiempo.
+  </li>
+  <li>
+    \(\mathrm{EXPTIME} = \bigcup_{k \ge 1} \mathrm{DTIME}[2^{n^k}]\): Problemas en los que el número de pasos de una máquina determinista crece exponencialmente.
+  </li>
+</ul>
+<p>
+  En el marco de la <em>complejidad descriptiva</em>, estas clases no se limitan a problemas de decisión (sí/no), sino que se extienden a <em>consultas generales</em> sobre estructuras. Mediante una codificación adecuada (por ejemplo, usando la función <em>bin<sub>σ</sub></em> para transformar una estructura \(A\) en una cadena \(w\) en \(\{0,1\}^*\)), se puede afirmar que si una máquina en, por ejemplo, \(\mathrm{DTIME}[t(n)]\) transforma \(w = \mathrm{bin}_\sigma(A)\) en \(w' = \mathrm{bin}_\tau(I(A))\) en O(t(n)) pasos, la consulta \(I\) es computable en \(\mathrm{DTIME}[t(n)]\).
+</p>
+<p>
+  Así, la visión algorítmica se unifica con la <em>descripción lógica</em> de propiedades y transformaciones en estructuras finitas, mostrando que las mismas limitaciones de tiempo y espacio que se aplican a las máquinas de Turing se trasladan a la definición de consultas lógicas.
+</p>
+
+<h3 class="tm-color-primary">5. Consultas Computables y Funciones Constructibles en Clases de Complejidad</h3>
+<p>
+  Un resultado central en la conexión entre la <em>descripción lógica</em> y la <em>computación efectiva</em> es la noción de que ciertas transformaciones entre estructuras (o consultas) son computables dentro de una clase de complejidad determinada. En este sentido, se introduce la idea de que, para una consulta 
+  \[
+    I : \mathrm{STRUC}[\sigma] \to \mathrm{STRUC}[\tau],
+  \]
+  es posible definir un conjunto de consultas booleanas, denotado por \( I_b \), que “analiza” la salida \( \mathrm{bin}(I(A)) \) <strong>bit a bit</strong>. Es decir, para cada bit \( i \) y cada valor \( a \in \{0,1\} \), se considera la consulta que determina si el \( i \)-ésimo bit de la codificación binaria de \( I(A) \) es \( a \):
+  \[
+    I_b \;=\; \{\, (\mathbf{A}, i, a) \mid \text{el } i\text{-ésimo bit de } \mathrm{bin}(I(\mathbf{A})) \text{ es } a \}.
+  \]
+</p>
+<p>
+  Decir que “\( I \) es computable en la clase \( C \)” significa que para cada bit, la correspondiente consulta booleana \( I_b \) pertenece a \( C \). En otras palabras, si un modelo computacional (como una máquina de Turing) que opera en \( C \) puede, de forma uniforme, responder a la pregunta “¿qué valor tiene el \( i \)-ésimo bit de \( \mathrm{bin}(I(A)) \)?” sin exceder los límites de recursos estipulados, entonces toda la transformación \( I \) se considera computable en \( C \).
+</p>
+<p>
+  Así, para cualquier clase de complejidad \( C \) (por ejemplo, \( \mathrm{P} \), \( \mathrm{NP} \), \( \mathrm{PSPACE} \)), definimos el conjunto
+  \[
+    Q(C) \;=\; C \;\cup\; \{\, I \mid I_b \in C \,\},
+  \]
+  donde \( C \) denota el conjunto de consultas booleanas en \( C \) y \( I \) es una consulta general cuyas salidas, evaluadas bit a bit, son computables dentro de la cota impuesta por \( C \). Este concepto amplía el estudio de la complejidad más allá de simples problemas de decisión, abarcando cualquier transformación lógica de estructuras.
+</p>
+<p>
+  Además, encontramos los <em>teoremas de jerarquía</em> para tiempo y espacio, los cuales establecen que al incrementar los recursos disponibles se pueden resolver estrictamente más problemas. Dichos teoremas se demuestran mediante <strong>argumentos de diagonalización</strong>, que no solo son fundamentales para construir lenguajes que superan un límite de recursos, sino que también evocan, en espíritu, los métodos de autorreferencia empleados por Gödel en sus demostraciones de incompletitud.
+</p>
+<p>
+  Por último, una función \( s : \mathbb{N} \to \mathbb{N} \) es <em>construible</em> (ya sea en espacio o en tiempo) si existe una máquina determinista que, dada la cadena \( 0^n \), computa la representación binaria de \( s(n) \) en un número de pasos o celdas acotado por \( O(s(n)) \). En la notación de complejidad descriptiva, esto implica que la función 
+  \[
+    s' : \{0,1\}^* \to \{0,1\}^*
+  \]
+  (definida por \( s'(0^n) \) igual a la cadena binaria que representa \( s(n) \)) pertenece a \( Q(\mathrm{DSPACE}[s(n)]) \) o a \( Q(\mathrm{DTIME}[s(n)]) \), según corresponda. Habitualmente, todas las funciones “razonables” (por ejemplo, polinomiales o exponenciales) son constructibles y pueden usarse con seguridad como cotas de tiempo o espacio.
+</p>
+<p>
+  De manera complementaria, la discusión se extiende al análisis de ejemplos prácticos que ilustran estas ideas. Se plantea, por ejemplo, la constructibilidad de funciones como \( n \), \( n^2 \), \( \lceil n \log n \rceil \) o \( 2^n \). La idea es diseñar algoritmos deterministas que, partiendo de la entrada \( 0^n \), calculen la representación binaria de \( f(n) \) en \( O(f(n)) \) pasos (o utilizando \( O(f(n)) \) celdas). Para \( 2^n \), por ejemplo, se puede implementar un contador que duplique su valor en cada iteración, garantizando que el proceso no exceda el límite de recursos.
+</p>
+<p>
+  Asimismo, se aborda el teorema de jerarquía de espacio, que establece que si \( s(n) \) es una función espacio-constructible con \( s(n) \ge \log n \) y si \( \lim_{n \to \infty} \frac{t(n)}{s(n)} = 0 \), entonces se tiene:
+  \[
+    \mathrm{DSPACE}[s(n)] \;\subsetneq\; \mathrm{DSPACE}[t(n)].
+  \]
+  La demostración de este resultado utiliza un argumento de diagonalización, en el que se construye una máquina diagonalizadora que, para una entrada que codifica la descripción de otra máquina \( M \), fuerza a \( M \) a exceder la cota \( s(n) \) o a comportarse de manera contradictoria, demostrando así que existe un lenguaje que no puede ser resuelto en \( \mathrm{DSPACE}[s(n)] \) pero sí en \( \mathrm{DSPACE}[t(n)] \).
+</p>
+<p>
+  Es interesante notar que este método de diagonalización comparte una esencia conceptual con la técnica utilizada por Kurt Gödel en sus teoremas de incompletitud. Si bien la codificación de Gödel, que asigna números a símbolos y fórmulas, no involucra diagonalización por sí misma, sí habilita la construcción de oraciones autoreferentes que demuestran la existencia de enunciados verdaderos pero indemostrables dentro de un sistema formal. De manera similar, la diagonalización en la jerarquía de espacio demuestra que, al acotar los recursos, ningún sistema puede abarcar todas las posibilidades, estableciendo límites inherentes en la capacidad de cómputo.
+</p>
+<p>
+  En resumen, al integrar la noción de consultas computables con las funciones constructibles y los teoremas de jerarquía, se generalizan las clases de complejidad (como \( \mathrm{P} \), \( \mathrm{NP} \), \( \mathrm{PSPACE} \), etc.) a transformaciones lógicas sobre estructuras. Esto no solo extiende el análisis de problemas de decisión a consultas más generales, sino que también revela la estrecha relación entre la <em>descripción lógica</em> y la <em>computación efectiva</em>, haciendo evidente la universalidad de la Tesis de Church–Turing.
+</p>
+
+  
+
+<h3 class="tm-color-primary">5. Conclusión</h3>
+<p>
+  En este recorrido hemos observado cómo la <strong>complejidad computacional</strong> se fundamenta en la equivalencia de modelos, ilustrada por la <em>Tesis de Church–Turing</em>, y se enriquece mediante la capacidad de describir transformaciones de estructuras finitas a través de <em>consultas lógicas</em> en primer orden. La estrategia de codificar una estructura \(A \in \mathrm{STRUC}[\tau]\) como una cadena binaria, mediante la función \(\mathrm{bin}_\tau\), permite que una máquina de Turing transforme efectivamente dicha codificación en la representación de la consulta \(I(A)\) esto establece un puente directo entre la <em>definición lógica</em> de una consulta y su <em>implementación algorítmica</em>.
+</p>
+<p>
+  Las <strong>clases de complejidad</strong> como \(\mathrm{P}\), \(\mathrm{NP}\), \(\mathrm{PSPACE}\) y \(\mathrm{EXPTIME}\) se extienden, en este marco, a la computación de consultas no meramente booleanas, abarcando cualquier transformación sobre estructuras. En particular, el concepto de que una consulta \(I\) esté en \(Q(C)\) si cada bit de su salida es computable dentro de la clase \(C\) demuestra la íntima relación entre recursos computacionales y definibilidad lógica.
+</p>
+<p>
+  Además, el uso de <em>diagonalización</em> para demostrar teoremas de jerarquía en espacio y tiempo evidencia que, al aumentar los recursos, se pueden resolver problemas que estaban fuera del alcance de sistemas más restringidos. Esta técnica, que comparte su esencia con la estrategia de autorreferencia utilizada por <strong>Gödel</strong> en sus teoremas de incompletitud, subraya que ningún sistema formal (o clase de complejidad) puede abarcar todas las posibilidades, estableciendo límites intrínsecos en su capacidad.
+</p>
+<p>
+  En definitiva, el análisis expuesto reafirma que la <strong>descripción lógica</strong> y la <strong>computación efectiva</strong> son dos caras de la misma moneda. Al integrar conceptos clásicos—como la codificación binaria y la diagonalización—con las modernas nociones de complejidad, se consigue una perspectiva unificada que no solo ilumina los límites del cómputo, sino que también enriquece el estudio de la lógica matemática.
+</p>
+<p>
+  Este enfoque unificado nos invita a seguir explorando cómo lógicas extendidas (por ejemplo, la lógica de punto fijo o la lógica de segundo orden) pueden caracterizar formalmente las clases de complejidad, profundizando en la fascinante intersección entre la lógica y la computación.
+</p>
+<span class="d-block text-right tm-color-primary">Lógica · Computación · Matemáticas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navegación o enlaces a otros posts -->
+    <div class="text-center mt-4">
+      <a href="index.html" class="btn btn-primary mr-2">⟵ Volver</a>
+    </div>
+
+    <footer class="row tm-row">
+      <div class="col-md-6 col-12 tm-color-gray">
+        Bibliografía Esencial:
+      </div>
+      <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+        <ul style="list-style-type: none; padding-left: 0;">
+          <li>Immerman, N. <em>Descriptive Complexity</em>. Springer, 1999.</li>
+          <li>Church, A. “An Unsolvable Problem of Elementary Number Theory.”, 1936.</li>
+          <li>Turing, A. M. “On Computable Numbers, with an Application to the Entscheidungsproblem.”, 1936.</li>
+          <li>Gödel, K. <em>On Undecidable Propositions of Formal Mathematical Systems</em>, 1931.</li>
+        </ul>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/templatemo-script.js"></script>
+</body>
+</html>
