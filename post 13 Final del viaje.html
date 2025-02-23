@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Xtra Blog</title>
+	<link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
+<!--
+    
+TemplateMo 553 Xtra Blog
+
+https://templatemo.com/tm-553-xtra-blog
+
+-->
+</head>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<body>
+    <div id="sidebar-container"></div>
+  
+	<header  id="tm-header2">
+        <div class="tm-header-wrapper">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="tm-nav" id="tm-nav">            
+                <ul>
+                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+                        <i class="fas fa-home"></i>
+                        
+                    </a></li>
+                    
+                </ul>
+            </nav>
+           
+            
+        </div>
+    </header>
+    <div>
+        <main class="tm-main">
+                   
+            
+            <div class="row tm-row">
+                <div class="col-lg-11 tm-post-col">
+                    <div class="tm-post-full">                    
+                        <div class="mb-4">
+                            <h1 class="pt-2 tm-color-primary">Final del Viaje</h1>
+                            <hr>
+                            <h2 class="pt-2 tm-color-primary tm-post-title">Un Viaje Lógico hacia P y NP</h2>
+                            <p class="tm-mb-40">Publicado por Admin | Fecha: 10 de Diciembre, 2024</p>
+                            
+                            <p style="text-align: justify;">
+                                Bienvenidos a un recorrido donde la lógica y la computación se entrelazan para desentrañar algunos de los misterios más profundos de las matemáticas y la informática. 
+                                En este espacio, exploraremos cómo el lenguaje formal de la lógica puede describir y analizar problemas computacionales, revelando una conexión fascinante entre ideas abstractas y problemas concretos.
+                            </p>
+                            <p style="text-align: justify;">
+                                A lo largo del blog, descubriremos cómo nociones como <strong>P</strong> (problemas resolubles eficientemente) y <strong>NP</strong> (problemas cuya solución puede verificarse eficientemente) 
+                                pueden entenderse desde una perspectiva puramente lógica. Y lo más emocionante: aprenderemos a construir juntos las herramientas necesarias para demostrar resultados fundamentales 
+                                como el <strong>Teorema de Fagin</strong> y el <strong>Teorema de Immerman-Vardi</strong>.
+                            </p>
+                            <blockquote class="tm-quote" style="text-align: justify;">
+                                <em>“¿Qué tienen en común la lógica, los algoritmos y la teoría de la complejidad computacional? ¿Cómo puede un conjunto de reglas formales ayudarnos a responder preguntas tan complejas como el problema de P vs NP?”</em>
+                            </blockquote>
+                            
+                            <h3 class="tm-color-primary">Contexto y Relevancia</h3>
+                            <p style="text-align: justify;">
+                                La lógica formal ha sido una herramienta poderosa en las matemáticas durante siglos. Sin embargo, su papel como lenguaje para describir problemas computacionales se desarrolló con fuerza en el siglo XX. 
+                                Este enfoque, conocido como <strong>complejidad descriptiva</strong>, no solo conecta la teoría de la lógica con la computación, sino que también ofrece una perspectiva más elegante y abstracta sobre la naturaleza de los problemas computacionales.
+                            </p>
+                            <p style="text-align: justify;">
+                                Por ejemplo, muchos problemas clásicos en computación pueden expresarse en forma de consultas lógicas. Una consulta básica podría ser: 
+                                <em>“¿Existe un camino entre dos puntos en este grafo?”</em> Este tipo de preguntas, que pueden parecer triviales en principio, nos llevan a clasificar qué tan difícil es resolverlas utilizando recursos computacionales limitados, como tiempo o memoria.
+                            </p>
+                        
+                            <h3 class="tm-color-primary">Objetivos del Blog</h3>
+                            <p style="text-align: justify;"> 
+                                Este blog tiene como objetivo llevar a los lectores en un viaje progresivo que comience con conceptos fundamentales de la lógica y termine en la comprensión de resultados avanzados. A lo largo del camino:
+                            </p>
+
+                            <ul>
+                                <li>
+                                    <p>Exploraremos conceptos como las <strong>consultas booleanas</strong> y la expresividad de la <strong>lógica de primer y segundo orden</strong>.</p>
+                                </li>
+                                <li>
+                                    <p>Entenderemos cómo la lógica caracteriza clases de complejidad computacional como <strong>P</strong>, <strong>NP</strong> y otras jerarquías.</p>
+                                </li>
+                                <li>
+                                    <p>Construiremos paso a paso las bases necesarias para demostrar dos teoremas clave:</p>
+                                    <ul>
+                                        <li><p><strong>Teorema de Fagin:</strong> Caracteriza la clase NP mediante la lógica de segundo orden.</p></li>
+                                        <li><p><strong>Teorema de Immerman-Vardi:</strong> Muestra que P es equivalente a las consultas expresables en lógica de primer orden con punto fijo.</p></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <p>Reflexionaremos sobre las implicaciones de estos resultados en la teoría de la complejidad computacional.</p>
+                                </li>
+                            </ul>
+                        
+                            <h3 class="tm-color-primary">Una Mirada al Primer Paso: ¿Qué es la Lógica?</h3>
+                            <p style="text-align: justify;">
+                                Para empezar, pensemos en la lógica como un lenguaje formal que nos permite describir propiedades de objetos y relaciones entre ellos. Este lenguaje utiliza reglas estrictas, como cuantificadores 
+                                (<code>∀</code> para “todo” y <code>∃</code> para “existe”), conectores lógicos (como ∧, ∨, ¬) y símbolos que representan entidades en un dominio.
+                            </p>
+                            <p style="text-align: justify;">
+                                Imaginemos un grafo simple, con nodos y aristas. Una pregunta que podemos formular en lógica de primer orden es: <em>“¿Existe un nodo que esté conectado a todos los demás nodos?”</em> 
+                                Este tipo de consulta no solo tiene sentido computacional, sino que también puede traducirse a algoritmos que verifican su validez en un grafo dado.
+                            </p>
+                        
+                            <h3 class="tm-color-primary">Próximos Pasos</h3>
+                            <p style="text-align: justify;">
+                                En las próximas publicaciones, profundizaremos en los lenguajes lógicos, sus restricciones y cómo estas se relacionan con las clases de complejidad computacional. Aprenderemos a traducir problemas computacionales a consultas lógicas (o querys)
+                                y exploraremos conceptos clave como el cierre transitivo y las definiciones inductivas (operadores de punto fijo).
+                            </p>
+                            <p style="text-align: justify;"> 
+                                El viaje apenas comienza, y promete ser tan desafiante como revelador. ¡Te invito a seguir explorando conmigo las maravillas de la lógica y la complejidad computacional!
+                            </p>
+                            
+                            <span class="d-block text-right tm-color-primary">Lógica . Computación . Matemáticas</span>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <!-- Botones de navegación -->
+            <div class="text-center mt-4">
+                <a href="post 12 Otras caracterizaciones.html" class="btn btn-primary mr-2">⟵ Modelos de Computación en la Jerarquía Polinomial</a>
+                <a href="index.html" class="btn btn-primary"> Un Viaje Lógico HOME ⟶</a>
+            </div>
+            <footer class="row tm-row">
+                <div class="col-md-6 col-12 tm-color-gray">
+                    Unal
+                </div>
+                <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+                    Daniel Bocanegra .
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $("#sidebar-container").load("sidebar.html", function() {
+  const currentUrl = window.location.href;
+  console.log("Current URL:", currentUrl);
+  
+  $("#tm-nav a").each(function() {
+    const linkUrl = $(this).prop("href");
+    console.log("Comparando con:", linkUrl);
+    if (currentUrl.indexOf(linkUrl) !== -1) {
+      $(this).closest("li").addClass("active");
+    } else {
+      $(this).closest("li").removeClass("active");
+    }
+  });
+});
+      </script>
+    <script src="js/templatemo-script.js"></script>
+</body>
+</html>
