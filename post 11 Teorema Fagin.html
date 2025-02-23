@@ -1,46 +1,55 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Trasfondo en Complejidad</title>
-  <link rel="stylesheet" href="fontawesome/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"/>
-  <link href="css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="css/templatemo-xtra-blog.css" rel="stylesheet"/>
-  
-  <!-- Carga de MathJax para las fórmulas en TeX -->
-  <script type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Xtra Blog</title>
+	<link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/templatemo-xtra-blog.css" rel="stylesheet">
+<!--
+    
+TemplateMo 553 Xtra Blog
+
+https://templatemo.com/tm-553-xtra-blog
+
+-->
 </head>
-
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 <body>
-  <div id="sidebar-container"></div>
-<header id="tm-header2">
-  <div class="tm-header-wrapper">
-    <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
-    </button>
-    <nav class="tm-nav" id="tm-nav">            
-      <ul>
-        <li class="tm-nav-item">
-          <a href="index.html" class="tm-nav-link">
-            <i class="fas fa-home"></i>
-          </a>
-        </li>
-      </ul>
-    </nav>            
-  </div>
-</header>
+    <div id="sidebar-container"></div>
+  
+	<header  id="tm-header2">
+        <div class="tm-header-wrapper">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
 
-<div>
-  <main class="tm-main">
-    <div class="row tm-row">
-      <div class="col-lg-11 tm-post-col">
-        <div class="tm-post-full">                    
-          <div class="mb-4">
-            <h1 class="pt-2 tm-color-primary"> El Teorema de Fagin</h1>
+            <nav class="tm-nav" id="tm-nav">            
+                <ul>
+                    <li class="tm-nav-item"><a href="index.html" class="tm-nav-link">
+                        <i class="fas fa-home"></i>
+                        
+                    </a></li>
+                    
+                </ul>
+            </nav>
+           
+            
+        </div>
+    </header>
+    <div>
+        <main class="tm-main">
+                   
+            
+            <div class="row tm-row">
+                <div class="col-lg-11 tm-post-col">
+                    <div class="tm-post-full">                    
+                        <div class="mb-4">
+                            <h1 class="pt-2 tm-color-primary"> El Teorema de Fagin</h1>
             <hr>
             <p style="text-align: justify;" >            
             <h2 class="pt-2 tm-color-primary tm-post-title"> Una Caractizacion de NP en Segundo Orden </h2>
@@ -129,53 +138,45 @@
                 En los siguientes artículos, profundizaremos en cómo esta caracterización lógica se aplica a otros problemas <strong>NP-completos</strong>, fortaleciendo la conexión entre 
                 <strong>lógica matemática y complejidad computacional</strong>.
             </p>
+                            
+                            <span class="d-block text-right tm-color-primary">Lógica . Computación . Matemáticas</span>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <!-- Botones de navegación -->
+            <div class="text-center mt-4">
+                <a href="post 10 El gran paso.html" class="btn btn-primary mr-2">⟵ El gran paso hacia SO∃ = NP</a>
+                <a href="post 12 Otras caracterizaciones.html" class="btn btn-primary"> Modelos de Computación en la Jerarquía Polinomial ⟶</a>
+            </div>
             
-            
-            
-<span class="d-block text-right tm-color-primary">Lógica · Computación · Matemáticas</span>
-          </div>
-        </div>
-      </div>
+            <footer class="row tm-row">
+                <div class="col-md-6 col-12 tm-color-gray">
+                    Unal
+                </div>
+                <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+                    Daniel Bocanegra .
+                </div>
+            </footer>
+        </main>
     </div>
-
-    <!-- Navegación o enlaces a otros posts -->
-    <div class="text-center mt-4">
-      <a href="index.html" class="btn btn-primary mr-2">⟵ Volver</a>
-    </div>
-
-    <footer class="row tm-row">
-      <div class="col-md-6 col-12 tm-color-gray">
-        Bibliografía Esencial:
-      </div>
-      <div class="col-md-6 col-12 tm-color-gray tm-copyright">
-        <ul style="list-style-type: none; padding-left: 0;">
-          <li>Immerman, N. <em>Descriptive Complexity</em>. Springer, 1999.</li>
-          <li>Church, A. “An Unsolvable Problem of Elementary Number Theory.”, 1936.</li>
-          <li>Turing, A. M. “On Computable Numbers, with an Application to the Entscheidungsproblem.”, 1936.</li>
-          <li>Gödel, K. <em>On Undecidable Propositions of Formal Mathematical Systems</em>, 1931.</li>
-        </ul>
-      </div>
-    </footer>
-  </main>
-</div>
-
-<script src="js/jquery.min.js"></script>
-<script>
-  $("#sidebar-container").load("sidebar.html", function() {
-const currentUrl = window.location.href;
-console.log("Current URL:", currentUrl);
-
-$("#tm-nav a").each(function() {
-const linkUrl = $(this).prop("href");
-console.log("Comparando con:", linkUrl);
-if (currentUrl.indexOf(linkUrl) !== -1) {
-$(this).closest("li").addClass("active");
-} else {
-$(this).closest("li").removeClass("active");
-}
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $("#sidebar-container").load("sidebar.html", function() {
+  const currentUrl = window.location.href;
+  console.log("Current URL:", currentUrl);
+  
+  $("#tm-nav a").each(function() {
+    const linkUrl = $(this).prop("href");
+    console.log("Comparando con:", linkUrl);
+    if (currentUrl.indexOf(linkUrl) !== -1) {
+      $(this).closest("li").addClass("active");
+    } else {
+      $(this).closest("li").removeClass("active");
+    }
+  });
 });
-});
-</script>
-<script src="js/templatemo-script.js"></script>
+      </script>
+    <script src="js/templatemo-script.js"></script>
 </body>
 </html>
