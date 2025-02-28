@@ -49,82 +49,320 @@ https://templatemo.com/tm-553-xtra-blog
                 <div class="col-lg-11 tm-post-col">
                     <div class="tm-post-full">                    
                         <div class="mb-4">
-                            <h1 class="pt-2 tm-color-primary">Teorema de Fagin</h1>
-                            <hr>
-                            <h2 class="pt-2 tm-color-primary tm-post-title">Un Viaje Lógico hacia P y NP</h2>
-                            <p class="tm-mb-40">Publicado por Admin | Fecha: 10 de Diciembre, 2024</p>
-                            
-                            <p style="text-align: justify;">
-                                Bienvenidos a un recorrido donde la lógica y la computación se entrelazan para desentrañar algunos de los misterios más profundos de las matemáticas y la informática. 
-                                En este espacio, exploraremos cómo el lenguaje formal de la lógica puede describir y analizar problemas computacionales, revelando una conexión fascinante entre ideas abstractas y problemas concretos.
-                            </p>
-                            <p style="text-align: justify;">
-                                A lo largo del blog, descubriremos cómo nociones como <strong>P</strong> (problemas resolubles eficientemente) y <strong>NP</strong> (problemas cuya solución puede verificarse eficientemente) 
-                                pueden entenderse desde una perspectiva puramente lógica. Y lo más emocionante: aprenderemos a construir juntos las herramientas necesarias para demostrar resultados fundamentales 
-                                como el <strong>Teorema de Fagin</strong> y el <strong>Teorema de Immerman-Vardi</strong>.
-                            </p>
-                            <blockquote class="tm-quote" style="text-align: justify;">
-                                <em>“¿Qué tienen en común la lógica, los algoritmos y la teoría de la complejidad computacional? ¿Cómo puede un conjunto de reglas formales ayudarnos a responder preguntas tan complejas como el problema de P vs NP?”</em>
-                            </blockquote>
-                            
-                            <h3 class="tm-color-primary">Contexto y Relevancia</h3>
-                            <p style="text-align: justify;">
-                                La lógica formal ha sido una herramienta poderosa en las matemáticas durante siglos. Sin embargo, su papel como lenguaje para describir problemas computacionales se desarrolló con fuerza en el siglo XX. 
-                                Este enfoque, conocido como <strong>complejidad descriptiva</strong>, no solo conecta la teoría de la lógica con la computación, sino que también ofrece una perspectiva más elegante y abstracta sobre la naturaleza de los problemas computacionales.
-                            </p>
-                            <p style="text-align: justify;">
-                                Por ejemplo, muchos problemas clásicos en computación pueden expresarse en forma de consultas lógicas. Una consulta básica podría ser: 
-                                <em>“¿Existe un camino entre dos puntos en este grafo?”</em> Este tipo de preguntas, que pueden parecer triviales en principio, nos llevan a clasificar qué tan difícil es resolverlas utilizando recursos computacionales limitados, como tiempo o memoria.
-                            </p>
-                        
-                            <h3 class="tm-color-primary">Objetivos del Blog</h3>
-                            <p style="text-align: justify;"> 
-                                Este blog tiene como objetivo llevar a los lectores en un viaje progresivo que comience con conceptos fundamentales de la lógica y termine en la comprensión de resultados avanzados. A lo largo del camino:
-                            </p>
+                            <h1 class="pt-2 tm-color-primary"> El Teorema de Fagin</h1>
+            <hr>
+            <p style="text-align: justify;" >            
+            <h2 class="pt-2 tm-color-primary tm-post-title"> Una Caractizacion de NP en Segundo Orden </h2>
+            <p class="tm-mb-40">Publicado por Luis G. | Fecha: 21 de Marzo, 2025</p>
+            
+            <p>
+                La <strong>lógica de segundo orden con cuantificadores existenciales (\(\text{SO} \exists\))</strong> amplía la lógica de primer orden permitiendo cuantificar sobre relaciones, 
+                lo que la hace extremadamente expresiva. En este contexto, el <strong>Teorema de Fagin</strong> establece que la clase <strong>NP</strong> es exactamente el conjunto de problemas 
+                que pueden formularse mediante expresiones en <strong>\(\text{SO} \exists\)</strong>. Este resultado no solo proporciona una caracterización <strong>máquina-independiente</strong> 
+                de <strong>NP</strong>, sino que además fue el punto de partida del campo de la <strong>complejidad descriptiva</strong>, al demostrar que los problemas computacionales pueden 
+                describirse en términos de lógica sin necesidad de hacer referencia a modelos de cómputo como las máquinas de Turing. Un corolario derivado de este resultado, propuesto por 
+                <strong>Stockmeyer</strong>, afirma que las consultas expresadas en lógica de segundo orden corresponden exactamente a los problemas que se pueden resolver en la 
+                <strong>jerarquía polinomial</strong>, lo que resalta la profundidad de esta conexión entre <strong>expresividad lógica</strong> y <strong>complejidad computacional</strong>.
+            </p>
+        
+            <p>
+                La potencia de <strong>\(\text{SO} \exists\)</strong> radica en su capacidad para describir de manera compacta y estructurada problemas que capturan la esencia de 
+                <strong>NP-completitud</strong>, como <strong>SAT, CLIQUE y 3-COLORACIÓN</strong>, lo que nos permite entender <strong>NP</strong> desde una perspectiva lógica pura. 
+                De hecho, <strong>Fagin</strong> demostró su teorema formulando una expresión lógica que describe las computaciones de una <strong>máquina de Turing no determinista</strong>, 
+                cuantificando sobre las estructuras que representan los estados de la cinta y las transiciones de la máquina. Esta formulación no solo confirma que 
+                <strong>\(\text{SO} \exists \subseteq NP\)</strong>, sino que, a través de reducciones desde problemas <strong>NP-completos</strong> a fórmulas en 
+                <strong>\(\text{SO} \exists\)</strong>, se establece la otra inclusión, <strong>demostrando la igualdad</strong>. En este post, exploraremos esta demostración en detalle, 
+                siguiendo la estructura planteada por <strong>Fagin</strong> y comprendiendo cómo esta caracterización lógica se vincula con otros modelos de computación en la 
+                <strong>jerarquía polinomial</strong>.
+            </p>
 
-                            <ul>
-                                <li>
-                                    <p>Exploraremos conceptos como las <strong>consultas booleanas</strong> y la expresividad de la <strong>lógica de primer y segundo orden</strong>.</p>
-                                </li>
-                                <li>
-                                    <p>Entenderemos cómo la lógica caracteriza clases de complejidad computacional como <strong>P</strong>, <strong>NP</strong> y otras jerarquías.</p>
-                                </li>
-                                <li>
-                                    <p>Construiremos paso a paso las bases necesarias para demostrar dos teoremas clave:</p>
-                                    <ul>
-                                        <li><p><strong>Teorema de Fagin:</strong> Caracteriza la clase NP mediante la lógica de segundo orden.</p></li>
-                                        <li><p><strong>Teorema de Immerman-Vardi:</strong> Muestra que P es equivalente a las consultas expresables en lógica de primer orden con punto fijo.</p></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <p>Reflexionaremos sobre las implicaciones de estos resultados en la teoría de la complejidad computacional.</p>
-                                </li>
-                            </ul>
-                        
-                            <h3 class="tm-color-primary">Una Mirada al Primer Paso: ¿Qué es la Lógica?</h3>
-                            <p style="text-align: justify;">
-                                Para empezar, pensemos en la lógica como un lenguaje formal que nos permite describir propiedades de objetos y relaciones entre ellos. Este lenguaje utiliza reglas estrictas, como cuantificadores 
-                                (<code>∀</code> para “todo” y <code>∃</code> para “existe”), conectores lógicos (como ∧, ∨, ¬) y símbolos que representan entidades en un dominio.
-                            </p>
-                            <p style="text-align: justify;">
-                                Imaginemos un grafo simple, con nodos y aristas. Una pregunta que podemos formular en lógica de primer orden es: <em>“¿Existe un nodo que esté conectado a todos los demás nodos?”</em> 
-                                Este tipo de consulta no solo tiene sentido computacional, sino que también puede traducirse a algoritmos que verifican su validez en un grafo dado.
-                            </p>
-                        
-                            <h3 class="tm-color-primary">Próximos Pasos</h3>
-                            <p style="text-align: justify;">
-                                En las próximas publicaciones, profundizaremos en los lenguajes lógicos, sus restricciones y cómo estas se relacionan con las clases de complejidad computacional. Aprenderemos a traducir problemas computacionales a consultas lógicas (o querys)
-                                y exploraremos conceptos clave como el cierre transitivo y las definiciones inductivas (operadores de punto fijo).
-                            </p>
-                            <p style="text-align: justify;"> 
-                                El viaje apenas comienza, y promete ser tan desafiante como revelador. ¡Te invito a seguir explorando conmigo las maravillas de la lógica y la complejidad computacional!
-                            </p>
-                            
-                            <span class="d-block text-right tm-color-primary">Lógica . Computación . Matemáticas</span>
-                        </div>                        
-                    </div>
-                </div>
-            </div>
+            <h2 class="pt-2 tm-color-primary tm-post-title">¿Por qué una caracterización para NP?</h2>
+
+            <p>
+                
+                Una caracterizacion de querys de segundo orden  nos proporciona una manera alternativa y más estructurada de entender NP: 
+                mediante la <strong>lógica de segundo orden con cuantificadores existenciales (\(\text{SO} \exists\))</strong>. 
+                Un ejemplo claro de esta caracterización lo encontramos en el <strong>problema del viajero (TSP)</strong>, cuya formulación lógica en <strong>\(\text{SO} \exists\)</strong> 
+                nos permite ver cómo la expresividad de esta lógica capta la esencia de NP.
+            </p>
+
+            <p>
+                En el problema <strong>TSP</strong>, recibimos como entrada un <strong>grafo no dirigido</strong> \( G \) con <strong>pesos en sus aristas</strong> y un <strong>límite \( L \)</strong>. 
+                La consulta <strong>TSP</strong> es <strong>verdadera</strong> si existe un <strong>circuito hamiltoniano</strong> en \( G \) cuya <strong>suma total de pesos</strong> es como máximo \( L \). 
+                Para modelar este problema en términos lógicos, se define un vocabulario \( \tau_{\text{TSP}} \), compuesto por:
+            </p>
+
+            <ul>
+                <li>\( W(x, y, \cdot) \): Una cadena binaria que representa el <strong>peso</strong> de cada arista \( (x, y) \).</li>
+                <li>\( L(\cdot) \): Una cadena binaria que representa el <strong>límite de peso permitido \( L \)</strong>.</li>
+            </ul>
+
+            <p>
+                Para expresar esto en <strong>\(\text{SO} \exists\)</strong>, seguimos dos pasos fundamentales:
+            </p>
+
+            <h5>1. Asegurar la existencia de un circuito hamiltoniano</h5>
+            <p>
+                Se introduce una <strong>relación binaria</strong> \( H(x, y) \), donde \( H(x, y) \) indica que hay una arista en el circuito entre los vértices \( x \) y \( y \).
+                Esta relación debe cumplir dos condiciones:
+            </p>
+
+            <ul>
+                <li>Todo vértice tiene exactamente <strong>dos conexiones</strong> en \( H(x, y) \): una de entrada y otra de salida.</li>
+                <li>Las aristas en \( H(x, y) \) deben ser <strong>aristas reales del grafo \( E(x, y) \)</strong>.</li>
+            </ul>
+
+            <p>Esto se expresa como:</p>
+            <p class="text-center">
+                \[
+                (\exists H^2) \Big[ \forall x \exists y (H(x, y) \wedge H(y, x)) \wedge \forall x \forall y (H(x, y) \rightarrow E(x, y)) \Big]
+                \]
+            </p>
+
+            <h5>2. Restringir la suma de los pesos</h5>
+            <p>
+                Para garantizar que la <strong>suma de los pesos no supere \( L \)</strong>, se introduce una <strong>relación ternaria</strong> \( R(x, y, s) \),
+                donde \( s \) representa la <strong>suma acumulada</strong> de pesos hasta el vértice \( y \). Se impone la siguiente restricción:
+            </p>
+
+            <p class="text-center">
+                \[
+                (\exists R^3) \Big[ \forall x \forall y (H(x, y) \rightarrow R(x, y, s)) \wedge \forall x \forall y (R(x, y, s) \rightarrow (s \leq L)) \Big]
+                \]
+            </p>
+
+            <h2 class="pt-2 tm-color-primary tm-post-title">Demostración del Teorema de Fagin</h2>
+
+            <p>
+                La demostración de Fagin se basa en dos direcciones: 
+            </p>
+            
+            <ul>
+                <li><strong>(1) Toda consulta expresable en \(\text{SO} \exists\) pertenece a NP</strong>, lo que implica que cualquier problema que pueda describirse con una 
+                    fórmula de segundo orden existencial también puede ser resuelto por una máquina de Turing no determinista en tiempo polinomial.</li>
+                <li><strong>(2) Todo problema en NP puede expresarse en \(\text{SO} \exists\)</strong>, lo que significa que la estructura lógica de estos problemas 
+                    puede capturarse completamente mediante cuantificación sobre relaciones.</li>
+            </ul>
+        
+            <h4>Dirección fácil: \(\text{SO} \exists \subseteq NP\)</h4>
+        
+            <p>
+                Para demostrar que cualquier consulta en \(\text{SO} \exists\) pertenece a NP, consideremos una fórmula de la forma:
+            </p>
+        
+            <p class="text-center">
+                \[
+                \Phi \equiv (\exists R_1^{r_1}) (\exists R_2^{r_2}) \dots (\exists R_k^{r_k}) \psi
+                \]
+            </p>
+        
+            <p>
+                donde \( \psi \) es una fórmula de primer orden y \( R_1, R_2, \dots, R_k \) son relaciones existencialmente cuantificadas. 
+                Nuestro objetivo es construir una máquina de Turing no determinista \( N \) que, dado un input \( \mathcal{A} \), decida si \( \mathcal{A} \models \Phi \).
+            </p>
+        
+            <p>
+                La máquina \( N \) sigue el siguiente procedimiento:
+            </p>
+        
+            <ol>
+                <li>Escribe no determinísticamente una estructura extendida \( \mathcal{A}' = (\mathcal{A}, R_1, R_2, \dots, R_k) \), donde cada relación \( R_i \) es seleccionada arbitrariamente.</li>
+                <li>Evalúa la fórmula de primer orden \( \psi \) sobre la estructura \( \mathcal{A}' \).</li>
+                <li>Acepta si y solo si \( \mathcal{A}' \models \psi \).</li>
+            </ol>
+        
+            <p>
+                Dado que la evaluación de \( \psi \) se puede realizar en espacio logarítmico, y la generación no determinista de la estructura requiere solo un número polinomial de pasos, 
+                concluimos que \( \Phi \) pertenece a NP. Esto prueba la dirección \(\text{SO} \exists \subseteq NP\).
+            </p>
+        
+            <h4>Dirección difícil: \( NP \subseteq \text{SO} \exists \)</h4>
+            
+
+<p>
+Queremos demostrar que <strong>cualquier problema en NP</strong> puede expresarse en <strong>lógica de segundo orden con cuantificadores existenciales (\(\text{SO} \exists\))</strong>. Para ello, tomamos una <strong>máquina de Turing no determinista</strong> \( N \) que resuelve un problema en NP en tiempo <strong>\( n^k \)</strong> y construimos una fórmula de segundo orden que capture la ejecución de \( N \).
+</p>
+
+
+<h5><strong>1. Codificación de la Computación de \( N \)</strong></h5>
+
+<p>Para modelar la ejecución de \( N \) utilizamos las siguientes relaciones:</p>
+
+<ol>
+  <li><strong>\( C(\bar{s}, t) \):</strong> Representa el contenido de la celda \( \bar{s} \) en el tiempo \( t \).</li>
+  <li><strong>\( \Delta(t) \):</strong> Representa la elección de transición en el tiempo \( t \).</li>
+  <li><strong>\( Q(q, t) \):</strong> Representa el estado de la máquina en el tiempo \( t \).</li>
+  <li><strong>\( H(\bar{s}, t) \):</strong> Indica la posición del cabezal en el tiempo \( t \).</li>
+</ol>
+
+<p>Estas relaciones nos permiten modelar cómo cambia la configuración de la cinta a lo largo del tiempo.</p>
+
+<p><strong>Espacio de representación:</strong></p>
+<ul>
+  <li>La máquina tiene <strong>\( n^{2k} \)</strong> celdas en la cinta.</li>
+  <li>El tiempo máximo de ejecución es <strong>\( n^k -1 \)</strong>.</li>
+  <li>Usamos <strong>\( k \)-tuplas de variables \( \bar{s} = (s_1, ..., s_k) \)</strong> para representar cada celda.</li>
+</ul>
+
+<p>Cada paso de la computación de \( N \) se representará como una transición entre estas configuraciones.</p>
+
+
+
+<h5><strong>2. Construcción de la Fórmula en \(\text{SO} \exists\)</strong></h5>
+
+<p>La existencia de una computación aceptante de \( N \) se expresa con la fórmula:</p>
+
+<p>\[
+\Phi \equiv (\exists C_1^{2k} \dots \exists C_g^{2k} \exists Q \exists H \exists \Delta) \psi
+\]</p>
+
+<p>donde \( \psi \) es una <strong>fórmula de primer orden</strong> que asegura que la computación cumple las siguientes condiciones:</p>
+
+<ul class="alphabetical-list">
+  <li><strong>Condición inicial:</strong>
+    <ul>
+      <li>La cinta contiene la representación del input \( \mathcal{A} \).</li>
+      <li>El cabezal está en la primera celda.</li>
+      <li>El estado inicial de \( N \) es correcto.</li>
+    </ul>
+  </li>
+
+  <li><strong>Condiciones de transición:</strong>
+    <ul>
+      <li>En cada paso \( t \), la máquina sigue sus reglas de transición.</li>
+      <li>Si el cabezal está en una celda y el estado es \( q \), la configuración de la cinta cambia según la función de transición de \( N \).</li>
+      <li>El contenido de las celdas adyacentes sigue la actualización de \( N \).</li>
+    </ul>
+  </li>
+
+  <li><strong>Condición de aceptación:</strong>
+    <ul>
+      <li>En algún paso \( t \leq n^k -1 \), la máquina entra en un estado de aceptación \( q_f \).</li>
+    </ul>
+  </li>
+</ul>
+
+
+<h5><strong>3. Formalización de la Computación</strong></h5>
+
+<p>La fórmula \( \psi \) se descompone en cuatro partes principales:</p>
+
+<p>\[
+\psi \equiv \alpha \land \beta \land \eta \land \zeta
+\]</p>
+
+<h5><strong>(a) Condición Inicial (\( \alpha \))</strong></h5>
+<p>La condición \( \alpha \) garantiza que en el tiempo \( t = 0 \):</p>
+
+<ul>
+  <li>La primera fila de \( C \) representa correctamente el input \( \mathcal{A} \).</li>
+  <li>El estado inicial es \( q_0 \).</li>
+  <li>El cabezal está en la primera celda.</li>
+</ul>
+
+<p>\[
+\forall \bar{s} \forall t (t = 0 \rightarrow C(\bar{s}, 0) = \text{bin}(\mathcal{A}))
+\]</p>
+
+<p>\[
+Q(q_0, 0)
+\]</p>
+
+<p>\[
+H(\bar{0}, 0)
+\]</p>
+
+
+
+<h5><strong>(b) Restricción de Unicidad (\( \beta \))</strong></h5>
+<p>Garantiza que en un mismo tiempo \( t \):</p>
+
+<ul>
+  <li>Cada celda contiene un único símbolo.</li>
+  <li>El cabezal está en una única celda.</li>
+  <li>La máquina está en un único estado.</li>
+</ul>
+
+<p>\[
+\forall \bar{s} \forall t \quad \neg (C_i(\bar{s}, t) \land C_j(\bar{s}, t)) \quad \text{para } i \neq j
+\]</p>
+
+<p>\[
+\forall t \quad \neg (H(\bar{s}_i, t) \land H(\bar{s}_j, t)) \quad \text{para } i \neq j
+\]</p>
+
+<p>\[
+\forall q_i, q_j, t \quad \neg (Q(q_i, t) \land Q(q_j, t)) \quad \text{para } i \neq j
+\]</p>
+
+
+<h5><strong>(c) Condiciones de Transición (\( \eta \))</strong></h5>
+<p>Las configuraciones deben evolucionar siguiendo la función de transición de \( N \). Para cada paso \( t \):</p>
+
+<ul>
+  <li>Si el cabezal está en \( \bar{s} \) y el estado es \( q \), se ejecuta la transición.</li>
+</ul>
+
+<p>Si \( N \) tiene la transición:</p>
+
+<p>\[
+\delta(q, a) = (q', b, L)
+\]</p>
+
+<p>entonces, en la representación lógica:</p>
+
+<p>\[
+H(\bar{s}, t) \land Q(q, t) \land C(a, \bar{s}, t) \rightarrow
+\]</p>
+
+<p>\[
+Q(q', t+1) \land C(b, \bar{s}, t+1) \land H(\bar{s}-1, t+1)
+\]</p>
+
+<p>De manera similar, si la transición mueve el cabezal a la derecha:</p>
+
+<p>\[
+H(\bar{s}, t) \land Q(q, t) \land C(a, \bar{s}, t) \rightarrow
+\]</p>
+
+<p>\[
+Q(q', t+1) \land C(b, \bar{s}, t+1) \land H(\bar{s}+1, t+1)
+\]</p>
+
+
+
+<h5><strong>(d) Condición de Aceptación (\( \zeta \))</strong></h5>
+<p>La máquina debe entrar en un estado de aceptación \( q_f \) en algún tiempo \( t \):</p>
+
+<p>\[
+\exists t \quad Q(q_f, t)
+\]</p>
+
+<p>Esta condición asegura que la máquina no determinista acepta la entrada en algún camino de computación.</p>
+
+
+
+<h2 class="pt-2 tm-color-primary tm-post-title"><strong> Conclusión</strong></h2>
+
+<p>Hemos construido una fórmula en <strong>\(\text{SO} \exists\)</strong> que describe la ejecución de cualquier máquina de Turing no determinista que opera en tiempo polinomial. Esto prueba que:</p>
+
+<p>\[
+NP \subseteq \text{SO} \exists
+\]</p>
+
+<p>Dado que ya demostramos que <strong>\(\text{SO} \exists \subseteq NP\)</strong>, concluimos que:</p>
+
+<p>\[
+NP = \text{SO} \exists
+\]</p>
+
+<p>Este resultado es fundamental porque nos proporciona una <strong>caracterización lógica de NP independiente de las máquinas de Turing</strong> y fundamenta el campo de la <strong>complejidad descriptiva</strong>.</p>
+
+
+
+
+
+            
             <!-- Botones de navegación -->
             <div class="text-center mt-4">
                 <a href="post 10 El gran paso.html" class="btn btn-primary mr-2">⟵ El gran paso hacia SO∃ = NP</a>
@@ -136,7 +374,7 @@ https://templatemo.com/tm-553-xtra-blog
                     Unal
                 </div>
                 <div class="col-md-6 col-12 tm-color-gray tm-copyright">
-                    Daniel Bocanegra .
+                    Luis Gómez.
                 </div>
             </footer>
         </main>
