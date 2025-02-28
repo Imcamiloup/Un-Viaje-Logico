@@ -19,6 +19,25 @@ https://templatemo.com/tm-553-xtra-blog
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+    .highlight {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    .boxed {
+        border: 2px solid black;
+        padding: 5px;
+    }
+</style>
 <body>
     <div id="sidebar-container"></div>
   
@@ -130,6 +149,10 @@ https://templatemo.com/tm-553-xtra-blog
                 (\exists R^3) \Big[ \forall x \forall y (H(x, y) \rightarrow R(x, y, s)) \wedge \forall x \forall y (R(x, y, s) \rightarrow (s \leq L)) \Big]
                 \]
             </p>
+            <p>
+                Este análisis del <strong>problema del viajero (TSP)</strong> nos permite ver cómo la <strong>lógica de segundo orden con cuantificadores existenciales (\(\text{SO} \exists\))</strong> captura de manera natural la estructura de problemas en <strong>NP</strong>. A través de la formulación lógica, hemos logrado expresar tanto la existencia de un <strong>circuito hamiltoniano</strong> como la <strong>restricción sobre la suma de los pesos</strong>, sin necesidad de recurrir directamente a una máquina de Turing. Este enfoque demuestra el poder de \(\text{SO} \exists\) para caracterizar problemas computacionales complejos de manera compacta y estructurada. En las siguientes secciones, exploraremos cómo esta caracterización se extiende a otros problemas <strong>NP-completos</strong>, fortaleciendo la conexión entre <strong>lógica y complejidad computacional</strong> en la demostración del <strong>Teorema de Fagin</strong>.
+            </p>
+            
 
             <h2 class="pt-2 tm-color-primary tm-post-title">Demostración del Teorema de Fagin</h2>
 
@@ -178,169 +201,154 @@ https://templatemo.com/tm-553-xtra-blog
         
             <h4>Dirección difícil: \( NP \subseteq \text{SO} \exists \)</h4>
             
+            <p>Sea <i>N</i> una <strong>máquina de Turing no determinista</strong> que opera en un tiempo máximo de <i>n<sup>k</sup> - 1</i> sobre una entrada codificada como bin(<i>A</i>), donde <i>n = |A|</i>. Para formalizar esta computación en términos de lógica de segundo orden, expresamos la existencia de una cómputo aceptante mediante la siguiente fórmula:</p>
+
+            <p>
+                \[
+                \Phi \equiv (\exists C_1^{2k} \dots C_g^{2k} \Delta^k) \varphi
+                \]
+            </p>
+            
+            <p>Esta expresión establece que <strong>existe una codificación válida de un cómputo aceptante</strong> para <i>N</i>, en donde las relaciones <i>C</i> y <i>Δ</i> describen los estados de la máquina y su evolución a lo largo del tiempo. Más precisamente, la fórmula de primer orden <i>φ</i> verifica que para ciertos conjuntos <i>C</i> y <i>Δ</i>, la estructura ampliada <i>(A, C, Δ)</i> satisface la propiedad deseada, es decir, representa una ejecución válida de <i>N</i> sobre <i>A</i>. Esto nos permite establecer la equivalencia con la ecuación (7.7).</p>
+            
+            <p>Para describir formalmente la computación de <i>N</i>, introducimos una <strong>matriz</strong> <i>C(ś, t̄)</i> que modela la cinta de trabajo de la máquina. Cada celda de esta cinta puede almacenar información en un espacio de <i>n<sup>2k</sup></i> posiciones, variando en el tiempo desde <i>0</i> hasta <i>n<sup>k</sup> - 1</i>. Utilizamos <strong>tuplas de variables</strong> <i>t̄ = (t<sub>1</sub>, ..., t<sub>k</sub>)</i> y <i>ś = (s<sub>1</sub>, ..., s<sub>k</sub>)</i>, que recorren el universo de la estructura <i>A</i> en el rango de valores <i>0</i> a <i>n - 1</i>, permitiéndonos codificar las posiciones de la cinta en términos de lógica de primer orden.</p>
+            
+            <p>Cada <strong>par de valores</strong> <i>(ś, t̄)</i> dentro de <i>C(ś, t̄)</i> almacena el <strong>símbolo</strong> <i>σ</i> que aparece en la celda <i>ś</i> en el instante <i>t̄</i>, a menos que la cabeza de la máquina esté presente en esa celda. Si la cabeza de lectura se encuentra en la posición, entonces <i>C(ś, t̄)</i> codifica no solo el <i>símbolo</i> <i>σ</i>, sino también el <strong>estado actual</strong> de la máquina <i>N</i>, representado como un par <i>⟨q, σ⟩</i>, donde <i>q</i> denota el estado en el tiempo <i>t̄</i>.</p>
+            
+            <p>Para definir estos símbolos de manera formal, consideramos el conjunto:</p>
+            
+            <p>
+                \[
+                \Gamma = \{\gamma_0, \dots, \gamma_g\} = (Q \times \Sigma) \cup \Sigma
+                \]
+            </p>
+            
+            <p>donde <i>Q</i> es el conjunto de <strong>estados</strong> de la máquina y <i>Σ</i> es el <strong>alfabeto de la cinta</strong>. De esta manera, <i>Γ</i> agrupa todas las posibles configuraciones de contenido de una celda. Definimos además una <strong>relación de aridad 2k</strong>, denominada <i>C<sub>i</sub></i>, con <i>0 ≤ i ≤ g</i>, donde la interpretación intuitiva de <i>C<sub>i</sub>(ś, t̄)</i> es que la celda en la posición <i>ś</i> en el tiempo <i>t̄</i> contiene el símbolo <i>γ<sub>i</sub></i>.</p>
+            
+            <p>En cada paso, la <strong>máquina de Turing no determinista</strong> toma una de dos posibles decisiones. Estas elecciones están representadas mediante una relación <i>k</i>-aria, denotada como <i>Δ</i>. Intuitivamente, <i>Δ(t̄)</i> es verdadera si, en el paso <i>t̄ + 1</i> del cómputo, la máquina elige la opción "1"; en caso contrario, opta por la elección "0". Aunque estas decisiones pueden inferirse a partir de la estructura <i>C̄</i>, la formulación se simplifica al cuantificar explícitamente <i>Δ</i>. Para una mejor visualización del cómputo de <i>N</i>, remitimos a la Figura 7.9.</p>
+
+<p>Con esta información, podemos expresar de manera clara la fórmula de primer orden <i>φ(C̄, Δ)</i>, que establece que <i>C̄</i> y <i>Δ</i> codifican una ejecución aceptante de <i>N</i>. La expresión <i>φ</i> se descompone en cuatro componentes fundamentales:</p>
 
 <p>
-Queremos demostrar que <strong>cualquier problema en NP</strong> puede expresarse en <strong>lógica de segundo orden con cuantificadores existenciales (\(\text{SO} \exists\))</strong>. Para ello, tomamos una <strong>máquina de Turing no determinista</strong> \( N \) que resuelve un problema en NP en tiempo <strong>\( n^k \)</strong> y construimos una fórmula de segundo orden que capture la ejecución de \( N \).
+    \[
+    φ \equiv α \land β \land η \land ζ
+    \]
 </p>
 
-
-<h5><strong>1. Codificación de la Computación de \( N \)</strong></h5>
-
-<p>Para modelar la ejecución de \( N \) utilizamos las siguientes relaciones:</p>
-
-<ol>
-  <li><strong>\( C(\bar{s}, t) \):</strong> Representa el contenido de la celda \( \bar{s} \) en el tiempo \( t \).</li>
-  <li><strong>\( \Delta(t) \):</strong> Representa la elección de transición en el tiempo \( t \).</li>
-  <li><strong>\( Q(q, t) \):</strong> Representa el estado de la máquina en el tiempo \( t \).</li>
-  <li><strong>\( H(\bar{s}, t) \):</strong> Indica la posición del cabezal en el tiempo \( t \).</li>
-</ol>
-
-<p>Estas relaciones nos permiten modelar cómo cambia la configuración de la cinta a lo largo del tiempo.</p>
-
-<p><strong>Espacio de representación:</strong></p>
-<ul>
-  <li>La máquina tiene <strong>\( n^{2k} \)</strong> celdas en la cinta.</li>
-  <li>El tiempo máximo de ejecución es <strong>\( n^k -1 \)</strong>.</li>
-  <li>Usamos <strong>\( k \)-tuplas de variables \( \bar{s} = (s_1, ..., s_k) \)</strong> para representar cada celda.</li>
-</ul>
-
-<p>Cada paso de la computación de \( N \) se representará como una transición entre estas configuraciones.</p>
-
-
-
-<h5><strong>2. Construcción de la Fórmula en \(\text{SO} \exists\)</strong></h5>
-
-<p>La existencia de una computación aceptante de \( N \) se expresa con la fórmula:</p>
-
-<p>\[
-\Phi \equiv (\exists C_1^{2k} \dots \exists C_g^{2k} \exists Q \exists H \exists \Delta) \psi
-\]</p>
-
-<p>donde \( \psi \) es una <strong>fórmula de primer orden</strong> que asegura que la computación cumple las siguientes condiciones:</p>
-
-<ul class="alphabetical-list">
-  <li><strong>Condición inicial:</strong>
-    <ul>
-      <li>La cinta contiene la representación del input \( \mathcal{A} \).</li>
-      <li>El cabezal está en la primera celda.</li>
-      <li>El estado inicial de \( N \) es correcto.</li>
-    </ul>
-  </li>
-
-  <li><strong>Condiciones de transición:</strong>
-    <ul>
-      <li>En cada paso \( t \), la máquina sigue sus reglas de transición.</li>
-      <li>Si el cabezal está en una celda y el estado es \( q \), la configuración de la cinta cambia según la función de transición de \( N \).</li>
-      <li>El contenido de las celdas adyacentes sigue la actualización de \( N \).</li>
-    </ul>
-  </li>
-
-  <li><strong>Condición de aceptación:</strong>
-    <ul>
-      <li>En algún paso \( t \leq n^k -1 \), la máquina entra en un estado de aceptación \( q_f \).</li>
-    </ul>
-  </li>
-</ul>
-
-
-<h5><strong>3. Formalización de la Computación</strong></h5>
-
-<p>La fórmula \( \psi \) se descompone en cuatro partes principales:</p>
-
-<p>\[
-\psi \equiv \alpha \land \beta \land \eta \land \zeta
-\]</p>
-
-<h5><strong>(a) Condición Inicial (\( \alpha \))</strong></h5>
-<p>La condición \( \alpha \) garantiza que en el tiempo \( t = 0 \):</p>
+<p>A continuación, se describen los significados de cada una de estas partes:</p>
 
 <ul>
-  <li>La primera fila de \( C \) representa correctamente el input \( \mathcal{A} \).</li>
-  <li>El estado inicial es \( q_0 \).</li>
-  <li>El cabezal está en la primera celda.</li>
+    <li><strong>α:</strong> Asegura que la primera fila del cómputo codifica correctamente la entrada <i>bin(A)</i>.</li>
+    <li><strong>β:</strong> Garantiza que no ocurran solapamientos entre los símbolos almacenados en la cinta, es decir, no puede darse el caso en el que <i>C<sub>i</sub>(ś, t̄)</i> y <i>C<sub>j</sub>(ś, t̄)</i> sean simultáneamente verdaderas para <i>i ≠ j</i>.</li>
+    <li><strong>η:</strong> Expresa que, para cada instante <i>t̄</i>, la fila <i>t̄ + 1</i> de <i>C̄</i> se obtiene de la fila <i>t̄</i> mediante la transición definida por <i>Δ(t̄)</i>.</li>
+    <li><strong>ζ:</strong> Garantiza que la última fila del cómputo contiene el <strong>estado de aceptación</strong>.</li>
 </ul>
 
-<p>\[
-\forall \bar{s} \forall t (t = 0 \rightarrow C(\bar{s}, 0) = \text{bin}(\mathcal{A}))
-\]</p>
+<p>En particular, la condición <i>ζ</i> puede formularse explícitamente asumiendo que, cuando <i>N</i> alcanza un estado de aceptación, borra su cinta y se desplaza completamente hacia la izquierda hasta ingresar en un <strong>estado de aceptación único</strong>, que denotamos como <i>q<sub>f</sub></i>. Sea <i>γ<sub>17</sub></i> el elemento de <i>Γ</i> correspondiente al par <i>⟨q<sub>f</sub>, 1⟩</i>, donde <i>q<sub>f</sub></i> representa el estado de aceptación al observar el símbolo "1". De esta manera, establecemos:</p>
+
+<p>
+    \[
+    ζ = C_{17}(0, max).
+    \]
+</p>
+
+<p>Con estas condiciones formalizadas, hemos estructurado completamente la forma en que la lógica de segundo orden captura el cómputo aceptante de una máquina de Turing no determinista en el contexto del teorema de Fagin.</p>
+
+<p>La oración η establece que el contenido de la celda de la cinta en la posición \((\bar{s}, \bar{t} + 1)\) se deriva de los contenidos de las celdas en \((\bar{s} - 1, \bar{t})\), \((\bar{s}, \bar{t})\) y \((\bar{s} + 1, \bar{t})\), de acuerdo con la transición \(\Delta(\bar{t})\) del autómata \(N\).</p>
+
+<p>Se define una relación entre las configuraciones de los contenidos de las celdas, de tal forma que, si un conjunto específico de valores está presente en las posiciones indicadas, entonces la celda en la nueva posición adquirirá un valor determinado por la función de transición.</p>
+
+<p>Formalmente, si un trío de valores \(\langle a_{-1}, a_0, a_1, \delta \rangle\) lleva a un valor \(b\) bajo la función de transición del sistema, se expresa como:</p>
 
 <p>\[
-Q(q_0, 0)
+\langle a_{-1}, a_0, a_1, \delta \rangle \xrightarrow{N} b
 \]</p>
 
-<p>\[
-H(\bar{0}, 0)
-\]</p>
+<p>Este enunciado sintetiza el hecho de que el nuevo valor de la celda en \((\bar{s}, \bar{t} + 1)\) es el resultado de la aplicación de la función de transición \(\Delta(\bar{t})\) sobre los valores previamente almacenados en las celdas adyacentes.</p>
 
+<table>
+    <tr>
+        <th rowspan="2">Time</th>
+        <th colspan="7">Space</th>
+        <th rowspan="2">Δ</th>
+    </tr>
+    <tr>
+        <th>0</th> <th>1</th> <th>p</th> <th>n - 1</th> <th>n</th> <th>...</th> <th>nk - 1</th>
+    </tr>
+    <tr>
+        <td class="highlight">0</td>
+        <td>&#x27E8;q₀, w₀&#x27E9;</td> <td>w₁</td> <td>...</td> <td>wₙ₋₁</td> <td>⊔</td> <td>...</td> <td>⊔</td>
+        <td>δ₀</td>
+    </tr>
+    <tr>
+        <td class="highlight">1</td>
+        <td>w₀</td> <td>&#x27E8;q₁, w₁&#x27E9;</td> <td>...</td> <td>wₙ₋₁</td> <td>⊔</td> <td>...</td> <td>⊔</td>
+        <td>δ₁</td>
+    </tr>
+    <tr>
+        <td class="highlight">...</td>
+        <td>...</td> <td>...</td> <td>...</td> <td>...</td> <td>...</td> <td>...</td> <td>...</td>
+        <td>...</td>
+    </tr>
+    <tr>
+        <td class="highlight">t</td>
+        <td>...</td> <td>...</td> <td class="boxed">a₋₁</td> <td class="boxed">a₀</td> <td class="boxed">a₁</td> <td>...</td> <td>...</td>
+        <td>δₜ</td>
+    </tr>
+    <tr>
+        <td class="highlight">t + 1</td>
+        <td>...</td> <td>...</td> <td colspan="3" class="boxed">b</td> <td>...</td> <td>...</td>
+        <td>δₜ₊₁</td>
+    </tr>
+    <tr>
+        <td class="highlight">nk - 1</td>
+        <td>&#x27E8;qf, 1&#x27E9;</td> <td>...</td> <td>...</td> <td>...</td> <td>...</td> <td>...</td> <td>...</td>
+        <td>...</td>
+    </tr>
+</table>
 
+<p>An NP computation on input <em>w₀w₁...wₙ₋₁</em>; ⊔ denotes blank.</p>
 
-<h5><strong>(b) Restricción de Unicidad (\( \beta \))</strong></h5>
-<p>Garantiza que en un mismo tiempo \( t \):</p>
+<p>
+    Para continuar con la demostración, definimos la expresión <strong>\(\eta_1\)</strong>, la cual formaliza la evolución de la computación a lo largo del tiempo. 
+    En términos lógicos, esta expresión establece que para cualquier instante \( t \) que no sea el máximo y para cualquier posición \( \bar{s} \) dentro del rango permitido, 
+    se debe cumplir una transición válida de estados. 
+</p>
 
-<ul>
-  <li>Cada celda contiene un único símbolo.</li>
-  <li>El cabezal está en una única celda.</li>
-  <li>La máquina está en un único estado.</li>
-</ul>
+<p>
+    Matemáticamente, esta restricción se expresa mediante la siguiente fórmula:
+</p>
 
-<p>\[
-\forall \bar{s} \forall t \quad \neg (C_i(\bar{s}, t) \land C_j(\bar{s}, t)) \quad \text{para } i \neq j
-\]</p>
+<p class="text-center">
+    \[
+    \eta_1 \equiv (\forall t . t \neq \text{max})(\forall \bar{s} . 0 < \bar{s} < \text{max}) 
+    \bigwedge_{\langle a_{-1},a_0,a_1,\delta \rangle \overset{N}{\to} b} 
+    
+    \]
+</p>
+<p>
+\[\left( \neg^\delta \Delta(t) \vee \neg C_{a_{-1}}(\bar{s} - 1, t) \vee \neg C_{a_0}(\bar{s}, t) 
+\vee \neg C_{a_1}(\bar{s} + 1, t) \vee C_b(\bar{s}, t + 1) \right)\]
+</p>
 
-<p>\[
-\forall t \quad \neg (H(\bar{s}_i, t) \land H(\bar{s}_j, t)) \quad \text{para } i \neq j
-\]</p>
+<p>
+    En esta expresión, el operador \( \neg^\delta \) indica que si \( \delta \) toma el valor de 1, entonces la negación implica que se debe cumplir una transición determinada.
+    Si \( \delta \) es 0, se interpreta como un símbolo vacío.
+</p>
 
-<p>\[
-\forall q_i, q_j, t \quad \neg (Q(q_i, t) \land Q(q_j, t)) \quad \text{para } i \neq j
-\]</p>
+<p>
+    Finalmente, definimos <strong>\(\eta\)</strong> como la conjunción de tres restricciones:
+</p>
 
+<p class="text-center">
+    \[
+    \eta \equiv \eta_0 \wedge \eta_1 \wedge \eta_2
+    \]
+</p>
 
-<h5><strong>(c) Condiciones de Transición (\( \eta \))</strong></h5>
-<p>Las configuraciones deben evolucionar siguiendo la función de transición de \( N \). Para cada paso \( t \):</p>
-
-<ul>
-  <li>Si el cabezal está en \( \bar{s} \) y el estado es \( q \), se ejecuta la transición.</li>
-</ul>
-
-<p>Si \( N \) tiene la transición:</p>
-
-<p>\[
-\delta(q, a) = (q', b, L)
-\]</p>
-
-<p>entonces, en la representación lógica:</p>
-
-<p>\[
-H(\bar{s}, t) \land Q(q, t) \land C(a, \bar{s}, t) \rightarrow
-\]</p>
-
-<p>\[
-Q(q', t+1) \land C(b, \bar{s}, t+1) \land H(\bar{s}-1, t+1)
-\]</p>
-
-<p>De manera similar, si la transición mueve el cabezal a la derecha:</p>
-
-<p>\[
-H(\bar{s}, t) \land Q(q, t) \land C(a, \bar{s}, t) \rightarrow
-\]</p>
-
-<p>\[
-Q(q', t+1) \land C(b, \bar{s}, t+1) \land H(\bar{s}+1, t+1)
-\]</p>
-
-
-
-<h5><strong>(d) Condición de Aceptación (\( \zeta \))</strong></h5>
-<p>La máquina debe entrar en un estado de aceptación \( q_f \) en algún tiempo \( t \):</p>
-
-<p>\[
-\exists t \quad Q(q_f, t)
-\]</p>
-
-<p>Esta condición asegura que la máquina no determinista acepta la entrada en algún camino de computación.</p>
-
-
+<p>
+    donde \( \eta_0 \) y \( \eta_2 \) imponen las mismas restricciones para los casos extremos, es decir, cuando \( \bar{s} \) toma los valores 0 o el máximo permitido en la cinta.
+</p>
 
 <h2 class="pt-2 tm-color-primary tm-post-title"><strong> Conclusión</strong></h2>
 
@@ -357,6 +365,7 @@ NP = \text{SO} \exists
 \]</p>
 
 <p>Este resultado es fundamental porque nos proporciona una <strong>caracterización lógica de NP independiente de las máquinas de Turing</strong> y fundamenta el campo de la <strong>complejidad descriptiva</strong>.</p>
+
 
 
 
