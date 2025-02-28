@@ -76,7 +76,7 @@ https://templatemo.com/tm-553-xtra-blog
                 <strong>jerarquía polinomial</strong>.
             </p>
 
-            <h4>¿Por qué una caracterización para NP?</h4>
+            <h2 class="pt-2 tm-color-primary tm-post-title">¿Por qué una caracterización para NP?</h2>
 
             <p>
                 
@@ -131,19 +131,238 @@ https://templatemo.com/tm-553-xtra-blog
                 \]
             </p>
 
-            <h5>Conclusión</h5>
+            <h2 class="pt-2 tm-color-primary tm-post-title">Demostración del Teorema de Fagin</h2>
+
             <p>
-                Esta formulación en <strong>\(\text{SO} \exists\)</strong> nos muestra que el problema <strong>TSP</strong>, que es NP-completo, puede expresarse enteramente en términos de lógica de segundo orden. 
-                Así, el <strong>Teorema de Fagin</strong> nos permite entender NP desde una perspectiva formal basada en expresividad lógica en lugar de modelos computacionales como máquinas de Turing. 
-                En los siguientes artículos, profundizaremos en cómo esta caracterización lógica se aplica a otros problemas <strong>NP-completos</strong>, fortaleciendo la conexión entre 
-                <strong>lógica matemática y complejidad computacional</strong>.
+                La demostración de Fagin se basa en dos direcciones: 
             </p>
-                            
-                            <span class="d-block text-right tm-color-primary">Lógica . Computación . Matemáticas</span>
-                        </div>                        
-                    </div>
-                </div>
-            </div>
+            
+            <ul>
+                <li><strong>(1) Toda consulta expresable en \(\text{SO} \exists\) pertenece a NP</strong>, lo que implica que cualquier problema que pueda describirse con una 
+                    fórmula de segundo orden existencial también puede ser resuelto por una máquina de Turing no determinista en tiempo polinomial.</li>
+                <li><strong>(2) Todo problema en NP puede expresarse en \(\text{SO} \exists\)</strong>, lo que significa que la estructura lógica de estos problemas 
+                    puede capturarse completamente mediante cuantificación sobre relaciones.</li>
+            </ul>
+        
+            <h4>Dirección fácil: \(\text{SO} \exists \subseteq NP\)</h4>
+        
+            <p>
+                Para demostrar que cualquier consulta en \(\text{SO} \exists\) pertenece a NP, consideremos una fórmula de la forma:
+            </p>
+        
+            <p class="text-center">
+                \[
+                \Phi \equiv (\exists R_1^{r_1}) (\exists R_2^{r_2}) \dots (\exists R_k^{r_k}) \psi
+                \]
+            </p>
+        
+            <p>
+                donde \( \psi \) es una fórmula de primer orden y \( R_1, R_2, \dots, R_k \) son relaciones existencialmente cuantificadas. 
+                Nuestro objetivo es construir una máquina de Turing no determinista \( N \) que, dado un input \( \mathcal{A} \), decida si \( \mathcal{A} \models \Phi \).
+            </p>
+        
+            <p>
+                La máquina \( N \) sigue el siguiente procedimiento:
+            </p>
+        
+            <ol>
+                <li>Escribe no determinísticamente una estructura extendida \( \mathcal{A}' = (\mathcal{A}, R_1, R_2, \dots, R_k) \), donde cada relación \( R_i \) es seleccionada arbitrariamente.</li>
+                <li>Evalúa la fórmula de primer orden \( \psi \) sobre la estructura \( \mathcal{A}' \).</li>
+                <li>Acepta si y solo si \( \mathcal{A}' \models \psi \).</li>
+            </ol>
+        
+            <p>
+                Dado que la evaluación de \( \psi \) se puede realizar en espacio logarítmico, y la generación no determinista de la estructura requiere solo un número polinomial de pasos, 
+                concluimos que \( \Phi \) pertenece a NP. Esto prueba la dirección \(\text{SO} \exists \subseteq NP\).
+            </p>
+        
+            <h4>Dirección difícil: \( NP \subseteq \text{SO} \exists \)</h4>
+            
+
+<p>
+Queremos demostrar que <strong>cualquier problema en NP</strong> puede expresarse en <strong>lógica de segundo orden con cuantificadores existenciales (\(\text{SO} \exists\))</strong>. Para ello, tomamos una <strong>máquina de Turing no determinista</strong> \( N \) que resuelve un problema en NP en tiempo <strong>\( n^k \)</strong> y construimos una fórmula de segundo orden que capture la ejecución de \( N \).
+</p>
+
+
+<h5><strong>1. Codificación de la Computación de \( N \)</strong></h5>
+
+<p>Para modelar la ejecución de \( N \) utilizamos las siguientes relaciones:</p>
+
+<ol>
+  <li><strong>\( C(\bar{s}, t) \):</strong> Representa el contenido de la celda \( \bar{s} \) en el tiempo \( t \).</li>
+  <li><strong>\( \Delta(t) \):</strong> Representa la elección de transición en el tiempo \( t \).</li>
+  <li><strong>\( Q(q, t) \):</strong> Representa el estado de la máquina en el tiempo \( t \).</li>
+  <li><strong>\( H(\bar{s}, t) \):</strong> Indica la posición del cabezal en el tiempo \( t \).</li>
+</ol>
+
+<p>Estas relaciones nos permiten modelar cómo cambia la configuración de la cinta a lo largo del tiempo.</p>
+
+<p><strong>Espacio de representación:</strong></p>
+<ul>
+  <li>La máquina tiene <strong>\( n^{2k} \)</strong> celdas en la cinta.</li>
+  <li>El tiempo máximo de ejecución es <strong>\( n^k -1 \)</strong>.</li>
+  <li>Usamos <strong>\( k \)-tuplas de variables \( \bar{s} = (s_1, ..., s_k) \)</strong> para representar cada celda.</li>
+</ul>
+
+<p>Cada paso de la computación de \( N \) se representará como una transición entre estas configuraciones.</p>
+
+
+
+<h5><strong>2. Construcción de la Fórmula en \(\text{SO} \exists\)</strong></h5>
+
+<p>La existencia de una computación aceptante de \( N \) se expresa con la fórmula:</p>
+
+<p>\[
+\Phi \equiv (\exists C_1^{2k} \dots \exists C_g^{2k} \exists Q \exists H \exists \Delta) \psi
+\]</p>
+
+<p>donde \( \psi \) es una <strong>fórmula de primer orden</strong> que asegura que la computación cumple las siguientes condiciones:</p>
+
+<ul class="alphabetical-list">
+  <li><strong>Condición inicial:</strong>
+    <ul>
+      <li>La cinta contiene la representación del input \( \mathcal{A} \).</li>
+      <li>El cabezal está en la primera celda.</li>
+      <li>El estado inicial de \( N \) es correcto.</li>
+    </ul>
+  </li>
+
+  <li><strong>Condiciones de transición:</strong>
+    <ul>
+      <li>En cada paso \( t \), la máquina sigue sus reglas de transición.</li>
+      <li>Si el cabezal está en una celda y el estado es \( q \), la configuración de la cinta cambia según la función de transición de \( N \).</li>
+      <li>El contenido de las celdas adyacentes sigue la actualización de \( N \).</li>
+    </ul>
+  </li>
+
+  <li><strong>Condición de aceptación:</strong>
+    <ul>
+      <li>En algún paso \( t \leq n^k -1 \), la máquina entra en un estado de aceptación \( q_f \).</li>
+    </ul>
+  </li>
+</ul>
+
+
+<h5><strong>3. Formalización de la Computación</strong></h5>
+
+<p>La fórmula \( \psi \) se descompone en cuatro partes principales:</p>
+
+<p>\[
+\psi \equiv \alpha \land \beta \land \eta \land \zeta
+\]</p>
+
+<h5><strong>(a) Condición Inicial (\( \alpha \))</strong></h5>
+<p>La condición \( \alpha \) garantiza que en el tiempo \( t = 0 \):</p>
+
+<ul>
+  <li>La primera fila de \( C \) representa correctamente el input \( \mathcal{A} \).</li>
+  <li>El estado inicial es \( q_0 \).</li>
+  <li>El cabezal está en la primera celda.</li>
+</ul>
+
+<p>\[
+\forall \bar{s} \forall t (t = 0 \rightarrow C(\bar{s}, 0) = \text{bin}(\mathcal{A}))
+\]</p>
+
+<p>\[
+Q(q_0, 0)
+\]</p>
+
+<p>\[
+H(\bar{0}, 0)
+\]</p>
+
+
+
+<h5><strong>(b) Restricción de Unicidad (\( \beta \))</strong></h5>
+<p>Garantiza que en un mismo tiempo \( t \):</p>
+
+<ul>
+  <li>Cada celda contiene un único símbolo.</li>
+  <li>El cabezal está en una única celda.</li>
+  <li>La máquina está en un único estado.</li>
+</ul>
+
+<p>\[
+\forall \bar{s} \forall t \quad \neg (C_i(\bar{s}, t) \land C_j(\bar{s}, t)) \quad \text{para } i \neq j
+\]</p>
+
+<p>\[
+\forall t \quad \neg (H(\bar{s}_i, t) \land H(\bar{s}_j, t)) \quad \text{para } i \neq j
+\]</p>
+
+<p>\[
+\forall q_i, q_j, t \quad \neg (Q(q_i, t) \land Q(q_j, t)) \quad \text{para } i \neq j
+\]</p>
+
+
+<h5><strong>(c) Condiciones de Transición (\( \eta \))</strong></h5>
+<p>Las configuraciones deben evolucionar siguiendo la función de transición de \( N \). Para cada paso \( t \):</p>
+
+<ul>
+  <li>Si el cabezal está en \( \bar{s} \) y el estado es \( q \), se ejecuta la transición.</li>
+</ul>
+
+<p>Si \( N \) tiene la transición:</p>
+
+<p>\[
+\delta(q, a) = (q', b, L)
+\]</p>
+
+<p>entonces, en la representación lógica:</p>
+
+<p>\[
+H(\bar{s}, t) \land Q(q, t) \land C(a, \bar{s}, t) \rightarrow
+\]</p>
+
+<p>\[
+Q(q', t+1) \land C(b, \bar{s}, t+1) \land H(\bar{s}-1, t+1)
+\]</p>
+
+<p>De manera similar, si la transición mueve el cabezal a la derecha:</p>
+
+<p>\[
+H(\bar{s}, t) \land Q(q, t) \land C(a, \bar{s}, t) \rightarrow
+\]</p>
+
+<p>\[
+Q(q', t+1) \land C(b, \bar{s}, t+1) \land H(\bar{s}+1, t+1)
+\]</p>
+
+
+
+<h5><strong>(d) Condición de Aceptación (\( \zeta \))</strong></h5>
+<p>La máquina debe entrar en un estado de aceptación \( q_f \) en algún tiempo \( t \):</p>
+
+<p>\[
+\exists t \quad Q(q_f, t)
+\]</p>
+
+<p>Esta condición asegura que la máquina no determinista acepta la entrada en algún camino de computación.</p>
+
+
+
+<h2 class="pt-2 tm-color-primary tm-post-title"><strong> Conclusión</strong></h2>
+
+<p>Hemos construido una fórmula en <strong>\(\text{SO} \exists\)</strong> que describe la ejecución de cualquier máquina de Turing no determinista que opera en tiempo polinomial. Esto prueba que:</p>
+
+<p>\[
+NP \subseteq \text{SO} \exists
+\]</p>
+
+<p>Dado que ya demostramos que <strong>\(\text{SO} \exists \subseteq NP\)</strong>, concluimos que:</p>
+
+<p>\[
+NP = \text{SO} \exists
+\]</p>
+
+<p>Este resultado es fundamental porque nos proporciona una <strong>caracterización lógica de NP independiente de las máquinas de Turing</strong> y fundamenta el campo de la <strong>complejidad descriptiva</strong>.</p>
+
+
+
+
+
+            
             <!-- Botones de navegación -->
             <div class="text-center mt-4">
                 <a href="post 10 El gran paso.html" class="btn btn-primary mr-2">⟵ El gran paso hacia SO∃ = NP</a>
@@ -155,7 +374,7 @@ https://templatemo.com/tm-553-xtra-blog
                     Unal
                 </div>
                 <div class="col-md-6 col-12 tm-color-gray tm-copyright">
-                    Daniel Bocanegra .
+                    Luis Gómez.
                 </div>
             </footer>
         </main>
