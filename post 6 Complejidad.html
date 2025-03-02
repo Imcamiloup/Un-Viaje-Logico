@@ -70,13 +70,13 @@
             <p>
               De aquí se desprende que la <strong>eficiencia</strong> 
               (esto es, la cantidad de recursos empleados) no depende del modelo, 
-              sino que es una característica intrínseca del proceso algorítmico. 
+              máas bien es una característica intrínseca del proceso algorítmico. 
               Por ejemplo, si medimos la complejidad temporal de resolver un problema 
               en una <em>máquina de Turing</em> o en el <em>cálculo lambda</em>, 
               los órdenes de crecimiento (polinomial, exponencial, etc.) resultan 
               equivalentes en lo esencial. Así se configura la <em>teoría de la complejidad</em> 
               como un estudio unificado: <strong>no es modelo-dependiente</strong>, 
-              sino un ámbito fundamental de la computación. Este paso entre lo particular de cada modelo 
+              en realidad es un ámbito fundamental de la computación. Este paso entre lo particular de cada modelo 
               y una teoría general se da también en nuestro estudio de la lógica.
             </p>
 
@@ -286,7 +286,7 @@
   </li>
 </ul>
 <p>
-  En el marco de la <em>complejidad descriptiva</em>, estas clases no se limitan a problemas de decisión (sí/no), sino que se extienden a <em>consultas generales</em> sobre estructuras. Mediante una codificación adecuada (por ejemplo, usando la función <em>bin<sub>σ</sub></em> para transformar una estructura \(A\) en una cadena \(w\) en \(\{0,1\}^*\)), se puede afirmar que si una máquina en, por ejemplo, \(\mathrm{DTIME}[t(n)]\) transforma \(w = \mathrm{bin}_\sigma(A)\) en \(w' = \mathrm{bin}_\tau(I(A))\) en O(t(n)) pasos, la consulta \(I\) es computable en \(\mathrm{DTIME}[t(n)]\).
+  En el marco de la <em>complejidad descriptiva</em>, estas clases no se limitan a problemas de decisión (sí/no), en vez de eso se extienden a <em>consultas generales</em> sobre estructuras. Mediante una codificación adecuada (por ejemplo, usando la función <em>bin<sub>σ</sub></em> para transformar una estructura \(A\) en una cadena \(w\) en \(\{0,1\}^*\)), se puede afirmar que si una máquina en, por ejemplo, \(\mathrm{DTIME}[t(n)]\) transforma \(w = \mathrm{bin}_\sigma(A)\) en \(w' = \mathrm{bin}_\tau(I(A))\) en O(t(n)) pasos, la consulta \(I\) es computable en \(\mathrm{DTIME}[t(n)]\).
 </p>
 <p>
   Así, la visión algorítmica se unifica con la <em>descripción lógica</em> de propiedades y transformaciones en estructuras finitas, mostrando que las mismas limitaciones de tiempo y espacio que se aplican a las máquinas de Turing se trasladan a la definición de consultas lógicas.
@@ -314,7 +314,7 @@
   donde \( C \) denota el conjunto de consultas booleanas en \( C \) y \( I \) es una consulta general cuyas salidas, evaluadas bit a bit, son computables dentro de la cota impuesta por \( C \). Este concepto amplía el estudio de la complejidad más allá de simples problemas de decisión, abarcando cualquier transformación lógica de estructuras.
 </p>
 <p>
-  Además, encontramos los <em>teoremas de jerarquía</em> para tiempo y espacio, los cuales establecen que al incrementar los recursos disponibles se pueden resolver estrictamente más problemas. Dichos teoremas se demuestran mediante <strong>argumentos de diagonalización</strong>, que no solo son fundamentales para construir lenguajes que superan un límite de recursos, sino que también evocan, en espíritu, los métodos de autorreferencia empleados por Gödel en sus demostraciones de incompletitud.
+  Además, encontramos los <em>teoremas de jerarquía</em> para tiempo y espacio, los cuales establecen que al incrementar los recursos disponibles se pueden resolver estrictamente más problemas. Dichos teoremas se demuestran mediante <strong>argumentos de diagonalización</strong>, que son fundamentales para construir lenguajes que superan un límite de recursos y también evocan los métodos de autorreferencia empleados por Gödel en sus demostraciones de incompletitud.
 </p>
 <p>
   Por último, una función \( s : \mathbb{N} \to \mathbb{N} \) es <em>construible</em> (ya sea en espacio o en tiempo) si existe una máquina determinista que, dada la cadena \( 0^n \), computa la representación binaria de \( s(n) \) en un número de pasos o celdas acotado por \( O(s(n)) \). En la notación de complejidad descriptiva, esto implica que la función 
@@ -337,7 +337,7 @@
   Es interesante notar que este método de diagonalización comparte una esencia conceptual con la técnica utilizada por Kurt Gödel en sus teoremas de incompletitud. Si bien la codificación de Gödel, que asigna números a símbolos y fórmulas, no involucra diagonalización por sí misma, sí habilita la construcción de oraciones autoreferentes que demuestran la existencia de enunciados verdaderos pero indemostrables dentro de un sistema formal. De manera similar, la diagonalización en la jerarquía de espacio demuestra que, al acotar los recursos, ningún sistema puede abarcar todas las posibilidades, estableciendo límites inherentes en la capacidad de cómputo.
 </p>
 <p>
-  En resumen, al integrar la noción de consultas computables con las funciones constructibles y los teoremas de jerarquía, se generalizan las clases de complejidad (como \( \mathrm{P} \), \( \mathrm{NP} \), \( \mathrm{PSPACE} \), etc.) a transformaciones lógicas sobre estructuras. Esto no solo extiende el análisis de problemas de decisión a consultas más generales, sino que también revela la estrecha relación entre la <em>descripción lógica</em> y la <em>computación efectiva</em>, haciendo evidente la universalidad de la Tesis de Church–Turing.
+  En resumen, al integrar la noción de consultas computables con las funciones constructibles y los teoremas de jerarquía, se generalizan las clases de complejidad (como \( \mathrm{P} \), \( \mathrm{NP} \), \( \mathrm{PSPACE} \), etc.) a transformaciones lógicas sobre estructuras. Esto extiende el análisis de problemas de decisión a consultas más generales y también revela la estrecha relación entre la <em>descripción lógica</em> y la <em>computación efectiva</em>, haciendo evidente la universalidad de la Tesis de Church–Turing.
 </p>
 
   
@@ -353,7 +353,7 @@
   Además, el uso de <em>diagonalización</em> para demostrar teoremas de jerarquía en espacio y tiempo evidencia que, al aumentar los recursos, se pueden resolver problemas que estaban fuera del alcance de sistemas más restringidos. Esta técnica, que comparte su esencia con la estrategia de autorreferencia utilizada por <strong>Gödel</strong> en sus teoremas de incompletitud, subraya que ningún sistema formal (o clase de complejidad) puede abarcar todas las posibilidades, estableciendo límites intrínsecos en su capacidad.
 </p>
 <p>
-  En definitiva, el análisis expuesto reafirma que la <strong>descripción lógica</strong> y la <strong>computación efectiva</strong> son dos caras de la misma moneda. Al integrar conceptos clásicos—como la codificación binaria y la diagonalización—con las modernas nociones de complejidad, se consigue una perspectiva unificada que no solo ilumina los límites del cómputo, sino que también enriquece el estudio de la lógica matemática.
+  En definitiva, el análisis expuesto reafirma que la <strong>descripción lógica</strong> y la <strong>computación efectiva</strong> son dos caras de la misma moneda. Al integrar conceptos clásicos—como la codificación binaria y la diagonalización—con las modernas nociones de complejidad, se consigue una perspectiva unificada que ilumina los límites del cómputo y enriquece el estudio de la lógica matemática.
 </p>
 <p>
   Este enfoque unificado nos invita a seguir explorando cómo lógicas extendidas (por ejemplo, la lógica de punto fijo o la lógica de segundo orden) pueden caracterizar formalmente las clases de complejidad, profundizando en la fascinante intersección entre la lógica y la computación.
