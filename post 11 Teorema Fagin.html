@@ -77,8 +77,8 @@ https://templatemo.com/tm-553-xtra-blog
             <p>
                 La <strong>lógica de segundo orden con cuantificadores existenciales (\(\text{SO} \exists\))</strong> amplía la lógica de primer orden permitiendo cuantificar sobre relaciones, 
                 lo que la hace extremadamente expresiva. En este contexto, el <strong>Teorema de Fagin</strong> establece que la clase <strong>NP</strong> es exactamente el conjunto de problemas 
-                que pueden formularse mediante expresiones en <strong>\(\text{SO} \exists\)</strong>. Este resultado no solo proporciona una caracterización <strong>máquina-independiente</strong> 
-                de <strong>NP</strong>, sino que además fue el punto de partida del campo de la <strong>complejidad descriptiva</strong>, al demostrar que los problemas computacionales pueden 
+                que pueden formularse mediante expresiones en <strong>\(\text{SO} \exists\)</strong>. Este resultado proporciona una caracterización <strong>máquina-independiente</strong> 
+                de <strong>NP</strong> y fue el punto de partida del campo de la <strong>complejidad descriptiva</strong>, al demostrar que los problemas computacionales pueden 
                 describirse en términos de lógica sin necesidad de hacer referencia a modelos de cómputo como las máquinas de Turing. Un corolario derivado de este resultado, propuesto por 
                 <strong>Stockmeyer</strong>, afirma que las consultas expresadas en lógica de segundo orden corresponden exactamente a los problemas que se pueden resolver en la 
                 <strong>jerarquía polinomial</strong>, lo que resalta la profundidad de esta conexión entre <strong>expresividad lógica</strong> y <strong>complejidad computacional</strong>.
@@ -88,8 +88,8 @@ https://templatemo.com/tm-553-xtra-blog
                 La potencia de <strong>\(\text{SO} \exists\)</strong> radica en su capacidad para describir de manera compacta y estructurada problemas que capturan la esencia de 
                 <strong>NP-completitud</strong>, como <strong>SAT, CLIQUE y 3-COLORACIÓN</strong>, lo que nos permite entender <strong>NP</strong> desde una perspectiva lógica pura. 
                 De hecho, <strong>Fagin</strong> demostró su teorema formulando una expresión lógica que describe las computaciones de una <strong>máquina de Turing no determinista</strong>, 
-                cuantificando sobre las estructuras que representan los estados de la cinta y las transiciones de la máquina. Esta formulación no solo confirma que 
-                <strong>\(\text{SO} \exists \subseteq NP\)</strong>, sino que, a través de reducciones desde problemas <strong>NP-completos</strong> a fórmulas en 
+                cuantificando sobre las estructuras que representan los estados de la cinta y las transiciones de la máquina. Esta formulación confirma que 
+                <strong>\(\text{SO} \exists \subseteq NP\)</strong> y a través de reducciones desde problemas <strong>NP-completos</strong> a fórmulas en 
                 <strong>\(\text{SO} \exists\)</strong>, se establece la otra inclusión, <strong>demostrando la igualdad</strong>. En este post, exploraremos esta demostración en detalle, 
                 siguiendo la estructura planteada por <strong>Fagin</strong> y comprendiendo cómo esta caracterización lógica se vincula con otros modelos de computación en la 
                 <strong>jerarquía polinomial</strong>.
@@ -213,7 +213,7 @@ https://templatemo.com/tm-553-xtra-blog
             
             <p>Para describir formalmente la computación de <i>N</i>, introducimos una <strong>matriz</strong> <i>C(ś, t̄)</i> que modela la cinta de trabajo de la máquina. Cada celda de esta cinta puede almacenar información en un espacio de <i>n<sup>2k</sup></i> posiciones, variando en el tiempo desde <i>0</i> hasta <i>n<sup>k</sup> - 1</i>. Utilizamos <strong>tuplas de variables</strong> <i>t̄ = (t<sub>1</sub>, ..., t<sub>k</sub>)</i> y <i>ś = (s<sub>1</sub>, ..., s<sub>k</sub>)</i>, que recorren el universo de la estructura <i>A</i> en el rango de valores <i>0</i> a <i>n - 1</i>, permitiéndonos codificar las posiciones de la cinta en términos de lógica de primer orden.</p>
             
-            <p>Cada <strong>par de valores</strong> <i>(ś, t̄)</i> dentro de <i>C(ś, t̄)</i> almacena el <strong>símbolo</strong> <i>σ</i> que aparece en la celda <i>ś</i> en el instante <i>t̄</i>, a menos que la cabeza de la máquina esté presente en esa celda. Si la cabeza de lectura se encuentra en la posición, entonces <i>C(ś, t̄)</i> codifica no solo el <i>símbolo</i> <i>σ</i>, sino también el <strong>estado actual</strong> de la máquina <i>N</i>, representado como un par <i>⟨q, σ⟩</i>, donde <i>q</i> denota el estado en el tiempo <i>t̄</i>.</p>
+            <p>Cada <strong>par de valores</strong> <i>(ś, t̄)</i> dentro de <i>C(ś, t̄)</i> almacena el <strong>símbolo</strong> <i>σ</i> que aparece en la celda <i>ś</i> en el instante <i>t̄</i>, a menos que la cabeza de la máquina esté presente en esa celda. Si la cabeza de lectura se encuentra en la posición, entonces <i>C(ś, t̄)</i> codifica el <i>símbolo</i> <i>σ</i> y el<strong>estado actual</strong> de la máquina <i>N</i>, representado como un par <i>⟨q, σ⟩</i>, donde <i>q</i> denota el estado en el tiempo <i>t̄</i>.</p>
             
             <p>Para definir estos símbolos de manera formal, consideramos el conjunto:</p>
             
